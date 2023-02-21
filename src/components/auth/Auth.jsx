@@ -1,3 +1,4 @@
+import { NavLink} from 'react-router-dom';
 import './auth.css'
 
 const Auth = () => {
@@ -17,6 +18,7 @@ const Auth = () => {
                         <div className="auth__label">Пароль</div>
                         <input className="auth__input" name="password" />
                         <button className="auth__btn-submit" type="submit">Войти</button>
+                        <NavLink to='/registration' className="registration__link">Зарегистрироваться</NavLink>
                     </form>
                 </div>
             </div>
