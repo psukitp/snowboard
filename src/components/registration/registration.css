@@ -95,3 +95,8 @@
     color: #6D6D6D;
     text-decoration: underline;
 }
+
+.reg__wrong-password{
+    position: absolute;
+    color: red;
+}

@@ -3,6 +3,7 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header'
 import Auth from './components/auth/Auth'
 import Registration from './components/registration/Registration';
+import Events from './components/events/Events';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/registration",
     element: <Registration />
+  },
+  {
+    path: "/events",
+    element: <Events />
   }
 ])
 
