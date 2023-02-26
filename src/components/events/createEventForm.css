@@ -1,0 +1,129 @@
+.event__create{
+    padding: 50px 0;
+}
+
+.event__create__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event__create__label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.event__create__input,
+.event__create__textarea {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 45px;
+    border: none;
+}
+
+.event__create__input[name="title"] {
+    padding: 0 15px;
+    width: 980px;
+    margin-bottom: 30px;
+}
+
+.event__create__input[name="date"] {
+    width: 320px;
+    text-align: center;
+}
+
+.event__create_block {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 30px;
+}
+
+.event__create-photo {
+    margin-right: 100px;
+}
+
+.event__create__textarea {
+    width: 980px;
+    height: 500px;
+    resize: none;
+    padding: 15px;
+}
+
+.event__create__textarea::placeholder,
+.event__create__input::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #AAAAAA;
+}
+
+.event__create__btn-send-photo {
+    background: #1FAEE9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 65px;
+}
+
+.event__create-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.event__create__btn-submit,
+.event__create__btn-cancel {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 12px 0;
+    border: none;
+    max-width: 390px;
+    width: 100%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.event__create__btn-submit{
+    color: #FFFFFF;
+    background-color: #1FAEE9;
+}
+
+.event__create__btn-cancel{
+    color: #000;
+    background-color: #fff;
+}
+
+.event__create__textarea{
+    margin-bottom: 30px;
+}
+
+.event__create__btn-submit:hover,
+.event__create__btn-cancel:hover,
+.event__create__btn-send-photo:hover{
+    opacity: .8;
+    cursor: pointer;
+}
+
+.input__file{
+    display: none;
+}
+
+.event__create-photo .event__create__label{
+    margin-bottom: 18px;
+}

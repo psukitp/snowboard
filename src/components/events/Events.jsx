@@ -1,40 +1,34 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { api } from '../../api/api';
 import EventCard from './EventCard'
 import './events.css'
 
-let nextId = 0
-
-//items будут браться из стора
-//стор же в свою очередь будет данные брать с сервера. пока для демонстрации сделан просто массив объектов
-const items = [{
-    id: nextId++,
-    name: '123',
-    text: '123',
-},
-{
-    id: nextId++,
-    name: '123',
-    text: '123',
-}, {
-    id: nextId++,
-    name: '123',
-    text: '123',
-}, {
-    id: nextId++,
-    name: '123',
-    text: '123',
-}]
 
 const Events = () => {
+    const dispatch = useDispatch();
+    const events = useSelector((store) => store.events)
+
+
+    useEffect(() => {
+        dispatch(api.getEvents())
+    }, [])
+
     return (
         <>
             <section className="events">
                 <div className="container">
                     <div className="events__search">
                         <input className="events__search-input" placeholder='Найти мероприятие' />
-                        <button className="create__event-btn">Созать мероприятие</button>
+                        <NavLink to="create-new">
+                            <button className="create__event-btn">
+                                Создать мероприятие
+                            </button>
+                        </NavLink>
                     </div>
                     <div className="events__cards">
-                        {items.map(el => <EventCard name={el.name} text={el.text} />)}
+                        {events.map(el => <EventCard key={el.event_id} name={el.event_title} text={el.event_description} />)}
                     </div>
                 </div>
             </section>

@@ -5,6 +5,7 @@ import Auth from './components/auth/Auth'
 import Registration from './components/registration/Registration';
 import Events from './components/events/Events';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import CreateEventForm from './components/events/CreateEventForm';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/events",
     element: <Events />
+  },
+  {
+    path: "events/create-new",
+    element: <CreateEventForm />
   }
 ])
 
