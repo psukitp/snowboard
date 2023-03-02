@@ -28,7 +28,11 @@ const Events = () => {
                         </NavLink>
                     </div>
                     <div className="events__cards">
-                        {events.map(el => <EventCard key={el.event_id} name={el.event_title} text={el.event_description} />)}
+                        {events.map(el => <EventCard 
+                        key={el.event_id } 
+                        name={el.event_title} 
+                        text={el.event_description === undefined ? 'Не найдено' : el.event_description} 
+                        event_image_path={el.event_image_path} />)}
                     </div>
                 </div>
             </section>

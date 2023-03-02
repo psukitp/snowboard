@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { api } from '../../api/api';
 import './registration.css'
 
 const Registration = () => {
+    const dispatch = useDispatch()
     const [form, setForm] = useState({
         login: '',
-        mail: '',
+        email: '',
         name: '',
         sname: '',
         photoPath: '',
@@ -16,7 +19,7 @@ const Registration = () => {
     const handleSubmitForm = (e) => {
         e.preventDefault();
         if (form.password === form.passwordRepeat) {
-            console.log(form);
+            dispatch(api.registration(form))
         }
     }
 
@@ -24,7 +27,7 @@ const Registration = () => {
         if (e.target.name === 'login') {
             setForm({ ...form, login: e.target.value })
         } else if (e.target.name === 'email') {
-            setForm({ ...form, mail: e.target.value })
+            setForm({ ...form, email: e.target.value })
         } else if (e.target.name === 'name') {
             setForm({ ...form, name: e.target.value })
         } else if (e.target.name === 'second__name') {

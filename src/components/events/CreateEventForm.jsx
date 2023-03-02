@@ -4,8 +4,10 @@ import './createEventForm.css'
 
 
 const CreateEventForm = () => {
-    const [form, setForm] = useState({ creator_id: 1, event_title: '', event_date: new Date(), event_description: '' })
+    const [form, setForm] = useState({ creator_id: 1, event_title: '', event_date: new Date(), event_description: '', event_image: '' })
     const [fileStatus, setFileStatus] = useState(true);
+
+
     const handleSubmitForm = (e) => {
         e.preventDefault();
         setForm({ ...form, event_date: new Date() })
@@ -24,14 +26,24 @@ const CreateEventForm = () => {
 
     const handleFileUpload = ({ target }) => {
         const currentFileName = target.files[0].name;
-        let fileName = '';
-        if (currentFileName.length > 14) {
-            fileName = currentFileName.slice(0, 5) + '...' + currentFileName.slice(-6)
-        } else {
-            fileName = currentFileName;
+        const currentFile = target.files[0];
+        if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
+            alert('Разрешены только изображения')
         }
-        const label = document.querySelector('.input__file-text');
-        label.innerHTML = fileName;
+        else {
+            let fileName = '';
+            if (currentFileName.length > 14) {
+                fileName = currentFileName.slice(0, 5) + '...' + currentFileName.slice(-6)
+            } else {
+                fileName = currentFileName;
+            }
+            const label = document.querySelector('.input__file-text');
+            label.innerHTML = fileName;
+            console.log(typeof (currentFile))
+            console.log(currentFile);
+            setForm({ ...form, event_image: currentFile })
+            console.log(currentFile);
+        }
     }
 
     return (
@@ -39,7 +51,7 @@ const CreateEventForm = () => {
             <section className="event__create">
                 <div className="container">
                     <div className='event__create__inner'>
-                        <form className="event__create__form" onSubmit={handleSubmitForm}>
+                        <form className="event__create__form" onSubmit={handleSubmitForm} encType="multipart/form-data">
                             <div className="event__create__label">Название мероприятия</div>
                             <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
                             <div className="event__create_block">
