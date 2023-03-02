@@ -39,10 +39,7 @@ const CreateEventForm = () => {
             }
             const label = document.querySelector('.input__file-text');
             label.innerHTML = fileName;
-            console.log(typeof (currentFile))
-            console.log(currentFile);
             setForm({ ...form, event_image: currentFile })
-            console.log(currentFile);
         }
     }
 

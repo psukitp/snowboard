@@ -9,11 +9,13 @@ import CreateEventForm from './components/events/CreateEventForm';
 import { api } from './api/api';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Error from './components/error/Error';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Auth />,
+    errorElement: <Error />
   },
   {
     path: "/auth",

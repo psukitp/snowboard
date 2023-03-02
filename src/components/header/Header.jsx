@@ -1,20 +1,12 @@
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './header.css';
-import { useEffect } from 'react';
-import { api } from '../../api/api';
+import Toolbar from './Toolbar';
 
 
 const Header = () => {
-    const dispatch = useDispatch()
     const userStatus = useSelector((store) => store.user)
     const isLog = userStatus.isAuth;
-    console.log(isLog);
-    console.log(userStatus.name);
 
-    const handleLogout = () =>{
-        dispatch(api.logout())
-    }
 
     return (
         <header className='header'>
@@ -31,8 +23,8 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    {isLog ? userStatus.name: <button className='auth__btn'>Войти</button>}
-                    {isLog ?<button onClick={handleLogout}>Выйти</button>: null}
+                    {isLog ? <Toolbar name={userStatus.name} /> :
+                        <a href="/auth"><button className='auth__btn'>Войти</button></a>}
                 </div>
             </div>
         </header>

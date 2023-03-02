@@ -18,11 +18,9 @@ const registration = (req) => (dispatch, getState) => {
         mode: 'cors',
         credentials: 'include'
     };
-    console.log(raw)
     window.fetch("http://localhost:3001/registration", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            console.log(json)
             localStorage.setItem('token', json.accessToken)
             dispatch({ type: 'REGISTRATION', payload: json.user })
         })
@@ -44,7 +42,6 @@ const login = (email, password) => (dispatch, getState) => {
     window.fetch("http://localhost:3001/login", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            console.log(json)
             localStorage.setItem('token', json.accessToken)
             dispatch({ type: 'LOGIN', payload: json.user })
         })
@@ -55,8 +52,6 @@ const checkAuth = () => (dispatch, getState) => {
     window.fetch(url + '/refresh', { credentials: 'include' })
         .then(response => response.json())
         .then(json => {
-            console.log(json.user);
-
             dispatch({ type: 'LOGIN', payload: json.user })
         })
 }
@@ -75,7 +70,6 @@ const logout = () => (dispatch, getState) => {
     window.fetch("http://localhost:3001/logout", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            console.log(json)
             localStorage.removeItem('token')
             dispatch({ type: 'LOGOUT' })
         })
@@ -88,7 +82,6 @@ const getEvents = () => (dispatch, getState) => {
         .then((response) => response.json())
         .then((json) => {
             dispatch({ type: 'GET_EVENTS', payload: json });
-            console.log(json)
         })
 
 }

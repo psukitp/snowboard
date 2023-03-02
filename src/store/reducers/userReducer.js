@@ -20,7 +20,6 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
             const { name, s_name, id, email, isActivated } = action.payload;
-            console.log(id, email, isActivated)
             return {
                 name,
                 s_name,

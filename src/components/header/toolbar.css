@@ -1,0 +1,25 @@
+.dropdown{
+    display: none;
+    background-color: #1FAEE9;
+}
+
+.dropdown.active{
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.dropdown__name{
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.dropdown.active li{
+    padding: 20px 20px;
+    cursor: pointer;
+}
+
+.dropdown.active li:hover{
+    opacity: .8;
+}

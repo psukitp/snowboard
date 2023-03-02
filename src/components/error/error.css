@@ -1,0 +1,14 @@
+.error__image{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 450px;
+    width: 100%;
+}
+
+.error__message{
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 700;
+}
