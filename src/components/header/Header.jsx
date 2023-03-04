@@ -12,7 +12,7 @@ const Header = () => {
         <header className='header'>
             <div className='container'>
                 <div className='header__inner'>
-                    <img src="https://imgholder.ru/50x50/8493a8/adb9ca&text=logo&font=kelson" alt="Логотип" />
+                    <img src="https://placehold.jp/000000/ffffff/50x50.png?text=LOGO&css=%7B%22border-radius%22%3A%2260px%22%7D" alt="Логотип" />
                     <nav>
                         <ul className='menu'>
                             <li>

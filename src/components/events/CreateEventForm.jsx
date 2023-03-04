@@ -49,11 +49,11 @@ const CreateEventForm = () => {
                 <div className="container">
                     <div className='event__create__inner'>
                         <form className="event__create__form" onSubmit={handleSubmitForm} encType="multipart/form-data">
-                            <div className="event__create__label">Название мероприятия</div>
+                            <div className="event__create__label">Название</div>
                             <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
                             <div className="event__create_block">
                                 <div className="event__create-photo">
-                                    <div className="event__create__label">Фото профиля</div>
+                                    <div className="event__create__label">Фото</div>
                                     <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
                                     <label htmlFor="file" className="event__create__btn-send-photo">
                                         <span className="input__file-text">Загрузить файл</span>
@@ -61,11 +61,11 @@ const CreateEventForm = () => {
 
                                 </div>
                                 <div className="event__create-date">
-                                    <div className="event__create__label">Дата мероприятия</div>
+                                    <div className="event__create__label">Дата </div>
                                     <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.date} />
                                 </div>
                             </div>
-                            <div className="event__create__label">Описание мероприятия</div>
+                            <div className="event__create__label">Описание </div>
                             <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
                             <div className="event__create-btns">
                                 <button className="event__create__btn-submit" type="submit">Создать мероприятие</button>

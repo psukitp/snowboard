@@ -10,6 +10,7 @@ import { api } from './api/api';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Error from './components/error/Error';
+import Event from './components/events/Event';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "events/create-new",
     element: <CreateEventForm />
+  },
+  {
+    path: "events/:id",
+    element: <Event />
   }
 ])
 

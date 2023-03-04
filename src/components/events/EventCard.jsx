@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import './eventCard.css'
 
-const EventCard = ({ name, text, event_image_path }) => {
+const EventCard = ({ id, name, text, event_image_path }) => {
 
     let photoURL = ''
     if (event_image_path === null) {
@@ -21,7 +22,9 @@ const EventCard = ({ name, text, event_image_path }) => {
                 <div className="card-descr">
                     {text.length > 140 ? text.slice(0, 137) + "..." : text}
                 </div>
-                <button className='card__open-btn'>Открыть</button>
+                <NavLink to={String(id)}>
+                    <button className='card__open-btn'>Открыть</button>
+                </NavLink>
             </div>
         </>
     )

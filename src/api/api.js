@@ -1,9 +1,11 @@
 
-const url = 'http://localhost:3001'
+
+const serverUrl = 'http://localhost:3001';
+const baseUrl = 'http://localhost:3000';
 
 const registration = (req) => (dispatch, getState) => {
     var myHeaders = new Headers();
-    var raw =JSON.stringify({
+    var raw = JSON.stringify({
         name: req.name,
         sname: req.sname,
         email: req.email,
@@ -18,11 +20,14 @@ const registration = (req) => (dispatch, getState) => {
         mode: 'cors',
         credentials: 'include'
     };
-    window.fetch("http://localhost:3001/registration", requestOptions)
+    window.fetch(serverUrl + "/registration", requestOptions)
         .then((response) => response.json())
         .then((json) => {
             localStorage.setItem('token', json.accessToken)
             dispatch({ type: 'REGISTRATION', payload: json.user })
+            if (json.user) {
+                window.location.replace(baseUrl + '/auth');
+            }
         })
 
 }
@@ -39,17 +44,20 @@ const login = (email, password) => (dispatch, getState) => {
         credentials: 'include'
     };
 
-    window.fetch("http://localhost:3001/login", requestOptions)
+    window.fetch(serverUrl + "/login", requestOptions)
         .then((response) => response.json())
         .then((json) => {
             localStorage.setItem('token', json.accessToken)
             dispatch({ type: 'LOGIN', payload: json.user })
+            if (json.user) {
+                window.location.replace(baseUrl + '/events');
+            }
         })
 
 }
 
 const checkAuth = () => (dispatch, getState) => {
-    window.fetch(url + '/refresh', { credentials: 'include' })
+    window.fetch(serverUrl + '/refresh', { credentials: 'include' })
         .then(response => response.json())
         .then(json => {
             dispatch({ type: 'LOGIN', payload: json.user })
@@ -67,7 +75,7 @@ const logout = () => (dispatch, getState) => {
         credentials: 'include'
     };
 
-    window.fetch("http://localhost:3001/logout", requestOptions)
+    window.fetch(serverUrl + "/logout", requestOptions)
         .then((response) => response.json())
         .then((json) => {
             localStorage.removeItem('token')
@@ -78,7 +86,7 @@ const logout = () => (dispatch, getState) => {
 
 
 const getEvents = () => (dispatch, getState) => {
-    window.fetch(url + '/events')
+    window.fetch(serverUrl + '/events')
         .then((response) => response.json())
         .then((json) => {
             dispatch({ type: 'GET_EVENTS', payload: json });
@@ -109,5 +117,14 @@ const createNewEvent = (body) => {
         .catch(error => console.log('error', error));
 }
 
+const getOneEvent = (id) => (dispatch, getState) => {
+    window.fetch(serverUrl + `/events/${id}`)
+        .then((response) => response.json())
+        .then((json) => {
+            console.log(json);
+            dispatch({ type: 'GET_EVENT', payload: json });
+        })
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration }
+}
+
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent }

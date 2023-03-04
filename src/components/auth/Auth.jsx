@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../api/api';
 import './auth.css'
@@ -7,7 +7,6 @@ import './auth.css'
 const Auth = () => {
     const dispatch = useDispatch();
     const [form, setForm] = useState({ login: '', password: '' })
-
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
@@ -21,6 +20,7 @@ const Auth = () => {
             setForm({ ...form, password: e.target.value })
         }
     }
+
 
     return (
         <section className="auth">
