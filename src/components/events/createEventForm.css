@@ -1,4 +1,4 @@
-.event__create{
+.event__create {
     padding: 50px 0;
 }
 
@@ -42,6 +42,7 @@
     display: flex;
     justify-content: start;
     margin-bottom: 30px;
+
 }
 
 .event__create-photo {
@@ -99,31 +100,36 @@
     line-height: 29px;
 }
 
-.event__create__btn-submit{
+.event__create__btn-submit {
     color: #FFFFFF;
     background-color: #1FAEE9;
 }
 
-.event__create__btn-cancel{
+.event__create__btn-cancel {
     color: #000;
     background-color: #fff;
 }
 
-.event__create__textarea{
+.event__create__textarea {
     margin-bottom: 30px;
 }
 
 .event__create__btn-submit:hover,
 .event__create__btn-cancel:hover,
-.event__create__btn-send-photo:hover{
+.event__create__btn-send-photo:hover {
     opacity: .8;
     cursor: pointer;
 }
 
-.input__file{
+.input__file {
     display: none;
 }
 
-.event__create-photo .event__create__label{
+.event__create-photo .event__create__label {
     margin-bottom: 18px;
+}
+
+.event__cancel-link {
+    max-width: 390px;
+    width: 100%;
 }

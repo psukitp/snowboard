@@ -39,3 +39,7 @@
 .event__inner-image img{
     width: 550px;
 }
+
+.event__inner{
+    margin-bottom: 80px;
+}

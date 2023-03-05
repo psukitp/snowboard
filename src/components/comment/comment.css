@@ -1,0 +1,30 @@
+.comment {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+}
+
+.comment__info{
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.comment__info-name{
+    margin-right: 30px;
+}
+
+.comment__text{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.comment__info{
+    display: flex;
+}

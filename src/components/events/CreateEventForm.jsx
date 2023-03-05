@@ -1,11 +1,14 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import { NavLink } from "react-router-dom"
 import { api } from "../../api/api"
 import './createEventForm.css'
 
 
 const CreateEventForm = () => {
-    const [form, setForm] = useState({ creator_id: 1, event_title: '', event_date: new Date(), event_description: '', event_image: '' })
-    const [fileStatus, setFileStatus] = useState(true);
+    const userState = useSelector((store) => store.user);
+    const user_id = userState.id;
+    const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: new Date(), event_description: '', event_image: '' })
 
 
     const handleSubmitForm = (e) => {
@@ -69,7 +72,9 @@ const CreateEventForm = () => {
                             <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
                             <div className="event__create-btns">
                                 <button className="event__create__btn-submit" type="submit">Создать мероприятие</button>
-                                <button className="event__create__btn-cancel" type="button">Отмена</button>
+                                <NavLink to="/events" className="event__cancel-link">
+                                    <button className="event__create__btn-cancel" type="button">Отмена</button>
+                                </NavLink>
                             </div>
                         </form>
                     </div>
