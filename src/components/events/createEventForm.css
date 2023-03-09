@@ -1,48 +1,51 @@
 .event__create {
-    padding: 50px 0;
+    padding-top: 80px;
+    background-color: #F8FAFC;
+    padding-bottom: 50px;
 }
 
 .event__create__inner {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.06), 0px 10px 15px rgba(0, 0, 0, 0.03);
+    border-radius: 20px;
+    padding: 35px 30px;
+    margin-top: 55px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .event__create__label {
-    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 39px;
-    color: #000000;
-    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #090914;
+    margin-bottom: 8px;
 }
 
 .event__create__input,
 .event__create__textarea {
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
     height: 45px;
-    border: none;
+    margin-bottom: 25px;
 }
 
 .event__create__input[name="title"] {
     padding: 0 15px;
-    width: 980px;
-    margin-bottom: 30px;
+    width: 500px;
 }
 
 .event__create__input[name="date"] {
-    width: 320px;
+    width: 150px;
     text-align: center;
 }
 
 .event__create_block {
     display: flex;
     justify-content: start;
-    margin-bottom: 30px;
-
 }
 
 .event__create-photo {
@@ -51,14 +54,13 @@
 
 .event__create__textarea {
     width: 980px;
-    height: 500px;
+    height: 300px;
     resize: none;
     padding: 15px;
 }
 
 .event__create__textarea::placeholder,
 .event__create__input::placeholder {
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -67,17 +69,22 @@
 }
 
 .event__create__btn-send-photo {
-    background: #1FAEE9;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
-    color: #FFFFFF;
-    border: none;
-    padding: 8px 65px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: -0.2;
+    padding: 13.5px 27px;
+    background-color: #4482B9;
+    display: flex;
+    align-items: center;
+    border-radius: 9px;
+    max-width: 210px;
+    color: #fff;
+    margin-bottom: 35px;
+}
+
+.input__file-text{
+    margin-right: 6px;
 }
 
 .event__create-btns {
@@ -93,7 +100,6 @@
     border: none;
     max-width: 390px;
     width: 100%;
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

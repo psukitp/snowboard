@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { api } from "../../api/api"
+import ErrorPopup from "../popup/ErrorPopup"
 import './createEventForm.css'
 
 
@@ -13,8 +14,15 @@ const CreateEventForm = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        setForm({ ...form, event_date: new Date() })
-        api.createNewEvent(form)
+        if (userState.isAuth) {
+            console.log('отправляю')
+            setForm({ ...form, event_date: new Date() })
+            api.createNewEvent(form).then(window.location.replace('http://localhost:3000' + '/events'));
+        } else {
+            const popup = document.querySelector('.popup');
+            popup.classList.add('active')
+            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+        }
     }
 
     const handleChangeInput = ({ target }) => {
@@ -52,24 +60,21 @@ const CreateEventForm = () => {
                 <div className="container">
                     <div className='event__create__inner'>
                         <form className="event__create__form" onSubmit={handleSubmitForm} encType="multipart/form-data">
-                            <div className="event__create__label">Название</div>
+                            <div className="event__create__label">Заголовок</div>
                             <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
-                            <div className="event__create_block">
-                                <div className="event__create-photo">
-                                    <div className="event__create__label">Фото</div>
-                                    <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
-                                    <label htmlFor="file" className="event__create__btn-send-photo">
-                                        <span className="input__file-text">Загрузить файл</span>
-                                    </label>
-
-                                </div>
-                                <div className="event__create-date">
-                                    <div className="event__create__label">Дата </div>
-                                    <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.date} />
-                                </div>
+                            <div className="event__create-date">
+                                <div className="event__create__label">Дата </div>
+                                <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.date} />
                             </div>
                             <div className="event__create__label">Описание </div>
                             <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
+                            <div className="event__create-photo">
+                                <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
+                                <label htmlFor="file" className="event__create__btn-send-photo">
+                                    <span className="input__file-text">Загрузить фото</span>
+                                    <img src={require('./img/download_icon.png')}/>
+                                </label>
+                            </div>
                             <div className="event__create-btns">
                                 <button className="event__create__btn-submit" type="submit">Создать мероприятие</button>
                                 <NavLink to="/events" className="event__cancel-link">
@@ -79,6 +84,7 @@ const CreateEventForm = () => {
                         </form>
                     </div>
                 </div>
+                <ErrorPopup text='Для создания мероприятией нужно войти в аккаунт' />
             </section>
         </>
     )

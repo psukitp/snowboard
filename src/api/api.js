@@ -94,13 +94,15 @@ const getEvents = () => (dispatch, getState) => {
 
 }
 
-const createNewEvent = (body) => {
+const  createNewEvent = async (body) => {
     const raw = new FormData();
     raw.append("creator_id", body.creator_id);
     raw.append("event_title", body.event_title);
     raw.append("event_date", body.event_date);
     raw.append("event_description", body.event_description);
     raw.append("file", body.event_image);
+
+    console.log(body.event_image);
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "x-www-form-urlencoded");
@@ -111,10 +113,8 @@ const createNewEvent = (body) => {
         redirect: 'follow',
         mode: 'no-cors'
     };
-    fetch("http://localhost:3001/new-event", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    await fetch("http://localhost:3001/new-event", requestOptions)
+        .then(response => console.log(response.text()));
 }
 
 const getOneEvent = (id) => (dispatch, getState) => {
@@ -125,6 +125,28 @@ const getOneEvent = (id) => (dispatch, getState) => {
         })
 
 }
+
+const updateEvent = (id, title, description) => (dispatch, getState) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({ title, description }),
+        redirect: 'follow',
+        mode: 'cors',
+        credentials: 'include'
+    };
+
+    window.fetch(serverUrl + `/events/update/${id}`, requestOptions)
+        .then((response) => response.json())
+        .then((json) => {
+            dispatch({ type: 'GET_EVENT', payload: json })
+        })
+
+}
+
+
 
 const addCommentToEvent = (comment_text, creator_id, event_id) => (dispatch, getState) => {
     var myHeaders = new Headers();
@@ -141,13 +163,13 @@ const addCommentToEvent = (comment_text, creator_id, event_id) => (dispatch, get
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-    dispatch({type: 'ADD_COMMENT', payload: raw})
+    dispatch({ type: 'ADD_COMMENT', payload: raw })
 }
 
 const getComments = (event_id) => (dispatch, getState) => {
     window.fetch(serverUrl + `/comments/${'' + event_id}`)
         .then(response => response.json())
-        .then(json => dispatch({type: 'GET_COMMENTS', payload: json}));
+        .then(json => dispatch({ type: 'GET_COMMENTS', payload: json }));
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments}
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent }

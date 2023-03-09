@@ -1,3 +1,7 @@
+.event{
+    padding-top: 80px;
+}
+
 .event__inner-creator {
     font-family: 'Montserrat';
     font-style: normal;
@@ -9,7 +13,7 @@
     margin-bottom: 15px;
 }
 
-.event__inner-author{
+.event__inner-author {
     margin-right: 30px;
 }
 
@@ -23,23 +27,66 @@
     margin-bottom: 30px;
 }
 
-.event__inner-text{
+.event__inner-text {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-    color: #000000; 
+    color: #000000;
 }
 
-.event__inner-image{
+.event__inner-image {
     margin-bottom: 30px;
 }
 
-.event__inner-image img{
+.event__inner-image img {
     width: 550px;
 }
 
-.event__inner{
+.event__inner {
     margin-bottom: 80px;
+}
+
+.descr__edit-block,
+.title__edit-block {
+    display: none;
+}
+
+.descr__edit-block.active,
+.title__edit-block.active {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.title__edit-input,
+.descr__edit-textarea {
+    border: 1px solid #E4E4E7;
+    border-radius: 9px;
+    padding: 0 20px;
+    width: 700px;
+    margin-right: 30px;
+}
+
+.edit__ok-btn,
+.edit-btn{
+    border: none;
+    background-color: #4482B9;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.edit__ok-btn:hover,
+.edit-btn:hover{
+    opacity: .8;
+}
+
+.edit-btn{
+    padding: 10px 10px;
+}
+
+.descr__edit-textarea{
+    resize: none;
 }

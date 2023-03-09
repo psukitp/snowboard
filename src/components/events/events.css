@@ -1,3 +1,7 @@
+.events{
+    padding-top: 80px;
+}
+
 .events__search {
     display: flex;
     justify-content: space-between;

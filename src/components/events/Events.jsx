@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../api/api';
@@ -9,18 +9,23 @@ import './events.css'
 const Events = () => {
     const dispatch = useDispatch();
     const events = useSelector((store) => store.events)
+    const [search, setSearch] = useState('');
 
 
     useEffect(() => {
         dispatch(api.getEvents())
     }, [])
 
+    const handleSearchChange = ({ target }) => {
+        setSearch(target.value);
+    }
+
     return (
         <>
             <section className="events">
                 <div className="container">
                     <div className="events__search">
-                        <input className="events__search-input" placeholder='Найти мероприятие' />
+                        <input className="events__search-input" placeholder='Найти мероприятие по названию' value={search} onChange={handleSearchChange} />
                         <NavLink to="create-new">
                             <button className="create__event-btn">
                                 Создать мероприятие
@@ -28,12 +33,12 @@ const Events = () => {
                         </NavLink>
                     </div>
                     <div className="events__cards">
-                        {events.map(el => <EventCard
+                        {events.map(el => el.event_title?.toLowerCase().includes(search.toLowerCase()) ? <EventCard
                             key={el.event_id}
                             id={el.event_id}
                             name={el.event_title}
                             text={el.event_description === undefined ? 'Не найдено' : el.event_description}
-                            event_image_path={el.event_image_path} />)}
+                            event_image_path={el.event_image_path} /> : null)}
                     </div>
                 </div>
             </section>

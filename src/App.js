@@ -40,6 +40,20 @@ const router = createBrowserRouter([
   }
 ])
 
+const Layout = ({ children }) => {
+  return (
+    <>
+      <div className='wrapper'>
+        <Header />
+        <main className='main'>
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </>
+  )
+}
+
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -50,13 +64,9 @@ function App() {
 
   return (
     <>
-      <div className='wrapper'>
-        <Header />
-        <main className='main'>
-          <RouterProvider router={router} />
-        </main>
-        <Footer />
-      </div>
+      <Layout >
+        <RouterProvider router={router} />
+      </Layout>
     </>
   );
 }

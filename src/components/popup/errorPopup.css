@@ -1,0 +1,26 @@
+.popup{
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    padding: 20px 20px;
+    background-color: #FBEEEB;
+    border-radius: 25px;
+    border: 1px #EED0C6 solid;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: 2s all;
+}
+
+.popup__text{
+    margin-left: 15px;
+    max-width: 250px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.popup.active{
+    opacity: 1;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { api } from "../../api/api";
+import ErrorPopup from "../popup/ErrorPopup";
 import Comment from "./Comment";
 import './comments.css'
 
@@ -26,8 +27,10 @@ const Comments = ({ event_id }) => {
             dispatch(api.addCommentToEvent(comment, userState.id, event_id));
             setComment('');
         }
-        if (!userState.isAuth){
-            alert('Войдите, чтобы оставлять комментарии :)')
+        if (!userState.isAuth) {
+            const popup = document.querySelector('.popup');
+            popup.classList.add('active')
+            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         }
     }
     return (
@@ -50,6 +53,7 @@ const Comments = ({ event_id }) => {
                     <textarea className="comment__add-textarea" name="comment" value={comment} onChange={handleComment} placeholder='Комментарий...' />
                     <button className="comment__add-btn" onClick={handleCommentSubmit}>Добавить</button>
                 </div>
+                <ErrorPopup text='Хочешь оставить комментарий? Войди в аккаунт :)'/>
             </div>
         </>
     )
