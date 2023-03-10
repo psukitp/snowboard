@@ -1,12 +1,16 @@
 .reg {
+    padding-top: 80px;
+    /* background-color: #4482B9; */
+    background: rgb(68, 130, 185);
+    background: linear-gradient(90deg, rgba(68, 130, 185, 1) 0%, rgba(68, 130, 185, 1) 47%, rgba(255, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 100%);
+    padding-bottom: 85px;
+}
+
+/* .reg{
     background-image: url('./img/reg_bg.png');
     background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: 47vw auto;
-    padding-top: 80px;
-    background-color: #F8FAFC;
-    padding-bottom: 26px;
-}
+    background-size:  contain 47vh;
+} */
 
 .reg__inner {
     display: flex;
@@ -25,7 +29,7 @@
     line-height: 66px;
     letter-spacing: -2px;
     color: #fff;
-    margin-top: 55px;
+    margin-top: 60px;
     margin-bottom: 16px;
 }
 
@@ -34,7 +38,7 @@
     font-size: 18px;
     line-height: 30px;
     color: #F8FAFC;
-    margin-bottom: 180px;
+    margin-bottom: 300px;
 }
 
 .reg__content-quote {
@@ -71,9 +75,17 @@
     font-size: 52px;
     line-height: 62px;
     letter-spacing: -2px;
-    margin-top: 55px;
+    margin-top: 54px;
     margin-bottom: 20px;
     color: #090914;
+}
+
+.reg__form-subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #52525B;
+    margin-bottom: 24px;
 }
 
 .reg__label {
@@ -105,6 +117,7 @@
     border-radius: 9px;
     padding: 13.5px 21px;
     margin-bottom: 30px;
+    margin-top: 35px;
 }
 
 
@@ -116,7 +129,7 @@
     font-weight: 600;
 }
 
-.auth__link span{
+.auth__link span {
     font-weight: 400;
 }
 
@@ -125,7 +138,7 @@
     text-decoration: underline;
 }
 
-.reg__form-password--repeat{
+.reg__form-password--repeat {
     position: relative;
 }
 

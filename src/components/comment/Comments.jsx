@@ -28,7 +28,7 @@ const Comments = ({ event_id }) => {
             setComment('');
         }
         if (!userState.isAuth) {
-            const popup = document.querySelector('.popup');
+            const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
             setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         }
@@ -53,7 +53,7 @@ const Comments = ({ event_id }) => {
                     <textarea className="comment__add-textarea" name="comment" value={comment} onChange={handleComment} placeholder='Комментарий...' />
                     <button className="comment__add-btn" onClick={handleCommentSubmit}>Добавить</button>
                 </div>
-                <ErrorPopup text='Хочешь оставить комментарий? Войди в аккаунт :)'/>
+                <ErrorPopup target="auth" text='Хочешь оставить комментарий? Войди в аккаунт :)'/>
             </div>
         </>
     )

@@ -172,4 +172,16 @@ const getComments = (event_id) => (dispatch, getState) => {
         .then(json => dispatch({ type: 'GET_COMMENTS', payload: json }));
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent }
+
+
+
+const getResales = () => (dispatch, getState) => {
+    window.fetch(serverUrl + '/resales')
+        .then((response) => response.json())
+        .then((json) => {
+            dispatch({ type: 'GET_RESALE', payload: json });
+        })
+
+}
+
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales }

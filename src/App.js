@@ -1,6 +1,4 @@
 import './App.css';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header'
 import Auth from './components/auth/Auth'
 import Registration from './components/registration/Registration';
 import Events from './components/events/Events';
@@ -11,6 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Error from './components/error/Error';
 import Event from './components/events/Event';
+import Resale from './components/resale/Resale';
 
 const router = createBrowserRouter([
   {
@@ -37,22 +36,13 @@ const router = createBrowserRouter([
   {
     path: "events/:id",
     element: <Event />
+  },
+  {
+    path: "resale",
+    element: <Resale />
   }
 ])
 
-const Layout = ({ children }) => {
-  return (
-    <>
-      <div className='wrapper'>
-        <Header />
-        <main className='main'>
-          {children}
-        </main>
-        <Footer />
-      </div>
-    </>
-  )
-}
 
 function App() {
   const dispatch = useDispatch()
@@ -64,9 +54,7 @@ function App() {
 
   return (
     <>
-      <Layout >
-        <RouterProvider router={router} />
-      </Layout>
+      <RouterProvider router={router} />
     </>
   );
 }

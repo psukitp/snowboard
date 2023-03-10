@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { api } from "../../api/api";
 import { useParams } from 'react-router';
+import Header from '../header/Header'
+import Footer from '../footer/Footer'
 import Comments from '../comment/Comments';
 
 

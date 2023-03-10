@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../api/api';
+import Header from '../header/Header'
+import Footer from '../footer/Footer'
 import EventCard from './EventCard'
 import './events.css'
 
@@ -22,6 +24,7 @@ const Events = () => {
 
     return (
         <>
+        <Header background='#fff'/>
             <section className="events">
                 <div className="container">
                     <div className="events__search">
@@ -42,6 +45,7 @@ const Events = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </>
     )
 }

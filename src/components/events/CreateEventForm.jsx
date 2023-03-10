@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { api } from "../../api/api"
+import Header from '../header/Header'
+import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
 import './createEventForm.css'
 
@@ -19,7 +21,7 @@ const CreateEventForm = () => {
             setForm({ ...form, event_date: new Date() })
             api.createNewEvent(form).then(window.location.replace('http://localhost:3000' + '/events'));
         } else {
-            const popup = document.querySelector('.popup');
+            const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
             setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         }
@@ -28,8 +30,12 @@ const CreateEventForm = () => {
     const handleChangeInput = ({ target }) => {
         if (target.name === "title") {
             setForm({ ...form, event_title: target.value })
-            // } else if (target.name === "date") {
-            //     setForm({ ...form, event_date: target.value })
+        } else if (target.name === "date") {
+            if (target.value.length === 2 || target.value.length === 5) {
+                setForm({ ...form, event_date: target.value + '.' })
+            } else if (target.value.length < 11) {
+                setForm({ ...form, event_date: target.value })
+            }
         } else {
             setForm({ ...form, event_description: target.value })
         }
@@ -39,7 +45,9 @@ const CreateEventForm = () => {
         const currentFileName = target.files[0].name;
         const currentFile = target.files[0];
         if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
-            alert('Разрешены только изображения')
+            const popup = document.querySelector('.popup__files');
+            popup.classList.add('active')
+            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         }
         else {
             let fileName = '';
@@ -64,7 +72,7 @@ const CreateEventForm = () => {
                             <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
                             <div className="event__create-date">
                                 <div className="event__create__label">Дата </div>
-                                <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.date} />
+                                <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.event_date} />
                             </div>
                             <div className="event__create__label">Описание </div>
                             <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
@@ -72,7 +80,7 @@ const CreateEventForm = () => {
                                 <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
                                 <label htmlFor="file" className="event__create__btn-send-photo">
                                     <span className="input__file-text">Загрузить фото</span>
-                                    <img src={require('./img/download_icon.png')}/>
+                                    <img src={require('./img/download_icon.png')} />
                                 </label>
                             </div>
                             <div className="event__create-btns">
@@ -84,7 +92,8 @@ const CreateEventForm = () => {
                         </form>
                     </div>
                 </div>
-                <ErrorPopup text='Для создания мероприятией нужно войти в аккаунт' />
+                <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
+                <ErrorPopup target="files" text='Разрешены только изображения' />
             </section>
         </>
     )

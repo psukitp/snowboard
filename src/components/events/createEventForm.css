@@ -40,7 +40,7 @@
 
 .event__create__input[name="date"] {
     width: 150px;
-    text-align: center;
+    padding: 0 30px;
 }
 
 .event__create_block {
@@ -83,7 +83,7 @@
     margin-bottom: 35px;
 }
 
-.input__file-text{
+.input__file-text {
     margin-right: 6px;
 }
 

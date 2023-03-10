@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import Header from '../header/Header'
+import Footer from '../footer/Footer'
 import './eventCard.css'
 
 const EventCard = ({ id, name, text, event_image_path }) => {
