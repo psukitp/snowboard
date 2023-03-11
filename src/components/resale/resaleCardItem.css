@@ -5,6 +5,16 @@
     max-width: 350px;
     width: 100%;
     margin-bottom: 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+.resale__card:hover .resale__card-price {
+    opacity: 0;
+}
+
+.resale__card:hover .resale__card-show-btn {
+    opacity: 1;
 }
 
 .resale__card-inner {
@@ -38,6 +48,7 @@
     font-size: 18px;
     line-height: 27px;
     color: #4482B9;
+    transition: 0.3s ease-out;
 }
 
 .resale__card-photo {
@@ -56,4 +67,22 @@
     height: 215px;
     object-fit: cover;
     border-radius: 9px 9px 0 0;
+}
+
+.resale__card-show-btn {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 11px 125px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    color: #FFFFFF;
+    background: #4482B9;
+    border-radius: 0 0 9px 9px;
+    transition: 0.3s ease-in;
 }

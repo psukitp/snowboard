@@ -9,6 +9,7 @@ const ResaleCardItem = ({ ad_image_path, product_type, ad_post_name, ad_post_tex
         photoURL = `http://localhost:3001${ad_image_path}`;
     }
 
+
     return (
         <>
             <div className="resale__card">
@@ -25,8 +26,11 @@ const ResaleCardItem = ({ ad_image_path, product_type, ad_post_name, ad_post_tex
                     <div className="resale__card-descr">
                         {ad_post_text}
                     </div>
-                    <div className='resale__card-price'>
+                    <div className='resale__card-price active'>
                         {ad_price} ₽
+                    </div>
+                    <div className='resale__card-show-btn'>
+                        Показать
                     </div>
                 </div>
             </div>

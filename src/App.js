@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import Error from './components/error/Error';
 import Event from './components/events/Event';
 import Resale from './components/resale/Resale';
+import CreateResaleAd from './components/resale/CreateResaleAd';
 
 const router = createBrowserRouter([
   {
@@ -38,8 +39,12 @@ const router = createBrowserRouter([
     element: <Event />
   },
   {
-    path: "resale",
+    path: "/resale",
     element: <Resale />
+  },
+  {
+    path: "resale/create-new",
+    element: <CreateResaleAd />
   }
 ])
 

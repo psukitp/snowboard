@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../api/api';
+import FooterLine from '../footer/FooterLine';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header'
 import './auth.css'
@@ -41,12 +42,9 @@ const Auth = () => {
                             </NavLink>
                         </form>
                     </div>
-                    <RegAuthFooter />
                 </div>
-                <hr className='hr__line' />
-                <div className='auth__copyright'>
-                    © Copyright 2023
-                </div>
+                <RegAuthFooter />
+                <FooterLine />
             </section>
         </>
     )

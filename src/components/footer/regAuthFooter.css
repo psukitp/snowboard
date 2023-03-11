@@ -1,0 +1,39 @@
+.auth__footer{
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.auth__footer-inner {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}
+
+.auth__footer-navigation {
+    display: flex;
+    align-items: center;
+}
+
+.auth__footer-menu {
+    display: flex;
+    margin-left: 40px;
+}
+
+.auth__footer-menu li+li {
+    margin-left: 30px;
+}
+
+.auth__footer-menu a{
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.auth__footer-links{
+    display: flex;
+}
+
+.auth__footer-links a+a{
+    margin-left: 15px;
+}

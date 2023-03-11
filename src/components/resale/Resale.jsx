@@ -6,6 +6,9 @@ import Footer from '../footer/Footer'
 import './resale.css'
 import ResaleCardItem from './ResaleCardItem';
 import ResaleListItem from './ResaleListItem';
+import RegAuthFooter from '../footer/RegAuthFooter';
+import FooterLine from '../footer/FooterLine';
+import { NavLink } from 'react-router-dom';
 
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
@@ -19,7 +22,7 @@ const Resale = () => {
 
     return (
         <>
-            <Header background='#F8FAFC'/>
+            <Header background='#F8FAFC' />
             <section className="resale">
                 <div className="container">
                     <div className="resale__inner">
@@ -32,9 +35,11 @@ const Resale = () => {
                             </button>
                         </div>
                         <div>
-                            <button className="resale__create-new">
-                                Создать объявление
-                            </button>
+                            <NavLink to="create-new">
+                                <button className="resale__create-new">
+                                    Создать объявление
+                                </button>
+                            </NavLink>
                         </div>
                     </div>
                     <div className="resale__products">
@@ -50,7 +55,7 @@ const Resale = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
+            <RegAuthFooter textColor='#52525B' bgColor='#F8FAFC' />
         </>
     )
 }

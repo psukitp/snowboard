@@ -1,5 +1,5 @@
 .resale {
-    padding-top: 100px;
+    padding-top: 80px;
     background-color: #F8FAFC;
 }
 
@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 65px;
+    margin-top: 55px;
     margin-bottom: 35px;
 }
 
@@ -37,6 +37,11 @@
     letter-spacing: -0.2px;
     color: #FFFFFF;
     padding: 13px 19px;
+    cursor: pointer;
+}
+
+.resale__create-new:hover{
+    opacity: .8;
 }
 
 .resale__products{

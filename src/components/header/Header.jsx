@@ -14,7 +14,7 @@ const Header = (props) => {
             <div className='container'>
                 <div className='header__inner'>
                     <div className='header__inner-navigation'>
-                        <img src="https://placehold.jp/000000/ffffff/50x50.png?text=LOGO&css=%7B%22border-radius%22%3A%2260px%22%7D" alt="Логотип" />
+                        <img src={require('./img/logo.png')} alt="Логотип" />
                         <nav>
                             <ul className='menu'>
                                 <li>
@@ -26,7 +26,7 @@ const Header = (props) => {
                             </ul>
                         </nav>
                     </div>
-                    {isLog ? <Toolbar name={userStatus.name} /> :
+                    {isLog ? <Toolbar name={userStatus.name} sname={userStatus.s_name}/> :
                         <a href="/auth"><button className='auth__btn'>Войти</button></a>}
                 </div>
             </div>
