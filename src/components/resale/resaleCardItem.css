@@ -8,14 +8,18 @@
     margin-bottom: 40px;
     position: relative;
     cursor: pointer;
+    padding-bottom: 40px;
+    overflow: hidden;
 }
 
 .resale__card:hover .resale__card-price {
     opacity: 0;
+    bottom: 0;
 }
 
 .resale__card:hover .resale__card-show-btn {
     opacity: 1;
+    bottom: 0;
 }
 
 .resale__card-inner {
@@ -52,6 +56,8 @@
     line-height: 27px;
     color: #4482B9;
     transition: 0.3s ease-out;
+    position: absolute;
+    bottom: 20px;
 }
 
 .resale__card-photo {
@@ -87,5 +93,6 @@
     color: #FFFFFF;
     background: #4482B9;
     border-radius: 0 0 9px 9px;
-    transition: 0.3s ease-in;
+    transition: 0.3s ease-out;
+    bottom: -40px;
 }

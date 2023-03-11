@@ -14,6 +14,7 @@
 
 .create__resale-container {
     display: flex;
+    
     justify-content: center;
     align-items: center;
 }

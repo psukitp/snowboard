@@ -17,6 +17,7 @@ const CreateResaleAd = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(api.getProductTypes())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleChangeInput = ({ target }) => {
@@ -63,7 +64,8 @@ const CreateResaleAd = () => {
     const handleSubmitForm = (e) => {
         e.preventDefault();
         if (userState.isAuth && form.resale_title.length < 20) {
-            api.createNewResale(form).then(window.location.replace('http://localhost:3000' + '/resale'))
+            api.createNewResale(form)
+                .then(window.location.replace('http://localhost:3000' + '/resale'))
         } else if (!userState.isAuth) {
             const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
@@ -74,7 +76,7 @@ const CreateResaleAd = () => {
 
     return (
         <>
-            <Header background='#F8FAFC' />
+            <Header bgColor='#F8FAFC' />
             <div className="create__resale">
                 <div className="container">
                     <div className="create__resale-container">
@@ -105,7 +107,7 @@ const CreateResaleAd = () => {
                                         <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
                                         <label htmlFor="file" className="event__create__btn-send-photo">
                                             <span className="input__file-text">Загрузить фото</span>
-                                            <img src={require('./img/download_icon.png')} />
+                                            <img src={require('./img/download_icon.png')} alt='Загрузить'/>
                                         </label>
                                     </div>
                                 </div>

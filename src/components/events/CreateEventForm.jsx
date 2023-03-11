@@ -19,7 +19,7 @@ const CreateEventForm = () => {
         if (userState.isAuth) {
             console.log('отправляю')
             setForm({ ...form, event_date: new Date() })
-            api.createNewEvent(form).then(window.location.replace('http://localhost:3000' + '/events'));
+            api.createNewEvent(form).then(window.location.replace("http://localhost:3000" + "/events"));
         } else {
             const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
@@ -64,7 +64,7 @@ const CreateEventForm = () => {
 
     return (
         <>
-        <Header />
+        <Header bgColor='#F8FAFC'/>
             <section className="event__create">
                 <div className="container">
                     <div className='event__create__inner'>
@@ -81,7 +81,7 @@ const CreateEventForm = () => {
                                 <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
                                 <label htmlFor="file" className="event__create__btn-send-photo">
                                     <span className="input__file-text">Загрузить фото</span>
-                                    <img src={require('./img/download_icon.png')} />
+                                    <img src={require('./img/download_icon.png')} alt='Загрузить'/>
                                 </label>
                             </div>
                             <div className="event__create-btns">

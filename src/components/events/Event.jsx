@@ -13,16 +13,21 @@ const Event = () => {
     const { id } = useParams();
     const userState = useSelector((store) => store.user);
     const [myEvent, setMyEvent] = useState(false)
-    const [editEvent, setEditEvent] = useState({title: '', description: ''})
+    const [editEvent, setEditEvent] = useState({ title: '', description: '' })
     const dispatch = useDispatch();
     const event = useSelector((store) => store.currentEvent);
 
     useEffect(() => {
-        dispatch(api.getOneEvent(id));
+        if (id !== undefined) {
+            dispatch(api.getOneEvent(id));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userState])
+
+    useEffect(() => {
         userState.id === event.creator_id ? setMyEvent(false) : setMyEvent(true);
-        console.log(userState.id === event.creator_id)
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [event])
 
 
     let photoURL = ''
@@ -69,7 +74,7 @@ const Event = () => {
 
     return (
         <>
-        <Header />
+            <Header bgColor='#fff' />
             <div className="event">
                 <div className="container">
                     <div className="event__inner">

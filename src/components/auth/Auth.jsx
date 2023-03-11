@@ -27,7 +27,7 @@ const Auth = () => {
 
     return (
         <>
-            <Header />
+            <Header bgColor='#F8FAFC'/>
             <section className="auth">
                 <div className="container">
                     <div className="auth__title">Вход</div>

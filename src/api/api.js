@@ -117,8 +117,8 @@ const createNewEvent = async (body) => {
         .then(response => console.log(response.text()));
 }
 
-const getOneEvent = (id) => (dispatch, getState) => {
-    window.fetch(serverUrl + `/events/${id}`)
+const getOneEvent = (id) => async (dispatch, getState) => {
+    await window.fetch(serverUrl + `/events/${id}`)
         .then((response) => response.json())
         .then((json) => {
             dispatch({ type: 'GET_EVENT', payload: json });

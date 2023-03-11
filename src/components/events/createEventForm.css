@@ -94,26 +94,25 @@
 
 .event__create__btn-submit,
 .event__create__btn-cancel {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    padding: 12px 0;
+    color: #fff;
+    padding: 8px 56px;
     border: none;
-    max-width: 390px;
-    width: 100%;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
+    border-radius: 9px;
+    background-color: #4482B9;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .event__create__btn-submit {
-    color: #FFFFFF;
-    background-color: #1FAEE9;
+    
 }
 
 .event__create__btn-cancel {
-    color: #000;
-    background-color: #fff;
+    padding: 8px 73px;
+    opacity: 0.5;
 }
 
 .event__create__textarea {
@@ -121,10 +120,13 @@
 }
 
 .event__create__btn-submit:hover,
-.event__create__btn-cancel:hover,
 .event__create__btn-send-photo:hover {
     opacity: .8;
     cursor: pointer;
+}
+
+.event__create__btn-cancel:hover{
+    opacity: 1;
 }
 
 .input__file {
@@ -136,6 +138,6 @@
 }
 
 .event__cancel-link {
-    max-width: 390px;
+    max-width: 205px;
     width: 100%;
 }

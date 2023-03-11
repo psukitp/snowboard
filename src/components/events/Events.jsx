@@ -16,6 +16,7 @@ const Events = () => {
 
     useEffect(() => {
         dispatch(api.getEvents())
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSearchChange = ({ target }) => {
@@ -24,7 +25,7 @@ const Events = () => {
 
     return (
         <>
-        <Header background='#fff'/>
+        <Header bgColor='#fff'/>
             <section className="events">
                 <div className="container">
                     <div className="events__search">

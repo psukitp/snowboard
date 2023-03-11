@@ -4,13 +4,13 @@ import './header.css';
 import Toolbar from './Toolbar';
 
 
-const Header = (props) => {
+const Header = ({ textColor, bgColor }) => {
     const userStatus = useSelector((store) => store.user)
     const isLog = userStatus.isAuth;
 
 
     return (
-        <header className='header' style={{ backgroundColor: props.background }}>
+        <header className='header' style={{ backgroundColor: bgColor }}>
             <div className='container'>
                 <div className='header__inner'>
                     <div className='header__inner-navigation'>
@@ -20,10 +20,10 @@ const Header = (props) => {
                         <nav>
                             <ul className='menu'>
                                 <li>
-                                    <NavLink to="/events" style={{ color: props.color }}> Мероприятия</NavLink>
+                                    <NavLink to="/events" style={{ color: textColor }}> Мероприятия</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/resale" style={{ color: props.color }}>Барахолка</NavLink>
+                                    <NavLink to="/resale" style={{ color: textColor }}>Барахолка</NavLink>
                                 </li>
                             </ul>
                         </nav>
