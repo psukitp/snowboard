@@ -69,6 +69,7 @@ const Event = () => {
 
     return (
         <>
+        <Header />
             <div className="event">
                 <div className="container">
                     <div className="event__inner">
@@ -105,6 +106,7 @@ const Event = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

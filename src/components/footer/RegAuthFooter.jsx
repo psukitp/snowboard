@@ -2,13 +2,15 @@ import { NavLink } from 'react-router-dom';
 import './regAuthFooter.css'
 
 
-const RegAuthFooter = ({textColor, bgColor}) => {
+const RegAuthFooter = ({ textColor, bgColor }) => {
     return (<>
-        <div className='auth__footer' style={{backgroundColor: bgColor}}>
+        <div className='auth__footer' style={{ backgroundColor: bgColor }}>
             <div className='container'>
                 <div className='auth__footer-inner'>
                     <div className='auth__footer-navigation'>
-                        <img src={require('./img/logo.png')} alt="Логотип" />
+                        <NavLink to='/events'>
+                            <img src={require('./img/logo.png')} alt="Логотип" />
+                        </NavLink>
                         <nav>
                             <ul className='auth__footer-menu'>
                                 <li>

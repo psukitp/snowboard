@@ -64,6 +64,7 @@ const CreateEventForm = () => {
 
     return (
         <>
+        <Header />
             <section className="event__create">
                 <div className="container">
                     <div className='event__create__inner'>
@@ -95,6 +96,7 @@ const CreateEventForm = () => {
                 <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
                 <ErrorPopup target="files" text='Разрешены только изображения' />
             </section>
+            <Footer />
         </>
     )
 }

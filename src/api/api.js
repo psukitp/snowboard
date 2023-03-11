@@ -94,7 +94,7 @@ const getEvents = () => (dispatch, getState) => {
 
 }
 
-const  createNewEvent = async (body) => {
+const createNewEvent = async (body) => {
     const raw = new FormData();
     raw.append("creator_id", body.creator_id);
     raw.append("event_title", body.event_title);
@@ -184,4 +184,29 @@ const getResales = () => (dispatch, getState) => {
 
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales }
+const createNewResale = async (body) => {
+    const raw = new FormData();
+    raw.append("creator_id", body.creator_id);
+    raw.append("resale_title", body.resale_title);
+    raw.append("resale_description", body.resale_description);
+    raw.append("resale_price", body.resale_price);
+    raw.append("resale_type", body.resale_type);
+    raw.append("resale_tel", body.resale_tel);
+    raw.append("file", body.resale_image);
+
+    console.log(body.event_image);
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "x-www-form-urlencoded");
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+        mode: 'no-cors'
+    };
+    await fetch("http://localhost:3001/new-resale", requestOptions)
+        .then(response => console.log(response.text()));
+}
+
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale }

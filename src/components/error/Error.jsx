@@ -1,8 +1,10 @@
 import './error.css'
+import Header from '../header/Header'
 const Error = () => {
 
     return (
         <>
+        <Header />
             <section className="error">
                 <div className="container">
                     <div className="error__image">
