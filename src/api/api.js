@@ -209,4 +209,10 @@ const createNewResale = async (body) => {
         .then(response => console.log(response.text()));
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale }
+const getProductTypes = () => async (dispatch, getState) => {
+    await fetch("http://localhost:3001/products")
+        .then(response => response.json())
+        .then((json) => dispatch({ type: 'GET_TYPES', payload: json }))
+}
+
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes }

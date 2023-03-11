@@ -109,3 +109,22 @@
 .create__resale-btn--cancel:hover {
     opacity: 1;
 }
+
+.create__resale-form{
+    position: relative;
+    max-width: 700px;
+}
+
+.title__attention{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
+    display: none;
+}
+
+.title__attention.active{
+    display: block;
+}

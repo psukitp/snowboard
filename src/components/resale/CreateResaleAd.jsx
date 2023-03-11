@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './createResaleAd.css'
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ErrorPopup from "../popup/ErrorPopup";
 import { api } from "../../api/api";
 
 
 const CreateResaleAd = () => {
     const userState = useSelector((store) => store.user)
+    const productTypes = useSelector((store) => store.productTypes)
     const user_id = userState.id;
-    const [form, setForm] = useState({ creator_id: user_id, resale_title: '', resale_description: '', resale_price: '', resale_type: '', resale_tel: '', resale_image: '' })
+    const [form, setForm] = useState({ creator_id: user_id, resale_title: '', resale_description: '', resale_price: '', resale_type: 1, resale_tel: '', resale_image: '' })
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(api.getProductTypes())
+    }, [])
 
     const handleChangeInput = ({ target }) => {
         if (target.name === 'title') {
             setForm({ ...form, resale_title: target.value })
-        } else if (target.name === 'type') {
-            setForm({ ...form, resale_type: target.value })
+            const attention = document.querySelector('.title__attention');
+            target.value.length >= 20 ?
+                attention.classList.add('active') :
+                attention.classList.remove('active')
         } else if (target.name === 'descr') {
             setForm({ ...form, resale_description: target.value })
         } else if (target.name === 'price') {
@@ -25,6 +33,10 @@ const CreateResaleAd = () => {
         } else if (target.name === 'tel') {
             setForm({ ...form, resale_tel: target.value })
         }
+    }
+
+    const handleChangeSelect = (e) => {
+        setForm({ ...form, resale_type: e.target.selectedIndex + 1 })
     }
 
     const handleFileUpload = ({ target }) => {
@@ -50,9 +62,9 @@ const CreateResaleAd = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        if (userState.isAuth) {
+        if (userState.isAuth && form.resale_title.length < 20) {
             api.createNewResale(form).then(window.location.replace('http://localhost:3000' + '/resale'))
-        } else {
+        } else if (!userState.isAuth) {
             const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
             setTimeout(() => popup.classList.remove('active'), 3 * 1000);
@@ -70,11 +82,15 @@ const CreateResaleAd = () => {
                             <form className="create__resale-form" onSubmit={handleSubmitForm}>
                                 <div className="create__resale-name">
                                     <div className="create__resale-label">Название объявления</div>
-                                    <input className="create__resale-input" name="title" onChange={handleChangeInput} placeholder="Название товара" value={form.resale_title} />
+                                    <p className="title__attention">Название не должно быть длиннее 20 символов</p>
+                                    <input className="create__resale-input" name="title" onChange={handleChangeInput} placeholder="Вводите сюда только модель :)" value={form.resale_title} />
                                 </div>
                                 <div className="create__resale-type">
                                     <div className="create__resale-label">Вид объявления</div>
-                                    <input className="create__resale-input" name="type" onChange={handleChangeInput} placeholder="Тип товара" value={form.resale_type} />
+                                    <select className="create__resale-input" onChange={handleChangeSelect}>
+                                        {productTypes.map(el =>
+                                            <option key={el.product_type_id} id={el.product_type_id} >{el.product_type_name}</option>)}
+                                    </select>
                                 </div>
                                 <div className="create__resale-descr">
                                     <div className="create__resale-label">Описание </div>
@@ -112,7 +128,7 @@ const CreateResaleAd = () => {
                     </div>
                 </div>
             </div>
-            <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
+            <ErrorPopup target="auth" text='Для размещения объявлений нужно войти в аккаунт' />
             <ErrorPopup target="files" text='Разрешены только изображения' />
             <RegAuthFooter textColor='#52525B' bgColor='#F8FAFC' />
         </>

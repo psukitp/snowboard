@@ -44,9 +44,9 @@ const Resale = () => {
                     </div>
                     <div className="resale__products">
                         {isCard ?
-                            resales.map(el => <ResaleCardItem
+                            resales.slice(0).reverse().map(el => <ResaleCardItem
                                 ad_image_path={el.ad_image_path}
-                                product_type={el.ad_product_type}
+                                product_type={el.product_type_name}
                                 ad_post_name={el.post_name}
                                 ad_post_text={el.post_text}
                                 ad_price={el.price} />) :

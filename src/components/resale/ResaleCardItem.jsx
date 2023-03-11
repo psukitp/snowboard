@@ -24,7 +24,7 @@ const ResaleCardItem = ({ ad_image_path, product_type, ad_post_name, ad_post_tex
                         {ad_post_name}
                     </div>
                     <div className="resale__card-descr">
-                        {ad_post_text}
+                        {ad_post_text?.length > 100 ? ad_post_text.slice(0, 97) + '...': ad_post_text}
                     </div>
                     <div className='resale__card-price active'>
                         {ad_price} ₽

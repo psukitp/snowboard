@@ -36,7 +36,7 @@ const Events = () => {
                         </NavLink>
                     </div>
                     <div className="events__cards">
-                        {events.map(el => el.event_title?.toLowerCase().includes(search.toLowerCase()) ? <EventCard
+                        {events.slice(0).reverse().map(el => el.event_title?.toLowerCase().includes(search.toLowerCase()) ? <EventCard
                             key={el.event_id}
                             id={el.event_id}
                             name={el.event_title}
