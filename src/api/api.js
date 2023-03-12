@@ -7,7 +7,6 @@ const registration = (req) => (dispatch, getState) => {
     var myHeaders = new Headers();
     var raw = JSON.stringify({
         name: req.name,
-        sname: req.sname,
         email: req.email,
         password: req.password
     });

@@ -1,6 +1,7 @@
 .dropdown__wrapper.active{
     background-color: #F8FAFC;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border-radius: 9px 9px 0 0;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.06), 0px 10px 15px rgba(0, 0, 0, 0.03);
 }
@@ -20,11 +21,13 @@
     position: absolute;
     border-radius: 10px;
     z-index: 10;
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 12px;
 }
 
 .dropdown__toolbar {
-    padding: 0 20px;
+    width: 155px;
+    padding-left: 20px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -40,8 +43,8 @@
 }
 
 .dropdown.active li {
-    width: 190px;
-    padding: 20px 20px;
+    width: 155px;
+    padding: 8px 20px;
     cursor: pointer;
     display: flex;
     align-items: center;

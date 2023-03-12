@@ -17,10 +17,17 @@ const CreateEventForm = () => {
 
     const handleSubmitForm = async (e) => {
         e.preventDefault();
-        if (userState.isAuth) {
-            console.log('отправляю')
+        const dd = Number(form.event_date.slice(0, 2));
+        const mm = Number(form.event_date.slice(3, 5));
+        const yyyy = Number(form.event_date.slice(6, 10));
+        const dateCorrect = dd > 0 && dd < 32 && mm > 0 && mm < 13 && yyyy > 2022;
+        if (userState.isAuth && dateCorrect) {
             await api.createNewEvent(form);
             window.location.replace("http://localhost:3000" + "/events");
+        } else if (!dateCorrect) {
+            const popup = document.querySelector('.popup__date');
+            popup.classList.add('active')
+            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         } else {
             const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
@@ -70,8 +77,7 @@ const CreateEventForm = () => {
                             <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
                             <div className="event__create-date">
                                 <div className="event__create__label">Дата </div>
-                                {/* <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.event_date} /> */}
-                                <IMaskInput mask={Date} radix='.' className="event__create__input" name="date" placeholder="__.__.__" onChange={handleChangeInput} />
+                                <IMaskInput mask={'00{.}00{.}0000'} radix='.' className="event__create__input" name="date" placeholder="__.__.__" onChange={handleChangeInput} />
                             </div>
                             <div className="event__create__label">Описание </div>
                             <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
@@ -93,6 +99,7 @@ const CreateEventForm = () => {
                 </div>
                 <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
                 <ErrorPopup target="files" text='Разрешены только изображения' />
+                <ErrorPopup target="date" text='Введите корректную дату' />
             </section>
             <Footer />
         </>

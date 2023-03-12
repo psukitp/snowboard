@@ -12,8 +12,6 @@ const Registration = () => {
         login: '',
         email: '',
         name: '',
-        sname: '',
-        photoPath: '',
         password: '',
         passwordRepeat: ''
     })

@@ -6,13 +6,14 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorPopup from "../popup/ErrorPopup";
 import { api } from "../../api/api";
+import { IMaskInput } from "react-imask";
 
 
 const CreateResaleAd = () => {
     const userState = useSelector((store) => store.user)
     const productTypes = useSelector((store) => store.productTypes)
     const user_id = userState.id;
-    const [form, setForm] = useState({ creator_id: user_id, resale_title: '', resale_description: '', resale_price: '', resale_type: 1, resale_tel: '', resale_image: '' })
+    const [form, setForm] = useState({ creator_id: user_id, resale_title: '', resale_description: '', resale_price: '', resale_type: 1, resale_tel: '+7', resale_image: '' })
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -102,12 +103,12 @@ const CreateResaleAd = () => {
                                 </div>
                                 <div className="create__resale-descr">
                                     <div className="create__resale-label">Описание </div>
-                                    <textarea className="create__resale-textarea" name="descr" onChange={handleChangeInput} placeholder="Не указывайте в описании телефон и e-mail — для этого есть отдельные поля" value={form.resale_description} onKeyDown={handleLineBreak}/>
+                                    <textarea className="create__resale-textarea" name="descr" onChange={handleChangeInput} placeholder="Не указывайте в описании телефон и e-mail — для этого есть отдельные поля" value={form.resale_description} onKeyDown={handleLineBreak} />
                                 </div>
                                 <div className="create__resale-price--photo">
                                     <div className="create__resale-price">
                                         <div className="create__resale-label">Цена</div>
-                                        <input className="create__resale-input" name="price" onChange={handleChangeInput} value={form.resale_price} />
+                                        <IMaskInput mask='0000000' className="create__resale-input" name="price" onChange={handleChangeInput} value={form.resale_price} placeholder='₽'/>
                                     </div>
                                     <div className="create__resale-photo">
                                         <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
@@ -119,7 +120,7 @@ const CreateResaleAd = () => {
                                 </div>
                                 <div className="create__resale-tel">
                                     <div className="create__resale-label">Номер телефона</div>
-                                    <input className="create__resale-input" name="tel" onChange={handleChangeInput} placeholder="+7" value={form.resale_tel} />
+                                    <IMaskInput mask='+{7}(000)000-00-00' className="create__resale-input" name="tel" onChange={handleChangeInput} placeholder="+7" value={form.resale_tel} />
                                 </div>
                                 <div className="create__resale-btns">
                                     <button className="create__resale-btn--submit" type='submit'>

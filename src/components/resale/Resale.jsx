@@ -12,6 +12,8 @@ import Pagination from '../pagination/Pagination';
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
+    const [listColor, setListColor] = useState('#CBD5E1');
+    const [cardsColor, setCardsColor] = useState('#4482B9');
     const countCardPerPage = 6;
     const countItemsPerPage = 4;
     const dispatch = useDispatch();
@@ -33,38 +35,15 @@ const Resale = () => {
 
     const setList = () => {
         setIsCard(false);
-
-        const icon_list = document.querySelector('.img__list-icon');
-        const rects_list_inner = icon_list.querySelectorAll('.img__edit-rect--blue');
-        const rects_list_stroke = icon_list.querySelectorAll('.img__edit-rect--stroke');
-        rects_list_inner.forEach(el => el.style.fill = '#4482B9')
-        rects_list_stroke.forEach(el => el.style.stroke = '#4482B9')
-
-        const icon_card = document.querySelector('.img__cards-icon');
-        const rects_card_inner = icon_card.querySelectorAll('.img__edit-rect--blue');
-        const rects_card_stroke = icon_card.querySelectorAll('.img__edit-rect--stroke');
-        rects_card_inner.forEach(el => el.style.fill = '#CBD5E1')
-        rects_card_stroke.forEach(el => el.style.stroke = '#CBD5E1')
-
+        setListColor('#4482B9');
+        setCardsColor('#CBD5E1')
         setCurrentPage(1)
     }
 
     const setCard = () => {
         setIsCard(true);
-
-        const icon_list = document.querySelector('.img__list-icon');
-        const rects_list_inner = icon_list.querySelectorAll('.img__edit-rect--blue');
-        const rects_list_stroke = icon_list.querySelectorAll('.img__edit-rect--stroke');
-        rects_list_inner.forEach(el => el.style.fill = '#CBD5E1')
-        rects_list_stroke.forEach(el => el.style.stroke = '#CBD5E1')
-
-
-        const icon_card = document.querySelector('.img__cards-icon');
-        const rects_card_inner = icon_card.querySelectorAll('.img__edit-rect--blue');
-        const rects_card_stroke = icon_card.querySelectorAll('.img__edit-rect--stroke');
-        rects_card_inner.forEach(el => el.style.fill = '#4482B9')
-        rects_card_stroke.forEach(el => el.style.stroke = '#4482B9')
-
+        setListColor('#CBD5E1');
+        setCardsColor('#4482B9')
         setCurrentPage(1)
     }
 
@@ -82,25 +61,25 @@ const Resale = () => {
                             <button className='switch__btn' onClick={setCard}>
                                 {/* <img src={require("./img/cards_icon.png")} alt='Карточками' />
                                  */}
-                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" className='img__cards-icon'>
-                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke="#4482B9" className='img__edit-rect--stroke' />
-                                    <rect x="8" y="8.5" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
-                                    <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
-                                    <rect x="8" y="21.8334" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
-                                    <rect x="21.3334" y="21.8334" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
+                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={cardsColor} />
+                                    <rect x="8" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
+                                    <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
+                                    <rect x="8" y="21.8334" width="10.6667" height="10.6667" fill={cardsColor} />
+                                    <rect x="21.3334" y="21.8334" width="10.6667" height="10.6667" fill={cardsColor} />
                                 </svg>
 
                             </button>
                             <button className='switch__btn' onClick={setList}>
                                 {/* <img src={require("./img/list_icon.png")} alt='Строками'/> */}
-                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" className='img__list-icon'>
-                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke="#CBD5E1" className='img__edit-rect--stroke' />
-                                    <rect x="8" y="9.83337" width="5.33333" height="5.33333" fill="#CBD5E1" className='img__edit-rect--blue' />
-                                    <rect x="14.6666" y="11.1666" width="16" height="2.66667" fill="#CBD5E1" className='img__edit-rect--blue' />
-                                    <rect x="8" y="17.8334" width="5.33333" height="5.33333" fill="#CBD5E1" className='img__edit-rect--blue' />
-                                    <rect x="14.6666" y="19.1666" width="16" height="2.66667" fill="#CBD5E1" className='img__edit-rect--blue' />
-                                    <rect x="8" y="25.8334" width="5.33333" height="5.33333" fill="#CBD5E1" className='img__edit-rect--blue' />
-                                    <rect x="14.6666" y="27.1666" width="16" height="2.66667" fill="#CBD5E1" className='img__edit-rect--blue' />
+                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={listColor} />
+                                    <rect x="8" y="9.83337" width="5.33333" height="5.33333" fill={listColor} />
+                                    <rect x="14.6666" y="11.1666" width="16" height="2.66667" fill={listColor} />
+                                    <rect x="8" y="17.8334" width="5.33333" height="5.33333" fill={listColor} />
+                                    <rect x="14.6666" y="19.1666" width="16" height="2.66667" fill={listColor} />
+                                    <rect x="8" y="25.8334" width="5.33333" height="5.33333" fill={listColor} />
+                                    <rect x="14.6666" y="27.1666" width="16" height="2.66667" fill={listColor} />
                                 </svg>
 
                             </button>
