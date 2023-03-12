@@ -6,19 +6,19 @@ import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
 import './createEventForm.css'
+import { IMaskInput } from "react-imask"
 
 
 const CreateEventForm = () => {
     const userState = useSelector((store) => store.user);
     const user_id = userState.id;
-    const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: new Date(), event_description: '', event_image: '' })
+    const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: '', event_description: '', event_image: '' })
 
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
         if (userState.isAuth) {
             console.log('отправляю')
-            setForm({ ...form, event_date: new Date() })
             api.createNewEvent(form).then(window.location.replace("http://localhost:3000" + "/events"));
         } else {
             const popup = document.querySelector('.popup__auth');
@@ -31,11 +31,7 @@ const CreateEventForm = () => {
         if (target.name === "title") {
             setForm({ ...form, event_title: target.value })
         } else if (target.name === "date") {
-            if (target.value.length === 2 || target.value.length === 5) {
-                setForm({ ...form, event_date: target.value + '.' })
-            } else if (target.value.length < 11) {
-                setForm({ ...form, event_date: target.value })
-            }
+            setForm({ ...form, event_date: target.value })
         } else {
             setForm({ ...form, event_description: target.value })
         }
@@ -64,7 +60,7 @@ const CreateEventForm = () => {
 
     return (
         <>
-        <Header bgColor='#F8FAFC'/>
+            <Header bgColor='#F8FAFC' />
             <section className="event__create">
                 <div className="container">
                     <div className='event__create__inner'>
@@ -73,7 +69,8 @@ const CreateEventForm = () => {
                             <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
                             <div className="event__create-date">
                                 <div className="event__create__label">Дата </div>
-                                <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.event_date} />
+                                {/* <input className="event__create__input" name="date" onChange={handleChangeInput} placeholder="__.__.__" value={form.event_date} /> */}
+                                <IMaskInput mask={Date} radix='.' className="event__create__input" name="date" placeholder="__.__.__" onChange={handleChangeInput} />
                             </div>
                             <div className="event__create__label">Описание </div>
                             <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
@@ -81,7 +78,7 @@ const CreateEventForm = () => {
                                 <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
                                 <label htmlFor="file" className="event__create__btn-send-photo">
                                     <span className="input__file-text">Загрузить фото</span>
-                                    <img src={require('./img/download_icon.png')} alt='Загрузить'/>
+                                    <img src={require('./img/download_icon.png')} alt='Загрузить' />
                                 </label>
                             </div>
                             <div className="event__create-btns">

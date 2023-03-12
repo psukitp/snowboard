@@ -3,6 +3,7 @@ import './comment.css'
 
 const Comment = (props) => {
     const userState = useSelector((store) => store.user)
+
     let newCommentDate = '';
     const getDateNow = () => {
         let today = new Date();
@@ -12,16 +13,7 @@ const Comment = (props) => {
         return dd + '.' + mm + '.' + yyyy
     }
 
-    const getDateFromString = (date) => {
-        const yyyy = date.slice(2, 4);
-        const dd = date.slice(5, 7);
-        const mm = date.slice(8, 10);
-        return dd + '.' + mm + '.' + yyyy
-    }
-
-    if (props.date) {
-        newCommentDate = getDateFromString(props.date)
-    } else {
+    if (!props.date) {
         newCommentDate = getDateNow();
     }
     return (
@@ -32,7 +24,7 @@ const Comment = (props) => {
                         {!props.name ? userState.name : props.name} {!props.sname ? userState.s_name : props.sname}
                     </div>
                     <div className="comment__info-date">
-                        {newCommentDate}
+                        {props.date ? props.date : newCommentDate}
                     </div>
                 </div>
                 <div className="comment__text">

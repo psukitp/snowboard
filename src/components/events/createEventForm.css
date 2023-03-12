@@ -31,6 +31,11 @@
     border-radius: 12px;
     height: 45px;
     margin-bottom: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
 }
 
 .event__create__input[name="title"] {
