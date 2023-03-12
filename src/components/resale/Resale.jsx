@@ -7,11 +7,24 @@ import ResaleCardItem from './ResaleCardItem';
 import ResaleListItem from './ResaleListItem';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import { NavLink } from 'react-router-dom';
+import Pagination from '../pagination/Pagination';
 
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const countCardPerPage = 6;
+    const countItemsPerPage = 4;
     const dispatch = useDispatch();
     const resales = useSelector((store) => store.resales)
+
+    const lastCardIndex = currentPage * countCardPerPage;
+    const firstCardIndex = lastCardIndex - countCardPerPage;
+    const currentCardCount = resales.sort((a, b) => parseFloat(b.ad_post_id) - parseFloat(a.ad_post_id)).slice(firstCardIndex, lastCardIndex);
+
+    const lastItemIndex = currentPage * countItemsPerPage;
+    const firstItemIndex = lastItemIndex - countItemsPerPage;
+    const currentItemCount = resales.sort((a, b) => parseFloat(b.ad_post_id) - parseFloat(a.ad_post_id)).slice(firstItemIndex, lastItemIndex);
+
 
     useEffect(() => {
         dispatch(api.getResales())
@@ -32,6 +45,8 @@ const Resale = () => {
         const rects_card_stroke = icon_card.querySelectorAll('.img__edit-rect--stroke');
         rects_card_inner.forEach(el => el.style.fill = '#CBD5E1')
         rects_card_stroke.forEach(el => el.style.stroke = '#CBD5E1')
+
+        setCurrentPage(1)
     }
 
     const setCard = () => {
@@ -50,7 +65,11 @@ const Resale = () => {
         rects_card_inner.forEach(el => el.style.fill = '#4482B9')
         rects_card_stroke.forEach(el => el.style.stroke = '#4482B9')
 
+        setCurrentPage(1)
+    }
 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
     }
 
     return (
@@ -64,11 +83,11 @@ const Resale = () => {
                                 {/* <img src={require("./img/cards_icon.png")} alt='Карточками' />
                                  */}
                                 <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" className='img__cards-icon'>
-                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke="#4482B9" className='img__edit-rect--stroke'/>
-                                    <rect x="8" y="8.5" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue'/>
-                                    <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue'/>
-                                    <rect x="8" y="21.8334" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue'/>
-                                    <rect x="21.3334" y="21.8334" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue'/>
+                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke="#4482B9" className='img__edit-rect--stroke' />
+                                    <rect x="8" y="8.5" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
+                                    <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
+                                    <rect x="8" y="21.8334" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
+                                    <rect x="21.3334" y="21.8334" width="10.6667" height="10.6667" fill="#4482B9" className='img__edit-rect--blue' />
                                 </svg>
 
                             </button>
@@ -96,15 +115,23 @@ const Resale = () => {
                     </div>
                     <div className="resale__products">
                         {isCard ?
-                            resales.slice(0).reverse().map(el => <ResaleCardItem
+                            currentCardCount.map(el => <ResaleCardItem
+                                key={el.ad_post_id}
                                 ad_image_path={el.ad_image_path}
                                 product_type={el.product_type_name}
                                 ad_post_name={el.post_name}
                                 ad_post_text={el.post_text}
                                 ad_price={el.price} />) :
-                            resales.map(el => <ResaleListItem />)
+                            currentItemCount.map(el => <ResaleListItem
+                                key={el.ad_post_id}
+                                ad_image_path={el.ad_image_path}
+                                product_type={el.product_type_name}
+                                ad_post_name={el.post_name}
+                                ad_post_text={el.post_text}
+                                ad_price={el.price} />)
                         }
                     </div>
+                    <Pagination countPerPage={isCard ? countCardPerPage : countItemsPerPage} totalCount={resales.length} paginate={paginate} currentPagePicked={currentPage} />
                 </div>
             </section>
             <RegAuthFooter textColor='#52525B' bgColor='#F8FAFC' />

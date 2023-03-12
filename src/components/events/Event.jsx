@@ -22,6 +22,7 @@ const Event = () => {
             dispatch(api.getOneEvent(id));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        window.scrollTo(0, 0)
     }, [userState])
 
     useEffect(() => {

@@ -61,16 +61,22 @@ const CreateResaleAd = () => {
         }
     }
 
-    const handleSubmitForm = (e) => {
+    const handleSubmitForm = async (e) => {
         e.preventDefault();
         if (userState.isAuth && form.resale_title.length < 20) {
-            api.createNewResale(form)
-                .then(window.location.replace('http://localhost:3000' + '/resale'))
+            await api.createNewResale(form)
+            window.location.replace('http://localhost:3000' + '/resale')
         } else if (!userState.isAuth) {
             const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
             setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         }
+    }
+
+    const handleLineBreak = (e) => {
+        // if (e.shiftKey && e.key === 'Enter'){
+        //     setForm({ ...form, resale_description: form.resale_description + "\n" })
+        // }   
     }
 
 
@@ -96,7 +102,7 @@ const CreateResaleAd = () => {
                                 </div>
                                 <div className="create__resale-descr">
                                     <div className="create__resale-label">Описание </div>
-                                    <textarea className="create__resale-textarea" name="descr" onChange={handleChangeInput} placeholder="Не указывайте в описании телефон и e-mail — для этого есть отдельные поля" value={form.resale_description} />
+                                    <textarea className="create__resale-textarea" name="descr" onChange={handleChangeInput} placeholder="Не указывайте в описании телефон и e-mail — для этого есть отдельные поля" value={form.resale_description} onKeyDown={handleLineBreak}/>
                                 </div>
                                 <div className="create__resale-price--photo">
                                     <div className="create__resale-price">
@@ -107,7 +113,7 @@ const CreateResaleAd = () => {
                                         <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
                                         <label htmlFor="file" className="event__create__btn-send-photo">
                                             <span className="input__file-text">Загрузить фото</span>
-                                            <img src={require('./img/download_icon.png')} alt='Загрузить'/>
+                                            <img src={require('./img/download_icon.png')} alt='Загрузить' />
                                         </label>
                                     </div>
                                 </div>

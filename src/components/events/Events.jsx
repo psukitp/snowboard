@@ -6,17 +6,28 @@ import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import EventCard from './EventCard'
 import './events.css'
+import Pagination from '../pagination/Pagination';
 
 
 const Events = () => {
     const dispatch = useDispatch();
     const events = useSelector((store) => store.events)
     const [search, setSearch] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const countEventsPerPage = 6;
+
+    const lastEventIndex = currentPage * countEventsPerPage;
+    const firstEventIndex = lastEventIndex - countEventsPerPage;
+    const currentEventsCount = events.sort((a, b) => parseFloat(b.event_id) - parseFloat(a.event_id)).slice(firstEventIndex, lastEventIndex);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
 
     useEffect(() => {
         dispatch(api.getEvents())
-         // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSearchChange = ({ target }) => {
@@ -25,7 +36,7 @@ const Events = () => {
 
     return (
         <>
-        <Header bgColor='#fff'/>
+            <Header bgColor='#fff' />
             <section className="events">
                 <div className="container">
                     <div className="events__search">
@@ -37,13 +48,14 @@ const Events = () => {
                         </NavLink>
                     </div>
                     <div className="events__cards">
-                        {events.slice(0).reverse().map(el => el.event_title?.toLowerCase().includes(search.toLowerCase()) ? <EventCard
+                        {currentEventsCount.map(el => el.event_title?.toLowerCase().includes(search.toLowerCase()) ? <EventCard
                             key={el.event_id}
                             id={el.event_id}
                             name={el.event_title}
                             text={el.event_description === undefined ? 'Не найдено' : el.event_description}
                             event_image_path={el.event_image_path} /> : null)}
                     </div>
+                    <Pagination countPerPage={countEventsPerPage} totalCount={events.length} paginate={paginate} currentPagePicked={currentPage}/>
                 </div>
             </section>
             <Footer />

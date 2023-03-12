@@ -1,0 +1,48 @@
+ul {
+    margin: 0 0;
+}
+
+.pagination {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4482B9;
+    align-items: center;
+}
+
+.page-item+.page-item {
+    margin-left: 12px;
+}
+
+.page-item {
+    cursor: pointer;
+}
+
+.prev-page,
+.next-page {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.prev-page {
+    margin-right: 10px;
+}
+
+.next-page {
+    margin-left: 10px;
+}
+
+.prev-page:hover,
+.next-page:hover,
+.page-item:hover {
+    opacity: .8;
+}
+
+.bold {
+    font-weight: 600;
+    color: #2A689F;
+}

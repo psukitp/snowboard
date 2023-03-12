@@ -15,11 +15,12 @@ const CreateEventForm = () => {
     const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: '', event_description: '', event_image: '' })
 
 
-    const handleSubmitForm = (e) => {
+    const handleSubmitForm = async (e) => {
         e.preventDefault();
         if (userState.isAuth) {
             console.log('отправляю')
-            api.createNewEvent(form).then(window.location.replace("http://localhost:3000" + "/events"));
+            await api.createNewEvent(form);
+            window.location.replace("http://localhost:3000" + "/events");
         } else {
             const popup = document.querySelector('.popup__auth');
             popup.classList.add('active')
