@@ -1,0 +1,78 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul[class] {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body,
+html{
+  height: 100%;
+}
+
+.container {
+  max-width: 1190px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.header{
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+}
