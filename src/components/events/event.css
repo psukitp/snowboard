@@ -1,16 +1,10 @@
-.event{
-    padding-top: 80px;
-}
-
-.event__inner-creator {
-    font-family: 'Montserrat';
+.event {
+    padding-top: 125px;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 29px;
-    color: #000000;
-    display: flex;
-    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 58px;
 }
 
 .event__inner-author {
@@ -18,26 +12,26 @@
 }
 
 .event__inner-title {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 49px;
-    color: #000000;
-    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    color: #4482B9;
+    margin-bottom: 25px;
+}
+
+.event__inner-text,
+.event__inner-date {
+    font-size: 18px;
+    line-height: 30px;
+    color: #52525B;
 }
 
 .event__inner-text {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    color: #000000;
+    margin-bottom: 40px;
 }
 
-.event__inner-image {
-    margin-bottom: 30px;
+.event__inner-date {
+    font-weight: 600;
+    color: #4482B9;
 }
 
 .event__inner-image img {
@@ -46,6 +40,14 @@
 
 .event__inner {
     margin-bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.event__inner-info {
+    max-width: 550px;
+    width: 100%;
+    margin-left: 20px;
 }
 
 .descr__edit-block,
@@ -65,28 +67,58 @@
     border: 1px solid #E4E4E7;
     border-radius: 9px;
     padding: 0 20px;
+    height: 45px;
     width: 700px;
     margin-right: 30px;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 .edit__ok-btn,
-.edit-btn{
+.edit-btn {
     border: none;
     background-color: #4482B9;
     border-radius: 10px;
     color: #fff;
     cursor: pointer;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.edit__ok-btn {
+    padding: 10px 20px;
 }
 
 .edit__ok-btn:hover,
-.edit-btn:hover{
+.edit-btn:hover,
+.event__back-btn:hover {
     opacity: .8;
 }
 
-.edit-btn{
+.edit-btn {
     padding: 10px 10px;
 }
 
-.descr__edit-textarea{
+.descr__edit-textarea {
+    height: 200px;
     resize: none;
+}
+
+.event__btn {
+    display: flex;
+    justify-content: end;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 45px;
+}
+
+.event__back-btn {
+    border: none;
+    border-radius: 9px;
+    color: #fff;
+    background-color: #4482B9;
+    padding: 13px 79px;
+    cursor: pointer;
 }

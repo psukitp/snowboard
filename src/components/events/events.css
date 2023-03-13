@@ -55,3 +55,38 @@
     justify-content: center;
     margin-bottom: 80px;
 }
+
+.events__hello {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 62px;
+    text-align: center;
+}
+
+.events__hello-title {
+    color: #4482B9;
+    letter-spacing: -2px;
+    margin-bottom: 18px;
+}
+
+.events__hello-subtitle {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #52525B;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.events__not-exist{
+    text-align: center;
+    color: #4482B9;
+    font-weight: 600;
+    font-size: 42px;
+    padding-top: 180px;
+    padding-bottom: 320px;
+}

@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import Comments from '../comment/Comments';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -78,32 +79,36 @@ const Event = () => {
             <Header bgColor='#fff' />
             <div className="event">
                 <div className="container">
+                    <div className='event__btn'>
+                        <NavLink to='/events'>
+                            <button className='event__back-btn'>
+                                Назад
+                            </button>
+                        </NavLink>
+                    </div>
                     <div className="event__inner">
-                        <div className="event__inner-creator">
-                            <div className="event__inner-author">
-                                {event.name} {event.s_name}
-                            </div>
-                            <div className="event__inner-date">
-                                {event.event_date === null ? '01.03.23' : event.event_date}
-                            </div>
-                        </div>
-                        {myEvent ? null : <button className='edit-btn' onClick={handleEditTitleButton}>Редактировать</button>}
-                        <div className="event__inner-title">
-                            {event.event_title}
-                            <div className='title__edit-block'>
-                                <input className='title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
-                                <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button>
-                            </div>
-                        </div>
                         <div className="event__inner-image">
                             <img src={photoURL} alt="Фото" />
                         </div>
-                        {myEvent ? null : <button className='edit-btn' onClick={handleEditDescrButton}>Редактировать</button>}
-                        <div className="event__inner-text">
-                            {event.event_description}
-                            <div className='descr__edit-block'>
-                                <textarea className='descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
-                                <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button>
+                        <div className='event__inner-info'>
+                            {myEvent ? null : <button className='edit-btn' onClick={handleEditTitleButton}>Редактировать</button>}
+                            <div className="event__inner-title">
+                                {event.event_title}
+                                <div className='title__edit-block'>
+                                    <input className='title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
+                                    <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button>
+                                </div>
+                            </div>
+                            {myEvent ? null : <button className='edit-btn' onClick={handleEditDescrButton}>Редактировать</button>}
+                            <div className="event__inner-text">
+                                {event.event_description}
+                                <div className='descr__edit-block'>
+                                    <textarea className='descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
+                                    <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button>
+                                </div>
+                            </div>
+                            <div className="event__inner-date">
+                                {event.event_date === null ? '01.03.23' : event.event_date}
                             </div>
                         </div>
                     </div>

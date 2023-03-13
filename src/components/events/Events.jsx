@@ -14,15 +14,19 @@ const Events = () => {
     const events = useSelector((store) => store.events)
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const countEventsPerPage = 6;
-
+    const countEventsPerPage = 3;
     const lastEventIndex = currentPage * countEventsPerPage;
     const firstEventIndex = lastEventIndex - countEventsPerPage;
-    const currentEventsCount = events.sort((a, b) => parseFloat(b.event_id) - parseFloat(a.event_id)).slice(firstEventIndex, lastEventIndex);
+    const filteredEvent = events.filter(el => el.event_title?.toLowerCase().includes(search.toLowerCase()));
+    const currentEvents = filteredEvent.sort((a, b) => parseFloat(b.event_id) - parseFloat(a.event_id)).slice(firstEventIndex, lastEventIndex);
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [search])
 
 
     useEffect(() => {
@@ -47,15 +51,27 @@ const Events = () => {
                             </button>
                         </NavLink>
                     </div>
+                    {currentPage === 1 && currentEvents.length > 0 ?
+                        (<div className='events__hello'>
+                            <div className='events__hello-title'>
+                                Взгляни на ближайшие мероприятия!
+                            </div>
+                            <div className='events__hello-subtitle'>
+                                Уже совсем скоро мы вновь встретимся в горах, чтобы наслаждаться каждым новым днём, сноубордингом, горными лыжами, новыми и старыми друзьями.
+                            </div>
+                        </div>) : null}
                     <div className="events__cards">
-                        {currentEventsCount.map(el => el.event_title?.toLowerCase().includes(search.toLowerCase()) ? <EventCard
+                        {currentEvents.map(el => <EventCard
                             key={el.event_id}
                             id={el.event_id}
                             name={el.event_title}
                             text={el.event_description === undefined ? 'Не найдено' : el.event_description}
-                            event_image_path={el.event_image_path} /> : null)}
+                            date={el.event_date === null ? '01.04.2023' : el.event_date}
+                            event_image_path={el.event_image_path} />)}
                     </div>
-                    <Pagination countPerPage={countEventsPerPage} totalCount={events.length} paginate={paginate} currentPagePicked={currentPage}/>
+                    {filteredEvent.length > 0 ?
+                        <Pagination countPerPage={countEventsPerPage} totalCount={filteredEvent.length} paginate={paginate} currentPagePicked={currentPage} />
+                        : <div className='events__not-exist'>Мероприятий не найдено {':('}</div>}
                 </div>
             </section>
             <Footer />

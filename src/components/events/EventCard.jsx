@@ -4,7 +4,7 @@ import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import './eventCard.css'
 
-const EventCard = ({ id, name, text, event_image_path }) => {
+const EventCard = ({ id, name, text, event_image_path, date }) => {
 
     let photoURL = ''
     if (event_image_path === null) {
@@ -13,21 +13,19 @@ const EventCard = ({ id, name, text, event_image_path }) => {
         photoURL = `http://localhost:3001/${event_image_path}`;
     }
     return (
-        <>
+        <><NavLink to={String(id)}>
             <div className="card">
-                <div className="card-name">
-                    {name}
-                </div>
                 <div className="card__photo">
                     <img src={photoURL} />
                 </div>
-                <div className="card-descr">
-                    {text.length > 140 ? text.slice(0, 137) + "..." : text}
+                <div className='card-date'>
+                    {date}
                 </div>
-                <NavLink to={String(id)}>
-                    <button className='card__open-btn'>Открыть</button>
-                </NavLink>
+                <div className="card-name">
+                    {name}
+                </div>
             </div>
+        </NavLink>
         </>
     )
 }
