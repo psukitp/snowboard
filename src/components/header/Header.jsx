@@ -7,6 +7,13 @@ import Toolbar from './Toolbar';
 const Header = ({ textColor, bgColor }) => {
     const userStatus = useSelector((store) => store.user)
     const isLog = userStatus.isAuth;
+    const { user_image_path } = userStatus;
+    let photoURL = ''
+    if (user_image_path === null) {
+        photoURL = `http://localhost:3001/user_image/standard.png`
+    } else {
+        photoURL = `http://localhost:3001/${user_image_path}`;
+    }
 
 
     return (
@@ -28,7 +35,7 @@ const Header = ({ textColor, bgColor }) => {
                             </ul>
                         </nav>
                     </div>
-                    {isLog ? <Toolbar name={userStatus.name} sname={userStatus.s_name} /> :
+                    {isLog ? <Toolbar name={userStatus.login} sname={userStatus.s_name} photoUrl={photoURL} /> :
                         <a href="/auth"><button className='auth__btn'>Войти</button></a>}
                 </div>
             </div>

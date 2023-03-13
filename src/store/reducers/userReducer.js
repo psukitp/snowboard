@@ -5,8 +5,8 @@ const LOGOUT = 'LOGOUT';
 const REGISTRATION = 'REGISTRATION';
 
 const initialState = {
+    login: '',
     name: '',
-    sname: '',
     status: '',
     user_image_path: '',
     id: '',
@@ -19,21 +19,22 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
-            const { name, s_name, id, email, isActivated } = action.payload;
+            const { login, name,  id, email, isActivated, user_image_path } = action.payload;
             return {
+                login,
                 name,
-                s_name,
                 id,
                 email,
                 isActivated,
+                user_image_path, 
                 isAuth: true
             }
         case REGISTRATION:
             const user = action.payload;
             return {
+                login: user.login,
                 name: user.name,
-                sname: user.sname,
-                id: user.ud,
+                id: user.id,
                 email: user.email,
                 isActivated: user.isActivated,
                 isAuth: true

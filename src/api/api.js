@@ -6,6 +6,7 @@ const baseUrl = 'http://localhost:3000';
 const registration = (req) => (dispatch, getState) => {
     var myHeaders = new Headers();
     var raw = JSON.stringify({
+        login: req.login,
         name: req.name,
         email: req.email,
         password: req.password

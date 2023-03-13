@@ -22,7 +22,8 @@ const Toolbar = (props) => {
             <div className="dropdown__wrapper" onClick={showDropdown}>
                 <div className='dropdown__toolbar'>
                     <div className='dropdown__name'>
-                        {props.name} {props.sname}
+                        {props.name}
+                        <img src={props.photoUrl} alt='Аватарка'/>
                     </div>
                     <img src={require('./img/toolbar_dropdown.png')} alt="" />
                 </div>
