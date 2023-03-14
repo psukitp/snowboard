@@ -6,6 +6,7 @@ import currentEventReducer from "./reducers/currentEventReducer"
 import commentReducer from "./reducers/commentReducer";
 import resaleReducer from "./reducers/resaleReducer";
 import productTypesReducer from "./reducers/productTypesReducer";
+import loadStatusReducer from "./reducers/loadStatusReducer";
 
 
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     currentEvent: currentEventReducer,
     comments: commentReducer,
     resales: resaleReducer,
-    productTypes: productTypesReducer
+    productTypes: productTypesReducer,
+    loadStatus: loadStatusReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

@@ -44,6 +44,7 @@
     margin-right: auto;
     padding: 80px 30px;
     margin-bottom: 150px;
+    position: relative;
 }
 
 .auth__input {
@@ -108,5 +109,12 @@
 .registration__link:hover {
     opacity: .9;
     text-decoration: underline;
+}
+
+.auth__wrong-data{
+    position: absolute;
+    text-align: center;
+    bottom: 20px;
+    color: red;
 }
 

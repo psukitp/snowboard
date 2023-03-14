@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../api/api';
 import FooterLine from '../footer/FooterLine';
@@ -9,6 +9,7 @@ import './auth.css'
 
 const Auth = () => {
     const dispatch = useDispatch();
+    const userStatus = useSelector((store) => store.user)
     const [form, setForm] = useState({ login: '', password: '' })
 
     const handleSubmitForm = (e) => {
@@ -27,7 +28,7 @@ const Auth = () => {
 
     return (
         <>
-            <Header bgColor='#F8FAFC'/>
+            <Header bgColor='#F8FAFC' />
             <section className="auth">
                 <div className="container">
                     <div className="auth__title">Вход</div>
@@ -41,6 +42,7 @@ const Auth = () => {
                                 <span>Нет аккаунта?</span> Зарегистрироваться
                             </NavLink>
                         </form>
+                        {userStatus.isWrong ? <div className='auth__wrong-data'> Неверные данные</div> : null}
                     </div>
                 </div>
                 <RegAuthFooter />

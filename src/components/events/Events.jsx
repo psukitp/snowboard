@@ -5,13 +5,14 @@ import { api } from '../../api/api';
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import EventCard from './EventCard'
-import './events.css'
+import PendingPage from '../pendingPage/PendingPage'
 import Pagination from '../pagination/Pagination';
-
+import './events.css'
 
 const Events = () => {
     const dispatch = useDispatch();
     const events = useSelector((store) => store.events)
+    const loadStatus = useSelector((store) => store.loadStatus)
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const countEventsPerPage = 3;
@@ -36,6 +37,10 @@ const Events = () => {
 
     const handleSearchChange = ({ target }) => {
         setSearch(target.value);
+    }
+
+    if (loadStatus.status === 'pending') {
+        return <PendingPage />
     }
 
     return (

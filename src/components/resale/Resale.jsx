@@ -8,6 +8,7 @@ import ResaleListItem from './ResaleListItem';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import { NavLink } from 'react-router-dom';
 import Pagination from '../pagination/Pagination';
+import PendingPage from '../pendingPage/PendingPage';
 
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
@@ -18,6 +19,7 @@ const Resale = () => {
     const countItemsPerPage = 4;
     const dispatch = useDispatch();
     const resales = useSelector((store) => store.resales)
+    const loadStatus = useSelector((store) => store.loadStatus)
 
     const lastCardIndex = currentPage * countCardPerPage;
     const firstCardIndex = lastCardIndex - countCardPerPage;
@@ -49,6 +51,10 @@ const Resale = () => {
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
+    }
+
+    if (loadStatus.status === 'pending'){
+        return <PendingPage />
     }
 
     return (

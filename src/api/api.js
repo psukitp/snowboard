@@ -43,12 +43,17 @@ const login = (email, password) => (dispatch, getState) => {
         mode: 'cors',
         credentials: 'include'
     };
-
     window.fetch(serverUrl + "/login", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            localStorage.setItem('token', json.accessToken)
-            dispatch({ type: 'LOGIN', payload: json.user })
+            console.log(json)
+            if (json.status === 400) {
+                console.log('Ошибочка')
+                dispatch({ type: 'WRONG_DATA' })
+            } else {
+                localStorage.setItem('token', json.accessToken)
+                dispatch({ type: 'LOGIN', payload: json.user })
+            }
             if (json.user) {
                 window.location.replace(baseUrl + '/events');
             }
@@ -86,10 +91,12 @@ const logout = () => (dispatch, getState) => {
 
 
 const getEvents = () => (dispatch, getState) => {
+    dispatch({ type: 'PENDING' })
     window.fetch(serverUrl + '/events')
         .then((response) => response.json())
         .then((json) => {
             dispatch({ type: 'GET_EVENTS', payload: json });
+            dispatch({ type: 'SUCCESS' })
         })
 
 }
@@ -176,10 +183,12 @@ const getComments = (event_id) => (dispatch, getState) => {
 
 
 const getResales = () => (dispatch, getState) => {
+    dispatch({ type: 'PENDING' })
     window.fetch(serverUrl + '/resales')
         .then((response) => response.json())
         .then((json) => {
             dispatch({ type: 'GET_RESALE', payload: json });
+            dispatch({ type: 'SUCCESS' })
         })
 
 }

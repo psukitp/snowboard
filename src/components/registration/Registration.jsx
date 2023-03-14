@@ -5,6 +5,7 @@ import { api } from '../../api/api';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header';
 import './registration.css'
+import ErrorPopup from '../popup/ErrorPopup'
 
 const Registration = () => {
     const dispatch = useDispatch()
@@ -16,9 +17,21 @@ const Registration = () => {
         passwordRepeat: ''
     })
 
+    const checkEmpty = ({ login, email, name }) => {
+        return !(login !== '' && email !== '' && name !== '')
+    }
+
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        if (form.password === form.passwordRepeat) {
+        if (checkEmpty(form)) {
+            const popup = document.querySelector('.popup__bad-data');
+            popup.classList.add('active')
+            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+        } else if (form.password === form.passwordRepeat && form.password.length < 6) {
+            const popup = document.querySelector('.popup__bad-password');
+            popup.classList.add('active')
+            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+        } else {
             dispatch(api.registration(form))
         }
     }
@@ -41,7 +54,7 @@ const Registration = () => {
 
     return (
         <>
-            <Header color='#fff'/>
+            <Header color='#fff' />
             <section className="reg">
                 <div className="container">
                     <div className='reg__inner'>
@@ -106,6 +119,8 @@ const Registration = () => {
                     <RegAuthFooter />
                 </div>
             </section>
+            <ErrorPopup target='bad-data' text='Не все поля заполнены' />
+            <ErrorPopup target='bad-password' text='Слишком короткий пароль' />
         </>
     )
 }
