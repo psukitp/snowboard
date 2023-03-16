@@ -10,7 +10,6 @@ const commentReducer = (state = initialState, action) => {
             return action.payload;
         case ADD_COMMENT:
             const newComment = action.payload;
-            console.log([{ ...state }, newComment])
             return [ ...state , newComment]
         default:
             return state;

@@ -12,7 +12,6 @@ const Pagination = ({ countPerPage, totalCount, paginate, currentPagePicked }) =
     }
 
     const setBold = ({ target }) => {
-        console.log(target);
         const pages = document.querySelectorAll('.page-item');
         pages.forEach(el => el.classList.remove('bold'));
         target.classList.add('bold');

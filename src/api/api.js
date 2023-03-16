@@ -46,9 +46,7 @@ const login = (email, password) => (dispatch, getState) => {
     window.fetch(serverUrl + "/login", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            console.log(json)
             if (json.status === 400) {
-                console.log('Ошибочка')
                 dispatch({ type: 'WRONG_DATA' })
             } else {
                 localStorage.setItem('token', json.accessToken)
