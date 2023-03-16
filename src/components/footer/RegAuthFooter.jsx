@@ -23,13 +23,13 @@ const RegAuthFooter = ({ textColor, bgColor }) => {
                         </nav>
                     </div>
                     <div className='auth__footer-links'>
-                        <a className='auth__footer-link' href='#'>
+                        <a className='auth__footer-link' href='https://vk.com/myshkeeen' target="_blank" rel="noreferrer">
                             <img src={require('./img/twitter_icon.png')} alt="" />
                         </a>
-                        <a className='auth__footer-link' href='#'>
+                        <a className='auth__footer-link' href='https://vk.com/myshkeeen' target="_blank" rel="noreferrer">
                             <img src={require('./img/facebook_icon.png')} alt="" />
                         </a>
-                        <a className='auth__footer-link' href='#'>
+                        <a className='auth__footer-link' href='https://vk.com/myshkeeen' target="_blank" rel="noreferrer">
                             <img src={require('./img/instagram_icon.png')} alt="" />
                         </a>
                     </div>

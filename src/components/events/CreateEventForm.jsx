@@ -5,14 +5,25 @@ import { api } from "../../api/api"
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
-import './createEventForm.css'
 import { IMaskInput } from "react-imask"
+import ReactLoading from 'react-loading'
+import './createEventForm.css'
 
 
 const CreateEventForm = () => {
     const userState = useSelector((store) => store.user);
     const user_id = userState.id;
     const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: '', event_description: '', event_image: '' })
+
+    const checkEmpty = ({ resale_title, event_date, event_description }) => {
+        return !(resale_title !== '' && event_date !== '' && event_description !== '')
+    }
+
+    const showPopup = (name) => {
+        const popup = document.querySelector(`.popup__${name}`);
+        popup.classList.add('active')
+        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+    }
 
 
     const handleSubmitForm = async (e) => {
@@ -21,17 +32,17 @@ const CreateEventForm = () => {
         const mm = Number(form.event_date.slice(3, 5));
         const yyyy = Number(form.event_date.slice(6, 10));
         const dateCorrect = dd > 0 && dd < 32 && mm > 0 && mm < 13 && yyyy > 2022;
-        if (userState.isAuth && dateCorrect) {
+        if (userState.isAuth && dateCorrect && !checkEmpty(form)) {
+            const loader = document.querySelector('.event__create__btn-submit--loader');
+            loader.classList.add('active');
             await api.createNewEvent(form);
-            window.location.replace("http://localhost:3000" + "/events");
-        } else if (!dateCorrect) {
-            const popup = document.querySelector('.popup__date');
-            popup.classList.add('active')
-            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+            window.location.replace("http://localhost:3000/events");
+        } else if (!userState.isAuth) {
+            showPopup('auth');
+        } else if (checkEmpty(form)) {
+            showPopup('data')
         } else {
-            const popup = document.querySelector('.popup__auth');
-            popup.classList.add('active')
-            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+            showPopup('date')
         }
     }
 
@@ -49,9 +60,7 @@ const CreateEventForm = () => {
         const currentFileName = target.files[0].name;
         const currentFile = target.files[0];
         if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
-            const popup = document.querySelector('.popup__files');
-            popup.classList.add('active')
-            setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+            showPopup('files')
         }
         else {
             let fileName = '';
@@ -89,7 +98,10 @@ const CreateEventForm = () => {
                                 </label>
                             </div>
                             <div className="event__create-btns">
-                                <button className="event__create__btn-submit" type="submit">Создать мероприятие</button>
+                                <button className="event__create__btn-submit" type="submit">
+                                    <ReactLoading type='spin' color='#fff' height={20} width={20} className='event__create__btn-submit--loader' />
+                                    Создать мероприятие
+                                </button>
                                 <NavLink to="/events" className="event__cancel-link">
                                     <button className="event__create__btn-cancel" type="button">Отмена</button>
                                 </NavLink>
@@ -99,7 +111,8 @@ const CreateEventForm = () => {
                 </div>
                 <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
                 <ErrorPopup target="files" text='Разрешены только изображения' />
-                <ErrorPopup target="date" text='Введите корректную дату' />
+                <ErrorPopup target="date" text='Введи корректную дату' />
+                <ErrorPopup target="data" text='Кажется, ты ввел не все данные :(' />
             </section>
             <Footer />
         </>

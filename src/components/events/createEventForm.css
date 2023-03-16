@@ -112,7 +112,19 @@
 }
 
 .event__create__btn-submit {
-    
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.event__create__btn-submit--loader{
+    display: none;
+    position: absolute;
+    left: 20px;
+}
+
+.event__create__btn-submit--loader.active {
+    display: block;
 }
 
 .event__create__btn-cancel {

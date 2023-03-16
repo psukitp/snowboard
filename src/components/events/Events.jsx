@@ -40,7 +40,7 @@ const Events = () => {
     }
 
     if (loadStatus.status === 'pending') {
-        return <PendingPage />
+        return <PendingPage text='Ищем самые крутые мероприятия специально для тебя'/>
     }
 
     return (

@@ -109,7 +109,6 @@ const createNewEvent = async (body) => {
     raw.append("event_description", body.event_description);
     raw.append("file", body.event_image);
 
-    console.log(body.event_image);
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "x-www-form-urlencoded");
@@ -121,7 +120,6 @@ const createNewEvent = async (body) => {
         mode: 'no-cors'
     };
     await fetch("http://localhost:3001/new-event", requestOptions)
-        .then(response => console.log(response.text()));
 }
 
 const getOneEvent = (id) => async (dispatch, getState) => {
@@ -193,17 +191,36 @@ const getResales = () => (dispatch, getState) => {
 
 }
 
-const createNewResale = async (body) => {
+const createNewResale = async (form, properties) => {
     const raw = new FormData();
-    raw.append("creator_id", body.creator_id);
-    raw.append("resale_title", body.resale_title);
-    raw.append("resale_description", body.resale_description);
-    raw.append("resale_price", body.resale_price);
-    raw.append("resale_type", body.resale_type);
-    raw.append("resale_tel", body.resale_tel);
-    raw.append("file", body.resale_image);
-
-    console.log(body.event_image);
+    raw.append("creator_id", form.creator_id);
+    raw.append("resale_title", form.resale_title);
+    raw.append("resale_description", form.resale_description);
+    raw.append("resale_price", form.resale_price);
+    raw.append("resale_type", form.resale_type);
+    raw.append("resale_tel", form.resale_tel);
+    raw.append("file", form.resale_image);
+    switch (form.resale_type) {
+        case 1:
+            raw.append('length', properties.length)
+            raw.append('deflection', properties.deflection)
+            raw.append('flex', properties.flex)
+            break
+        case 3:
+            raw.append('size', properties.size)
+            raw.append('flex', properties.flex)
+            break
+        case 4:
+            raw.append('size', properties.size)
+            raw.append('flex', properties.flex)
+            break
+        case 5:
+            raw.append('nameof', properties.nameof)
+            raw.append('size', properties.size)
+            break
+        default:
+            break
+    }
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "x-www-form-urlencoded");
@@ -215,7 +232,6 @@ const createNewResale = async (body) => {
         mode: 'no-cors'
     };
     await fetch("http://localhost:3001/new-resale", requestOptions)
-        .then(response => console.log(response.text()));
 }
 
 const getProductTypes = () => async (dispatch, getState) => {

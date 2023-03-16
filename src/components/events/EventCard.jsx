@@ -1,10 +1,7 @@
-import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import Header from '../header/Header'
-import Footer from '../footer/Footer'
 import './eventCard.css'
 
-const EventCard = ({ id, name, text, event_image_path, date }) => {
+const EventCard = ({ id, name, event_image_path, date }) => {
 
     let photoURL = ''
     if (event_image_path === null) {
@@ -13,10 +10,11 @@ const EventCard = ({ id, name, text, event_image_path, date }) => {
         photoURL = `http://localhost:3001/${event_image_path}`;
     }
     return (
-        <><NavLink to={String(id)}>
+        <>
+        <NavLink to={String(id)}>
             <div className="card">
                 <div className="card__photo">
-                    <img src={photoURL} />
+                    <img src={photoURL} alt='Фото мероприятия'/>
                 </div>
                 <div className='card-date'>
                     {date}

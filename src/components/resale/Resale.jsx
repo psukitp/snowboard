@@ -53,7 +53,7 @@ const Resale = () => {
         setCurrentPage(pageNumber)
     }
 
-    if (loadStatus.status === 'pending'){
+    if (loadStatus.status === 'pending') {
         return <PendingPage />
     }
 
@@ -106,14 +106,16 @@ const Resale = () => {
                                 product_type={el.product_type_name}
                                 ad_post_name={el.post_name}
                                 ad_post_text={el.post_text}
-                                ad_price={el.price} />) :
+                                ad_price={el.price}
+                                other_props={el} />) :
                             currentItemCount.map(el => <ResaleListItem
                                 key={el.ad_post_id}
                                 ad_image_path={el.ad_image_path}
                                 product_type={el.product_type_name}
                                 ad_post_name={el.post_name}
                                 ad_post_text={el.post_text}
-                                ad_price={el.price} />)
+                                ad_price={el.price}
+                                other_props={el} />)
                         }
                     </div>
                     <Pagination countPerPage={isCard ? countCardPerPage : countItemsPerPage} totalCount={resales.length} paginate={paginate} currentPagePicked={currentPage} />

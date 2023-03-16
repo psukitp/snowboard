@@ -87,6 +87,22 @@
     margin-top: 30px;
 }
 
+.create__resale-btn--submit{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.create__resale-btn--submit--loader{
+    position: absolute;
+    left: 20px;
+    display: none;
+}
+
+.create__resale-btn--submit--loader.active{
+    display: block;
+}
+
 .create__resale-btn--submit,
 .create__resale-btn--cancel {
     color: #fff;
