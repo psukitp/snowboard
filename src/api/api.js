@@ -87,6 +87,33 @@ const logout = () => (dispatch, getState) => {
 
 }
 
+const updateUser = (id, body) => (dispatch, getState) => {
+    const { name, login, status } = body;
+    const raw = JSON.stringify({ name, login, status })
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+        mode: 'cors',
+        credentials: 'include'
+    };
+    window.fetch(serverUrl + `/users/${id}`, requestOptions)
+        .then((response) => response.json())
+        .then((json) => {
+            if (json.code === 406) {
+                dispatch({type: 'WRONG_DATA'})
+            } else {
+                dispatch({ type: 'UPDATE_USER', payload: json })
+            }
+        })
+}
+
+
+
+
 
 const getEvents = () => (dispatch, getState) => {
     dispatch({ type: 'PENDING' })
@@ -238,4 +265,4 @@ const getProductTypes = () => async (dispatch, getState) => {
         .then((json) => dispatch({ type: 'GET_TYPES', payload: json }))
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes }
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes }

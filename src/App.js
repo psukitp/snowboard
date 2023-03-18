@@ -11,11 +11,12 @@ import Error from './components/error/Error';
 import Event from './components/events/Event';
 import Resale from './components/resale/Resale';
 import CreateResaleAd from './components/resale/CreateResaleAd';
+import Profile from './components/profile/Profile';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Auth />,
+    element: <Events />,
     errorElement: <Error />
   },
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "resale/create-new",
     element: <CreateResaleAd />
+  },
+  {
+    path: "profile",
+    element: <Profile />
   }
 ])
 

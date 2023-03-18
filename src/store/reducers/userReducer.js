@@ -4,6 +4,7 @@ const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 const REGISTRATION = 'REGISTRATION';
 const WRONG_DATA = 'WRONG_DATA';
+const UPDATE_USER = 'UPDATE_USER';
 
 const initialState = {
     login: '',
@@ -21,10 +22,11 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
-            const { login, name, id, email, isActivated, user_image_path } = action.payload;
+            const { login, name, id, email, isActivated, user_image_path, status} = action.payload;
             return {
                 login,
                 name,
+                status,
                 id,
                 email,
                 isActivated,
@@ -51,8 +53,20 @@ const userReducer = (state = initialState, action) => {
                 isAuth: false,
                 isWrong: false
             }
+        case UPDATE_USER:
+            const updatedUser = action.payload;
+            console.log(action.payload)
+            return {
+                ...state, 
+                name: updatedUser.name,
+                login: updatedUser.login,
+                status: updatedUser.status, 
+                user_image_path: updatedUser.user_image_path,
+                isWrong: false
+            }
         case WRONG_DATA:
             return {
+                ...state,
                 isWrong: true
             }
         default:

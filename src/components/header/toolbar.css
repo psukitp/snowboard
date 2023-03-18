@@ -18,6 +18,10 @@
     width: 100%;
 }
 
+.dropdown a{
+    color: #52525B; 
+}
+
 .dropdown.active {
     display: block;
     position: absolute;

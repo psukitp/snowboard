@@ -8,6 +8,8 @@ const Header = ({ textColor, bgColor }) => {
     const userStatus = useSelector((store) => store.user)
     const isLog = userStatus.isAuth;
     const { user_image_path } = userStatus;
+
+
     let photoURL = ''
     if (user_image_path === null) {
         photoURL = `http://localhost:3001/user_image/standard.png`
