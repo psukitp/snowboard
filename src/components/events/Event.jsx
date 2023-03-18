@@ -15,6 +15,8 @@ const Event = () => {
     const userState = useSelector((store) => store.user);
     const [myEvent, setMyEvent] = useState(false)
     const [editEvent, setEditEvent] = useState({ title: '', description: '' })
+    const [isEdit, setIsEdit] = useState(false);
+    const [style, setStyle] = useState({ paddingTop: 0 })
     const dispatch = useDispatch();
     const event = useSelector((store) => store.currentEvent);
 
@@ -27,7 +29,12 @@ const Event = () => {
     }, [userState])
 
     useEffect(() => {
-        userState.id === event.creator_id ? setMyEvent(false) : setMyEvent(true);
+        if (userState.id === event.creator_id) {
+            setMyEvent(true)
+            setStyle({ paddingTop: 48 })
+        } else {
+            setMyEvent(false)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [event])
 
@@ -42,22 +49,15 @@ const Event = () => {
     const descr_edit_block = document.querySelector('.descr__edit-block');
     const title_edit_block = document.querySelector('.title__edit-block');
 
-    const handleEditDescrButton = (e) => {
-        e.preventDefault();
-        setEditEvent({
-            title: event.event_title,
-            description: event.event_description
-        })
-        descr_edit_block.classList.add('active');
-    }
-
-    const handleEditTitleButton = (e) => {
+    const handleEditButton = (e) => {
         e.preventDefault();
         setEditEvent({
             title: event.event_title,
             description: event.event_description
         })
         title_edit_block.classList.add('active');
+        descr_edit_block.classList.add('active');
+        setIsEdit(true);
     }
 
     const handleEditDescr = (e) => {
@@ -68,10 +68,12 @@ const Event = () => {
         setEditEvent({ ...editEvent, title: e.target.value })
     }
 
+
     const editEventBtn = () => {
         dispatch(api.updateEvent(id, editEvent.title, editEvent.description))
         descr_edit_block.classList.remove('active');
         title_edit_block.classList.remove('active');
+        setIsEdit(false);
     }
 
     return (
@@ -87,24 +89,26 @@ const Event = () => {
                         </NavLink>
                     </div>
                     <div className="event__inner">
-                        <div className="event__inner-image">
+                        <div className="event__inner-image" style={style}>
                             <img src={photoURL} alt="Фото" />
                         </div>
                         <div className='event__inner-info'>
-                            {myEvent ? null : <button className='edit-btn' onClick={handleEditTitleButton}>Редактировать</button>}
+                            <div className='event__edit'>
+                                {myEvent ? <button className='edit-btn' onClick={handleEditButton}>Редактировать</button> :
+                                    null
+                                }
+                                {isEdit ? <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}
+                            </div>
                             <div className="event__inner-title">
                                 {event.event_title}
                                 <div className='title__edit-block'>
                                     <input className='title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
-                                    <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button>
                                 </div>
                             </div>
-                            {myEvent ? null : <button className='edit-btn' onClick={handleEditDescrButton}>Редактировать</button>}
                             <div className="event__inner-text">
                                 {event.event_description}
                                 <div className='descr__edit-block'>
                                     <textarea className='descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
-                                    <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button>
                                 </div>
                             </div>
                             <div className="event__inner-date">

@@ -12,6 +12,7 @@ import Event from './components/events/Event';
 import Resale from './components/resale/Resale';
 import CreateResaleAd from './components/resale/CreateResaleAd';
 import Profile from './components/profile/Profile';
+import ResaleAd from './components/resale/ResaleAd';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "profile",
     element: <Profile />
+  },
+  {
+    path: "resale/:id",
+    element: <ResaleAd />
   }
 ])
 

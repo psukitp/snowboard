@@ -5,11 +5,12 @@
 }
 
 .profile__photo {
-    max-width: 120px;
     margin-right: 80px;
 }
 
 .profile__photo img {
+    height: 120px;
+    width: 120px;
     border-radius: 1000px;
 }
 
@@ -19,14 +20,14 @@
     margin-bottom: 25px;
 }
 
-.profile__name{
+.profile__name {
     margin-right: 80px;
     font-size: 18px;
     font-weight: 600;
     color: #52525B;
 }
 
-.profile__name .name{
+.profile__name .name {
     margin-bottom: 20px;
 }
 
@@ -34,7 +35,7 @@
     width: 100%;
 }
 
-.profile__status{
+.profile__status {
     font-weight: 600;
     color: #52525B;
 }
@@ -62,16 +63,16 @@
     line-height: 24px;
 }
 
-.profile__edit__input[name='status']{
+.profile__edit__input[name='status'] {
     width: 500px;
 }
 
 .profile__edit__input[name='name'],
-.profile__edit__input[name='login']{
+.profile__edit__input[name='login'] {
     width: 320px;
 }
 
-.profile__edit-btn{
+.profile__edit-btn {
     margin-top: 20px;
     display: block;
     color: #fff;
@@ -85,6 +86,28 @@
     line-height: 24px;
 }
 
-.profile__edit-btn:hover{
+.profile__edit-btn:hover {
+    opacity: .8;
+}
+
+
+.profile__edit__btn-send-photo {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    padding: 10px 10px;
+    background-color: #4482B9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    max-width: 180px;
+    color: #fff;
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+
+.profile__edit__btn-send-photo:hover{
     opacity: .8;
 }

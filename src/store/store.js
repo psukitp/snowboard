@@ -7,6 +7,7 @@ import commentReducer from "./reducers/commentReducer";
 import resaleReducer from "./reducers/resaleReducer";
 import productTypesReducer from "./reducers/productTypesReducer";
 import loadStatusReducer from "./reducers/loadStatusReducer";
+import currentResaleAdReducer from "./reducers/currentResaleAdReducer";
 
 
 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     comments: commentReducer,
     resales: resaleReducer,
     productTypes: productTypesReducer,
-    loadStatus: loadStatusReducer
+    loadStatus: loadStatusReducer,
+    currentResale: currentResaleAdReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

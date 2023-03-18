@@ -10,6 +10,7 @@ const Profile = () => {
     const userStatus = useSelector((store) => store.user)
     const { user_image_path } = userStatus;
     const [form, setForm] = useState({ name: '', login: '', status: '' })
+    const [file, setFile] = useState({});
     const dispatch = useDispatch();
 
 
@@ -32,6 +33,18 @@ const Profile = () => {
             }
         } else {
             setForm({ ...form, status: target.value })
+        }
+    }
+
+    const handleFileUpload = async ({ target }) => {
+        const currentFile = target.files[0];
+        console.log(currentFile);
+        if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
+            showPopup('files')
+        }
+        else {
+           await dispatch(api.updateUserPhoto(userStatus.id, currentFile));
+           window.location.reload();
         }
     }
 
@@ -70,6 +83,13 @@ const Profile = () => {
                                     {userStatus.status === undefined ? 'У тебя пока что нет статуса :(' : 'Статус: ' + userStatus.status}
                                 </div>
                             </div>
+                            <div className="profile__edit-photo">
+                                <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
+                                <label htmlFor="file" className="profile__edit__btn-send-photo">
+                                    <span className="input__file-text">Обновить фото</span>
+                                    <img src={require('./img/download_icon.png')} alt='Загрузить' />
+                                </label>
+                            </div>
                             <form className="profile__edit" onSubmit={handleFormSubmit}>
                                 <div className="profile__edit__label">Имя</div>
                                 <input className="profile__edit__input" name='name' onChange={handleChangeInput} value={form.name} />
@@ -86,7 +106,7 @@ const Profile = () => {
             </div>
             {userStatus.isWrong ? <ErrorPopup target="wrong_data active" text='Пользователь с таким логином уже существует' /> : null}
             <ErrorPopup target="bad_symbol_login" text='Разрешены только латинские символы' />
-            <ErrorPopup target="wrong_data" text='Пользователь с таким логином уже существует' />
+            <ErrorPopup target="files" text='Разрешены только изображения' />
         </>
     )
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { api } from '../../api/api';
 import Header from '../header/Header'
@@ -20,7 +20,6 @@ const Resale = () => {
     const dispatch = useDispatch();
     const resales = useSelector((store) => store.resales)
     const loadStatus = useSelector((store) => store.loadStatus)
-
     const lastCardIndex = currentPage * countCardPerPage;
     const firstCardIndex = lastCardIndex - countCardPerPage;
     const currentCardCount = resales.sort((a, b) => parseFloat(b.ad_post_id) - parseFloat(a.ad_post_id)).slice(firstCardIndex, lastCardIndex);
@@ -28,7 +27,6 @@ const Resale = () => {
     const lastItemIndex = currentPage * countItemsPerPage;
     const firstItemIndex = lastItemIndex - countItemsPerPage;
     const currentItemCount = resales.sort((a, b) => parseFloat(b.ad_post_id) - parseFloat(a.ad_post_id)).slice(firstItemIndex, lastItemIndex);
-
 
     useEffect(() => {
         dispatch(api.getResales())
@@ -100,22 +98,27 @@ const Resale = () => {
                     </div>
                     <div className="resale__products">
                         {isCard ?
-                            currentCardCount.map(el => <ResaleCardItem
-                                key={el.ad_post_id}
-                                ad_image_path={el.ad_image_path}
-                                product_type={el.product_type_name}
-                                ad_post_name={el.post_name}
-                                ad_post_text={el.post_text}
-                                ad_price={el.price}
-                                other_props={el} />) :
-                            currentItemCount.map(el => <ResaleListItem
-                                key={el.ad_post_id}
-                                ad_image_path={el.ad_image_path}
-                                product_type={el.product_type_name}
-                                ad_post_name={el.post_name}
-                                ad_post_text={el.post_text}
-                                ad_price={el.price}
-                                other_props={el} />)
+                            currentCardCount.map(el => <NavLink to={String(el.ad_post_id)}>
+                                <ResaleCardItem
+                                    key={el.ad_post_id}
+                                    ad_image_path={el.ad_image_path}
+                                    product_type={el.product_type_name}
+                                    ad_post_name={el.post_name}
+                                    ad_post_text={el.post_text}
+                                    ad_price={el.price}
+                                    other_props={el} />
+                            </NavLink>) :
+                            currentItemCount.map(el => <NavLink to={String(el.ad_post_id)} className='resale__list-item'>
+                                <ResaleListItem
+                                    id={el.ad_post_id}
+                                    key={el.ad_post_id}
+                                    ad_image_path={el.ad_image_path}
+                                    product_type={el.product_type_name}
+                                    ad_post_name={el.post_name}
+                                    ad_post_text={el.post_text}
+                                    ad_price={el.price}
+                                    other_props={el} />
+                                    </NavLink>)
                         }
                     </div>
                     <Pagination countPerPage={isCard ? countCardPerPage : countItemsPerPage} totalCount={resales.length} paginate={paginate} currentPagePicked={currentPage} />

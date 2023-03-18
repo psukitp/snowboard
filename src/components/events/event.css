@@ -74,16 +74,16 @@
     line-height: 22px;
 }
 
-.edit__ok-btn,
-.edit-btn {
+.edit__ok-btn {
     border: none;
     background-color: #4482B9;
-    border-radius: 10px;
+    border-radius: 9px;
     color: #fff;
     cursor: pointer;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 600;
+    font-size: 16px;
     line-height: 16px;
+    margin-left: 10px;
 }
 
 .edit__ok-btn {
@@ -121,4 +121,26 @@
     background-color: #4482B9;
     padding: 13px 79px;
     cursor: pointer;
+}
+
+.event__edit{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.edit-btn {
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    text-decoration-line: underline;
+    color: #CBD5E1;
+    cursor: pointer;
+}
+
+.edit-btn:hover{
+    color: #4482B9;
 }

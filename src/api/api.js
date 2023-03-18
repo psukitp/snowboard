@@ -104,11 +104,30 @@ const updateUser = (id, body) => (dispatch, getState) => {
         .then((response) => response.json())
         .then((json) => {
             if (json.code === 406) {
-                dispatch({type: 'WRONG_DATA'})
+                dispatch({ type: 'WRONG_DATA' })
             } else {
                 dispatch({ type: 'UPDATE_USER', payload: json })
             }
         })
+}
+
+
+const updateUserPhoto = (id, photo) => (dispatch, getState) => {
+    const raw = new FormData();
+    raw.append("file", photo);
+
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "x-www-form-urlencoded");
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+        mode: 'no-cors',
+    };
+
+    window.fetch(serverUrl + `/users/new-photo/${id}`, requestOptions)
 }
 
 
@@ -210,8 +229,17 @@ const getResales = () => (dispatch, getState) => {
     window.fetch(serverUrl + '/resales')
         .then((response) => response.json())
         .then((json) => {
-            dispatch({ type: 'GET_RESALE', payload: json });
+            dispatch({ type: 'GET_RESALES', payload: json });
             dispatch({ type: 'SUCCESS' })
+        })
+
+}
+
+const getOneResale = (id) => async (dispatch, getState) => {
+    await window.fetch(serverUrl + `/resale/${id}`)
+        .then((response) => response.json())
+        .then((json) => {
+            dispatch({ type: 'GET_RESALE', payload: json });
         })
 
 }
@@ -265,4 +293,24 @@ const getProductTypes = () => async (dispatch, getState) => {
         .then((json) => dispatch({ type: 'GET_TYPES', payload: json }))
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes }
+const updateResale = (id, body) => (dispatch, getState) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(body),
+        redirect: 'follow',
+        mode: 'cors',
+        credentials: 'include'
+    };
+
+    window.fetch(serverUrl + `/resale/update/${id}`, requestOptions)
+        .then((response) => response.json())
+        .then((json) => {
+            dispatch({ type: 'UPDATE_RESALE', payload: json })
+        })
+
+}
+
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, updateUserPhoto, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes, getOneResale, updateResale }
