@@ -13,6 +13,7 @@ import Resale from './components/resale/Resale';
 import CreateResaleAd from './components/resale/CreateResaleAd';
 import Profile from './components/profile/Profile';
 import ResaleAd from './components/resale/ResaleAd';
+import PendingPage from './components/pendingPage/PendingPage';
 
 const router = createBrowserRouter([
   {

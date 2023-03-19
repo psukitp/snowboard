@@ -2,6 +2,7 @@
     padding-top: 80px;
     font-family: 'Poppins', sans-serif;
     padding-bottom: 100px;
+    background-color: #F8FAFC;
 }
 
 .resale__ad-btn {
@@ -33,11 +34,16 @@
 }
 
 .resale__ad-edit--btn {
+    font-weight: 600;
     border: none;
     background-color: transparent;
     color: #CBD5E1;
     text-decoration: underline;
+    cursor: pointer;
+}
 
+.resale__ad-edit--btn:hover{
+    color: #4482B9
 }
 
 .resale__ad-inner {
@@ -45,9 +51,8 @@
     justify-content: space-between;
 }
 
-.resale__ad-image {
-    max-width: 550px;
-    width: 100%;
+.resale__ad-image img{
+  width: 550px;
 }
 
 .resale__ad-info {

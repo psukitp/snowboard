@@ -105,7 +105,7 @@ const Resale = () => {
                                     product_type={el.product_type_name}
                                     ad_post_name={el.post_name}
                                     ad_post_text={el.post_text}
-                                    ad_price={el.price}
+                                    ad_price={el.price?.split( /(?=(?:...)*$)/ ).join(' ')}
                                     other_props={el} />
                             </NavLink>) :
                             currentItemCount.map(el => <NavLink to={String(el.ad_post_id)} className='resale__list-item'>
@@ -116,7 +116,7 @@ const Resale = () => {
                                     product_type={el.product_type_name}
                                     ad_post_name={el.post_name}
                                     ad_post_text={el.post_text}
-                                    ad_price={el.price}
+                                    ad_price={el.price?.split( /(?=(?:...)*$)/ ).join(' ')}
                                     other_props={el} />
                                     </NavLink>)
                         }

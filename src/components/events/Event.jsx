@@ -55,9 +55,7 @@ const Event = () => {
             title: event.event_title,
             description: event.event_description
         })
-        title_edit_block.classList.add('active');
-        descr_edit_block.classList.add('active');
-        setIsEdit(true);
+        isEdit ? setIsEdit(false) : setIsEdit(true);
     }
 
     const handleEditDescr = (e) => {
@@ -71,8 +69,6 @@ const Event = () => {
 
     const editEventBtn = () => {
         dispatch(api.updateEvent(id, editEvent.title, editEvent.description))
-        descr_edit_block.classList.remove('active');
-        title_edit_block.classList.remove('active');
         setIsEdit(false);
     }
 
@@ -94,22 +90,24 @@ const Event = () => {
                         </div>
                         <div className='event__inner-info'>
                             <div className='event__edit'>
-                                {myEvent ? <button className='edit-btn' onClick={handleEditButton}>Редактировать</button> :
+                                {myEvent ? <button className='edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button> :
                                     null
                                 }
                                 {isEdit ? <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}
                             </div>
                             <div className="event__inner-title">
                                 {event.event_title}
-                                <div className='title__edit-block'>
+                                {isEdit ? <div className='event__edit-block'>
                                     <input className='title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
                                 </div>
+                                    : null}
                             </div>
                             <div className="event__inner-text">
                                 {event.event_description}
-                                <div className='descr__edit-block'>
+                                {isEdit ? <div className='event__edit-block'>
                                     <textarea className='descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
                                 </div>
+                                    : null}
                             </div>
                             <div className="event__inner-date">
                                 {event.event_date === null ? '01.03.23' : event.event_date}

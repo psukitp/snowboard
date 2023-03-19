@@ -73,6 +73,7 @@ html{
   align-items: center;
   max-width: 1190px;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .header{

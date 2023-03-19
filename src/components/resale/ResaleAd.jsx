@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { IMaskInput } from "react-imask";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { api } from "../../api/api";
-import Footer from "../footer/Footer";
+import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import './resaleAd.css'
 
@@ -58,7 +59,7 @@ const ResaleAd = () => {
 
     const editResaleBtn = () => {
         setEditResale({ title: resale.post_name, text: resale.post_text, price: resale.price, tel: resale.ad_telephone });
-        setIsEdit(true);
+        isEdit ? setIsEdit(false) : setIsEdit(true);
     }
 
     const handleEditInput = ({ target }) => {
@@ -80,9 +81,10 @@ const ResaleAd = () => {
 
 
 
+
     return (
         <>
-            <Header bgColor='#fff' />
+            <Header bgColor='#F8FAFC' />
             <section className="resale__ad">
                 <div className="container">
                     <div className='resale__ad-btn'>
@@ -100,7 +102,7 @@ const ResaleAd = () => {
                             <div className="resale__ad-edit--block">
                                 {myResale ?
                                     <div className='resale__ad-btn'>
-                                        <button className="resale__ad-edit--btn" onClick={editResaleBtn}>Редактировать</button>
+                                        <button className="resale__ad-edit--btn" onClick={editResaleBtn}> {isEdit ? 'Отмена': 'Редактировать'}</button>
                                     </div> :
                                     null
                                 }
@@ -128,9 +130,9 @@ const ResaleAd = () => {
                                 </div>
                             ))}
                             <div className="resale__ad-price">
-                                {resale.price + ' ₽'}
+                                {resale.price?.split( /(?=(?:...)*$)/ ).join(' ') + ' ₽'}
                                 {isEdit ? <div className='resal__edit--block'>
-                                    <input className='resale__text-edit--input' value={editResale.price} onChange={handleEditInput} name='price' />
+                                    <IMaskInput mask='0000000' className='resale__text-edit--input' value={editResale.price} onChange={handleEditInput} name='price' />
                                 </div> : null}
 
                             </div>
@@ -141,7 +143,7 @@ const ResaleAd = () => {
                                 <div className="resale__ad-creator--tel">
                                     {resale.ad_telephone}
                                     {isEdit ? <div className='resal__edit--block'>
-                                        <input className='resale__text-edit--input' value={editResale.tel} onChange={handleEditInput} name='tel' />
+                                        <IMaskInput mask='+{7}(000)000-00-00' className='resale__text-edit--input' value={editResale.tel} onChange={handleEditInput} name='tel' />
                                     </div> : null}
                                 </div>
                             </div>
@@ -149,7 +151,7 @@ const ResaleAd = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
+            <RegAuthFooter bgColor='#F8FAFC'/>
         </>
     )
 }

@@ -11,6 +11,11 @@
     grid-column: span 3;
     overflow: hidden;
     display: flex;
+    transition: .15s ease-in-out all;
+}
+
+.resale__item:hover{
+    transform:scale(105%);
 }
 
 .resale__item-inner {
