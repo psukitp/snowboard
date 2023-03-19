@@ -13,7 +13,7 @@ import Resale from './components/resale/Resale';
 import CreateResaleAd from './components/resale/CreateResaleAd';
 import Profile from './components/profile/Profile';
 import ResaleAd from './components/resale/ResaleAd';
-import PendingPage from './components/pendingPage/PendingPage';
+import Statistic from './components/statistic/Statistic'
 
 const router = createBrowserRouter([
   {
@@ -34,11 +34,11 @@ const router = createBrowserRouter([
     element: <Events />
   },
   {
-    path: "events/create-new",
+    path: "/events/create-new",
     element: <CreateEventForm />
   },
   {
-    path: "events/:id",
+    path: "/events/:id",
     element: <Event />
   },
   {
@@ -46,16 +46,20 @@ const router = createBrowserRouter([
     element: <Resale />
   },
   {
-    path: "resale/create-new",
+    path: "/resale/create-new",
     element: <CreateResaleAd />
   },
   {
-    path: "profile",
+    path: "/profile",
     element: <Profile />
   },
   {
-    path: "resale/:id",
+    path: "/resale/:id",
     element: <ResaleAd />
+  },
+  {
+    path: "/statistic",
+    element: <Statistic />
   }
 ])
 

@@ -313,4 +313,21 @@ const updateResale = (id, body) => (dispatch, getState) => {
 
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, updateUserPhoto, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes, getOneResale, updateResale }
+const getEventsStatistic = () => (dispatch, getState) => {
+    window.fetch(serverUrl + '/events-statistic')
+        .then((response) => response.json())
+        .then((json) => {
+             dispatch({ type: 'GET_EVENTS_STATISTIC', payload: json })
+        })
+}
+
+const getCommentsStatistic = () => (dispatch, getState) => {
+    window.fetch(serverUrl + '/comment-statistic')
+        .then((response) => response.json())
+        .then((json) => {
+            console.log(json);
+             dispatch({ type: 'GET_COMMENTS_STATISTIC', payload: json })
+        })
+}
+
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, updateUserPhoto, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes, getOneResale, updateResale, getEventsStatistic, getCommentsStatistic }
