@@ -64,7 +64,7 @@ const Profile = () => {
         <>
             <div className="wrapper">
                 <Header />
-                <div className="main">
+                <div className="main profile__main">
                     <section className="profile">
                         <div className="profile__inner">
                             <div className="profile__info">
@@ -84,20 +84,20 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className="profile__edit-photo">
-                                <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
-                                <label htmlFor="file" className="profile__edit__btn-send-photo">
+                                <input type="file" name="file" id="file" className="snowboard__input input__file" onChange={handleFileUpload} />
+                                <label htmlFor="file" className="snowboard__btn profile__edit__btn-send-photo">
                                     <span className="input__file-text">Обновить фото</span>
                                     <img src={require('./img/download_icon.png')} alt='Загрузить' />
                                 </label>
                             </div>
                             <form className="profile__edit" onSubmit={handleFormSubmit}>
                                 <div className="profile__edit__label">Имя</div>
-                                <input className="profile__edit__input" name='name' onChange={handleChangeInput} value={form.name} />
+                                <input className="snowboard__input profile__edit__input" name='name' onChange={handleChangeInput} value={form.name} />
                                 <div className="profile__edit__label">Логин</div>
-                                <input className="profile__edit__input" name='login' onChange={handleChangeInput} value={form.login} />
+                                <input className="snowboard__input profile__edit__input" name='login' onChange={handleChangeInput} value={form.login} />
                                 <div className="profile__edit__label">Статус</div>
-                                <input className="profile__edit__input" name='status' onChange={handleChangeInput} value={form.status} />
-                                <button type="submit" className="profile__edit-btn">Сохранить</button>
+                                <input className="snowboard__input profile__edit__input" name='status' onChange={handleChangeInput} value={form.status} />
+                                <button type="submit" className="snowboard__btn profile__edit-btn">Сохранить</button>
                             </form>
                         </div>
                     </section>

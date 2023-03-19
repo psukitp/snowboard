@@ -89,7 +89,7 @@ const ResaleAd = () => {
                 <div className="container">
                     <div className='resale__ad-btn'>
                         <NavLink to='/resale'>
-                            <button className='resale__ad-back--btn'>
+                            <button className='snowboard__btn resale__ad-back--btn'>
                                 Назад
                             </button>
                         </NavLink>
@@ -102,16 +102,16 @@ const ResaleAd = () => {
                             <div className="resale__ad-edit--block">
                                 {myResale ?
                                     <div className='resale__ad-btn'>
-                                        <button className="resale__ad-edit--btn" onClick={editResaleBtn}> {isEdit ? 'Отмена': 'Редактировать'}</button>
+                                        <button className="snowboard__btn resale__ad-edit--btn" onClick={editResaleBtn}> {isEdit ? 'Отмена': 'Редактировать'}</button>
                                     </div> :
                                     null
                                 }
-                                {isEdit ? <button className='edit__ok-btn' onClick={handleEditResale}>ОК</button> : null}
+                                {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={handleEditResale}>ОК</button> : null}
                             </div>
                             <div className="resale__ad-title">
                                 {resale.post_name}
                                 {isEdit ? <div className='resal__edit--block'>
-                                    <input className='resale__text-edit--input' value={editResale.title} onChange={handleEditInput} name='title' />
+                                    <input className='snowboard__input resale__text-edit--input' value={editResale.title} onChange={handleEditInput} name='title' />
                                 </div> : null}
 
                             </div>
@@ -119,7 +119,7 @@ const ResaleAd = () => {
                                 <span className="extra__text">Описание:</span>
                                 {resale.post_text}
                                 {isEdit ? <div className='resal__edit--block'>
-                                    <textarea className='resale__text-edit--textarea' value={editResale.text} onChange={handleEditInput} name='text' />
+                                    <textarea className='snowboard__textarea resale__text-edit--textarea' value={editResale.text} onChange={handleEditInput} name='text' />
                                 </div> : null}
 
                             </div>
@@ -132,7 +132,7 @@ const ResaleAd = () => {
                             <div className="resale__ad-price">
                                 {resale.price?.split( /(?=(?:...)*$)/ ).join(' ') + ' ₽'}
                                 {isEdit ? <div className='resal__edit--block'>
-                                    <IMaskInput mask='0000000' className='resale__text-edit--input' value={editResale.price} onChange={handleEditInput} name='price' />
+                                    <IMaskInput mask='0000000' className='snowboard__input resale__text-edit--input' value={editResale.price} onChange={handleEditInput} name='price' />
                                 </div> : null}
 
                             </div>
@@ -143,7 +143,7 @@ const ResaleAd = () => {
                                 <div className="resale__ad-creator--tel">
                                     {resale.ad_telephone}
                                     {isEdit ? <div className='resal__edit--block'>
-                                        <IMaskInput mask='+{7}(000)000-00-00' className='resale__text-edit--input' value={editResale.tel} onChange={handleEditInput} name='tel' />
+                                        <IMaskInput mask='+{7}(000)000-00-00' className='snowboard__input resale__text-edit--input' value={editResale.tel} onChange={handleEditInput} name='tel' />
                                     </div> : null}
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ const ResaleAd = () => {
                     </div>
                 </div>
             </section>
-            <RegAuthFooter bgColor='#F8FAFC'/>
+            <RegAuthFooter bgColor='#F8FAFC' />
         </>
     )
 }

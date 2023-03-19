@@ -14,9 +14,9 @@ const ClothesProperty = ({ changeProperties }) => {
         <>
             <div className="properties">
                 <div className="create__resale-label">Тип</div>
-                <input className="create__resale-input" name="nameof" placeholder="Куртка" value={fields.nameof} onChange={handleInputChange} />
+                <input className="snowboard__input create__resale-input" name="nameof" placeholder="Куртка" value={fields.nameof} onChange={handleInputChange} />
                 <div className="create__resale-label">Размер</div>
-                <input className="create__resale-input" name="size" placeholder="S" value={fields.size} onChange={handleInputChange} />
+                <input className="snowboard__input create__resale-input" name="size" placeholder="S" value={fields.size} onChange={handleInputChange} />
             </div>
         </>
     )

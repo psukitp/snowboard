@@ -79,7 +79,7 @@ const Event = () => {
                 <div className="container">
                     <div className='event__btn'>
                         <NavLink to='/events'>
-                            <button className='event__back-btn'>
+                            <button className='snowboard__btn event__back-btn'>
                                 Назад
                             </button>
                         </NavLink>
@@ -90,22 +90,22 @@ const Event = () => {
                         </div>
                         <div className='event__inner-info'>
                             <div className='event__edit'>
-                                {myEvent ? <button className='edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button> :
+                                {myEvent ? <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button> :
                                     null
                                 }
-                                {isEdit ? <button className='edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}
+                                {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}
                             </div>
                             <div className="event__inner-title">
                                 {event.event_title}
                                 {isEdit ? <div className='event__edit-block'>
-                                    <input className='title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
+                                    <input className='snowboard__input title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
                                 </div>
                                     : null}
                             </div>
                             <div className="event__inner-text">
                                 {event.event_description}
                                 {isEdit ? <div className='event__edit-block'>
-                                    <textarea className='descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
+                                    <textarea className='snowboard__textarea descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
                                 </div>
                                     : null}
                             </div>

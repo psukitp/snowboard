@@ -83,27 +83,27 @@ const CreateEventForm = () => {
                     <div className='event__create__inner'>
                         <form className="event__create__form" onSubmit={handleSubmitForm} encType="multipart/form-data">
                             <div className="event__create__label">Заголовок</div>
-                            <input className="event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
+                            <input className="snowboard__input event__create__input" name="title" onChange={handleChangeInput} placeholder="Введите название мероприятия" value={form.title} />
                             <div className="event__create-date">
                                 <div className="event__create__label">Дата </div>
-                                <IMaskInput mask={'00{.}00{.}0000'} radix='.' className="event__create__input" name="date" placeholder="__.__.__" onChange={handleChangeInput} />
+                                <IMaskInput mask={'00{.}00{.}0000'} radix='.' className="snowboard__input event__create__input" name="date" placeholder="__.__.__" onChange={handleChangeInput} />
                             </div>
                             <div className="event__create__label">Описание </div>
-                            <textarea className="event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
+                            <textarea className="snowboard__textarea event__create__textarea" name="description" onChange={handleChangeInput} placeholder="Введите описание мероприятия" value={form.description} />
                             <div className="event__create-photo">
                                 <input type="file" name="file" id="file" className="input__file" onChange={handleFileUpload} />
-                                <label htmlFor="file" className="event__create__btn-send-photo">
+                                <label htmlFor="file" className="snowboard__btn event__create__btn-send-photo">
                                     <span className="input__file-text">Загрузить фото</span>
                                     <img src={require('./img/download_icon.png')} alt='Загрузить' />
                                 </label>
                             </div>
                             <div className="event__create-btns">
-                                <button className="event__create__btn-submit" type="submit">
+                                <button className="snowboard__btn event__create__btn-submit" type="submit">
                                     <ReactLoading type='spin' color='#fff' height={20} width={20} className='event__create__btn-submit--loader' />
                                     Создать мероприятие
                                 </button>
                                 <NavLink to="/events" className="event__cancel-link">
-                                    <button className="event__create__btn-cancel" type="button">Отмена</button>
+                                    <button className="snowboard__btn event__create__btn-cancel" type="button">Отмена</button>
                                 </NavLink>
                             </div>
                         </form>

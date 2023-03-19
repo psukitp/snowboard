@@ -1,6 +1,5 @@
 .resale__ad {
     padding-top: 80px;
-    font-family: 'Poppins', sans-serif;
     padding-bottom: 100px;
     background-color: #F8FAFC;
 }
@@ -18,23 +17,13 @@
 }
 
 .resale__ad-back--btn {
-    border: none;
-    background: #4482B9;
-    border-radius: 9px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 28px;
-    letter-spacing: -0.2px;
-    color: #FFFFFF;
     padding: 13.5px 79px;
-    cursor: pointer;
     margin-top: 45px;
     margin-bottom: 45px;
 }
 
 .resale__ad-edit--btn {
-    font-weight: 600;
+    padding: 10px 10px;
     border: none;
     background-color: transparent;
     color: #CBD5E1;
@@ -119,15 +108,11 @@
 .resale__text-edit--input{
     width: 550px;
     height: 45px;
-    border: 1px solid #CBD5E1;
-    border-radius: 9px;
-    height: 45px;
     padding: 0 32px;
-    font-size: 20px;
 }
 
 .resale__text-edit--input[name='price']{
-    width: 180px;
+    width: 130px;
     text-align: center;
     margin-left: 10px;
 }
@@ -135,17 +120,11 @@
 .resale__text-edit--input[name='tel']{
     width: 230px;
     height: 40px;
-    font-size: 18px;
-    text-align: center;
     margin-left: 10px;
 }
 
 .resale__text-edit--textarea{
     margin: 25px 0;
     width: 550px;
-    resize: none;
     height: 200px;
-    border: 1px solid #CBD5E1;
-    border-radius: 9px;
-    padding: 15px 32px;
 }

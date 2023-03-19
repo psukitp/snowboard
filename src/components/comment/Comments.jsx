@@ -50,8 +50,8 @@ const Comments = ({ event_id }) => {
                         : <div className="comments__list-plug">Кажется, комментариев нет. Ты можешь оставить первый!</div>}
                 </div>
                 <div className="comment__add">
-                    <textarea className="comment__add-textarea" name="comment" value={comment} onChange={handleComment} placeholder='Комментарий...' />
-                    <button className="comment__add-btn" onClick={handleCommentSubmit}>Добавить</button>
+                    <textarea className="snowboard__textarea" name="comment" value={comment} onChange={handleComment} placeholder='Комментарий...' />
+                    <button className="snowboard__btn comment__add-btn" onClick={handleCommentSubmit}>Добавить</button>
                 </div>
                 <ErrorPopup target="auth" text='Хочешь оставить комментарий? Войди в аккаунт :)'/>
             </div>

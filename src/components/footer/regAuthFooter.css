@@ -1,4 +1,4 @@
-.auth__footer{
+.auth__footer {
     margin-bottom: 30px;
     padding-bottom: 20px;
 }
@@ -6,7 +6,7 @@
 .auth__footer-inner {
     display: flex;
     justify-content: space-between;
-    font-family: 'Poppins', sans-serif;
+    align-items: center;
 }
 
 .auth__footer-navigation {
@@ -23,17 +23,17 @@
     margin-left: 30px;
 }
 
-.auth__footer-menu a{
+.auth__footer-menu a {
     color: #FFFFFF;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
 }
 
-.auth__footer-links{
+.auth__footer-links {
     display: flex;
 }
 
-.auth__footer-links a+a{
+.auth__footer-links a+a {
     margin-left: 15px;
 }

@@ -7,6 +7,7 @@ import Footer from '../footer/Footer'
 import EventCard from './EventCard'
 import PendingPage from '../pendingPage/PendingPage'
 import Pagination from '../pagination/Pagination';
+import RegAuthFooter from '../footer/RegAuthFooter'
 import './events.css'
 
 const Events = () => {
@@ -49,9 +50,9 @@ const Events = () => {
             <section className="events">
                 <div className="container">
                     <div className="events__search">
-                        <input className="events__search-input" placeholder='Найти мероприятие по названию' value={search} onChange={handleSearchChange} />
+                        <input className="snowboard__input events__search-input" placeholder='Найти мероприятие по названию' value={search} onChange={handleSearchChange} />
                         <NavLink to="create-new">
-                            <button className="create__event-btn">
+                            <button className="snowboard__btn create__event-btn">
                                 Создать мероприятие
                             </button>
                         </NavLink>
@@ -79,7 +80,7 @@ const Events = () => {
                         : <div className='events__not-exist'>Мероприятий не найдено {':('}</div>}
                 </div>
             </section>
-            <Footer />
+            <RegAuthFooter />
         </>
     )
 }

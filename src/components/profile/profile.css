@@ -1,7 +1,5 @@
-.profile {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+.profile__main{
+    justify-content: start;
 }
 
 .profile__photo {
@@ -52,15 +50,7 @@
 
 .profile__edit__input {
     padding: 0 25px;
-    border: 1px solid #CBD5E1;
-    border-radius: 12px;
-    height: 45px;
     margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
 }
 
 .profile__edit__input[name='status'] {
@@ -75,39 +65,16 @@
 .profile__edit-btn {
     margin-top: 20px;
     display: block;
-    color: #fff;
     padding: 8px 40px;
-    border: none;
-    border-radius: 9px;
-    background-color: #4482B9;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-}
-
-.profile__edit-btn:hover {
-    opacity: .8;
 }
 
 
 .profile__edit__btn-send-photo {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 28px;
-    letter-spacing: -0.2px;
     padding: 10px 10px;
-    background-color: #4482B9;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 9px;
     max-width: 180px;
-    color: #fff;
     margin-bottom: 35px;
-    cursor: pointer;
-}
-
-.profile__edit__btn-send-photo:hover{
-    opacity: .8;
+    font-size: 15px;
 }

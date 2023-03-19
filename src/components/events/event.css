@@ -1,10 +1,5 @@
 .event {
     padding-top: 125px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 52px;
-    line-height: 58px;
 }
 
 .event__inner-author {
@@ -14,6 +9,8 @@
 .event__inner-title {
     font-weight: 600;
     letter-spacing: -2px;
+    font-size: 52px;
+    line-height: 58px;
     color: #4482B9;
     margin-bottom: 25px;
 }
@@ -55,33 +52,14 @@
     display: none;
 }
 
-.descr__edit-block.active,
-.title__edit-block.active {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-}
-
 .title__edit-input,
 .descr__edit-textarea {
-    border: 1px solid #E4E4E7;
-    border-radius: 9px;
-    padding: 0 20px;
     height: 45px;
     width: 700px;
     margin-right: 30px;
-    font-size: 18px;
-    line-height: 22px;
 }
 
 .edit__ok-btn {
-    border: none;
-    background-color: #4482B9;
-    border-radius: 9px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
     line-height: 16px;
     margin-left: 10px;
 }
@@ -90,37 +68,18 @@
     padding: 10px 20px;
 }
 
-.edit__ok-btn:hover,
-.edit-btn:hover,
-.event__back-btn:hover {
-    opacity: .8;
-}
-
-.edit-btn {
-    padding: 10px 10px;
-}
-
 .descr__edit-textarea {
     height: 200px;
-    resize: none;
 }
 
 .event__btn {
     display: flex;
     justify-content: end;
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 600;
     margin-bottom: 45px;
 }
 
 .event__back-btn {
-    border: none;
-    border-radius: 9px;
-    color: #fff;
-    background-color: #4482B9;
     padding: 13px 79px;
-    cursor: pointer;
 }
 
 .event__edit{
@@ -130,15 +89,10 @@
 }
 
 .edit-btn {
-    border: none;
     background-color: transparent;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 28px;
-    letter-spacing: -0.2px;
     text-decoration-line: underline;
     color: #CBD5E1;
-    cursor: pointer;
+    padding: 10px 10px;
 }
 
 .edit-btn:hover{

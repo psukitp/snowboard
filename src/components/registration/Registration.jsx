@@ -54,7 +54,7 @@ const Registration = () => {
 
     return (
         <>
-            <Header color='#fff' />
+            <Header isReg={true} />
             <section className="reg">
                 <div className="container">
                     <div className='reg__inner'>
@@ -87,36 +87,36 @@ const Registration = () => {
                             <div className='reg__form-subtitle'>Присоединяйтесь к обсуждению оборудования, мероприятий, делитесь фотографиями и многим другим!</div>
                             <div className="reg__form-name">
                                 <div className="reg__label">Ваше имя</div>
-                                <input className="reg__input" name="name" onChange={handleChangeInput} value={form.name} />
+                                <input className="snowboard__input reg__input" name="name" onChange={handleChangeInput} value={form.name} />
                             </div>
                             <div className="reg__form-email">
                                 <div className="reg__label">Почта</div>
-                                <input className="reg__input" name="email" onChange={handleChangeInput} value={form.mail} />
+                                <input className="snowboard__input reg__input" name="email" onChange={handleChangeInput} value={form.mail} />
                             </div>
                             <div className="reg__form-login">
                                 <div className="reg__label">Логин</div>
-                                <input className="reg__input" name="login" onChange={handleChangeInput} value={form.login} />
+                                <input className="snowboard__input reg__input" name="login" onChange={handleChangeInput} value={form.login} />
                             </div>
                             <div className="reg__form-password">
                                 <div className="reg__label">Пароль</div>
-                                <input className="reg__input" name="password" type="password" onChange={handleChangeInput} value={form.password} />
+                                <input className="snowboard__input reg__input" name="password" type="password" onChange={handleChangeInput} value={form.password} />
                             </div>
                             <div className="reg__form-password--repeat">
                                 <div className="reg__label">Повторите пароль</div>
-                                <input className="reg__input" name="password__repeat" type="password" onChange={handleChangeInput} value={form.passwordRepeat}
+                                <input className="snowboard__input reg__input" name="password__repeat" type="password" onChange={handleChangeInput} value={form.passwordRepeat}
                                 />
                                 {form.password !== form.passwordRepeat ?
                                     <div className='reg__wrong-password'>Пароли не совпадают!</div> :
                                     null
                                 }
                             </div>
-                            <button className="reg__btn-submit" type="submit">Зарегистрироваться</button>
+                            <button className="snowboard__btn reg__btn-submit" type="submit">Зарегистрироваться</button>
                             <NavLink to='/auth' className="auth__link">
                                 <span>Уже есть аккаунт?</span> Войти
                             </NavLink>
                         </form>
                     </div>
-                    <RegAuthFooter />
+                    <RegAuthFooter isReg={true} />
                 </div>
             </section>
             <ErrorPopup target='bad-data' text='Не все поля заполнены' />

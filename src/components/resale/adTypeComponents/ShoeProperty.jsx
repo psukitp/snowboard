@@ -15,9 +15,9 @@ const ShoeProperty = ({ changeProperties }) => {
         <>
             <div className="properties">
                 <div className="create__resale-label">Размер</div>
-                <IMaskInput mask='00{.}0' className="create__resale-input" name="size" placeholder='42.5' value={fields.size} onChange={handleInputChange} />
+                <IMaskInput mask='00{.}0' className="snowboard__input create__resale-input" name="size" placeholder='42.5' value={fields.size} onChange={handleInputChange} />
                 <div className="create__resale-label">Жесткость</div>
-                <IMaskInput mask='00' className="create__resale-input" name="flex" placeholder='от 0 до 10' value={fields.flex} onChange={handleInputChange} />
+                <IMaskInput mask='00' className="snowboard__input create__resale-input" name="flex" placeholder='от 0 до 10' value={fields.flex} onChange={handleInputChange} />
             </div>
         </>
     )

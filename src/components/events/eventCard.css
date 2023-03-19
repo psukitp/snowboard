@@ -1,7 +1,6 @@
 .card {
     max-width: 350px;
     width: 100%;
-    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
@@ -43,22 +42,4 @@
     padding-bottom: 22px;
     border-bottom: 1px #4482B9 solid;
     margin-bottom: 22px;
-}
-
-.card__open-btn {
-    background: #1FAEE9;
-    border-radius: 50px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    border: none;
-    color: #FFFFFF;
-    padding: 13px 85px;
-}
-
-.card__open-btn:hover {
-    cursor: pointer;
-    opacity: .8;
 }

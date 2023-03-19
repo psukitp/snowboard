@@ -13,7 +13,6 @@
     border-radius: 20px;
     padding: 35px 30px;
     margin-top: 55px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .event__create__label {
@@ -27,15 +26,8 @@
 
 .event__create__input,
 .event__create__textarea {
-    border: 1px solid #CBD5E1;
-    border-radius: 12px;
     height: 45px;
     margin-bottom: 25px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
 }
 
 .event__create__input[name="title"] {
@@ -60,29 +52,17 @@
 .event__create__textarea {
     width: 980px;
     height: 300px;
-    resize: none;
-    padding: 15px;
 }
 
 .event__create__textarea::placeholder,
 .event__create__input::placeholder {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
     color: #AAAAAA;
 }
 
 .event__create__btn-send-photo {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 28px;
-    letter-spacing: -0.2;
     padding: 13.5px 27px;
-    background-color: #4482B9;
     display: flex;
     align-items: center;
-    border-radius: 9px;
     max-width: 210px;
     color: #fff;
     margin-bottom: 35px;
@@ -99,16 +79,7 @@
 
 .event__create__btn-submit,
 .event__create__btn-cancel {
-    color: #fff;
     padding: 8px 56px;
-    border: none;
-    border-radius: 9px;
-    background-color: #4482B9;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
 }
 
 .event__create__btn-submit {
@@ -134,12 +105,6 @@
 
 .event__create__textarea {
     margin-bottom: 30px;
-}
-
-.event__create__btn-submit:hover,
-.event__create__btn-send-photo:hover {
-    opacity: .8;
-    cursor: pointer;
 }
 
 .event__create__btn-cancel:hover{

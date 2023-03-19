@@ -11,7 +11,6 @@
 .auth__title {
     text-align: center;
     font-size: 52px;
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     margin-bottom: 15px;
     color: #090914;
@@ -20,7 +19,6 @@
 
 .auth__subtitle {
     text-align: center;
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-bottom: 40px;
     color: #52525B;
@@ -47,21 +45,9 @@
     position: relative;
 }
 
-.auth__input {
-    background: #FFFFFF;
-    border: 1px solid #E4E4E7;
-    border-radius: 9px;
-    width: 470px;
+.auth__input{
     height: 65px;
     text-align: center;
-}
-
-.auth__input::placeholder {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    color: #52525B;
-    text-align: center;
-    font-size: 16px;
 }
 
 .auth__input[name="login"] {
@@ -70,26 +56,6 @@
 
 .auth__input[name="password"] {
     margin-bottom: 60px;
-}
-
-.auth__btn-submit {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 28px;
-    color: #FFFFFF;
-    background: #4482B9;
-    border-radius: 10px;
-    border: none;
-    padding: 18px 210px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.auth__btn-submit:hover {
-    cursor: pointer;
-    opacity: 0.8;
 }
 
 .registration__link {

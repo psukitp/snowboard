@@ -35,9 +35,9 @@ const Auth = () => {
                     <div className="auth__subtitle">Присоединяйтесь к обсуждению оборудования, советов, путешествий, делитесь фотографиями и многим другим!</div>
                     <div className='auth__inner'>
                         <form className="auth__form" onSubmit={handleSubmitForm}>
-                            <input className="auth__input" name="login" type="email" onChange={handleChangeInput} placeholder='Почта' />
-                            <input className="auth__input" name="password" type="password" onChange={handleChangeInput} placeholder='Пароль' />
-                            <button className="auth__btn-submit" type="submit">Войти</button>
+                            <input className="snowboard__input auth__input" name="login" type="email" onChange={handleChangeInput} placeholder='Почта' />
+                            <input className="snowboard__input auth__input" name="password" type="password" onChange={handleChangeInput} placeholder='Пароль' />
+                            <button className="snowboard__btn auth__btn-submit" type="submit">Войти</button>
                             <NavLink to='/registration' className="registration__link">
                                 <span>Нет аккаунта?</span> Зарегистрироваться
                             </NavLink>

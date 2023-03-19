@@ -90,7 +90,7 @@ const Resale = () => {
                         </div>
                         <div>
                             <NavLink to="create-new">
-                                <button className="resale__create-new">
+                                <button className="snowboard__btn resale__create-new">
                                     Создать объявление
                                 </button>
                             </NavLink>

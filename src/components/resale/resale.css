@@ -27,23 +27,9 @@
 }
 
 .resale__create-new {
-    border: none;
-    background: #4482B9;
-    border-radius: 9px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 28px;
-    letter-spacing: -0.2px;
-    color: #FFFFFF;
     padding: 13px 19px;
-    cursor: pointer;
 }
 
-.resale__create-new:hover{
-    opacity: .8;
-}
 
 .resale__products{
     display: grid;

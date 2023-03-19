@@ -1,10 +1,6 @@
 .create__resale {
     padding-top: 80px;
     padding-bottom: 55px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
     color: #52525B;
     background-color: #F8FAFC;
     background-image: url('./img/create_bg.png');
@@ -33,18 +29,10 @@
 }
 
 .create__resale-input {
-    border: 1px solid #CBD5E1;
-    border-radius: 12px;
-    height: 45px;
-    margin-bottom: 25px;
     padding: 0 32px;
     margin-bottom: 16px;
 }
 
-.create__resale-input::placeholder {
-    font-weight: 400;
-    color: #CBD5E1;
-}
 
 .create__resale-input[name="title"],
 .create__resale-input[name="tel"] {
@@ -68,18 +56,11 @@
 }
 
 .create__resale-textarea {
-    resize: none;
     width: 970px;
     height: 280px;
-    border: 1px solid #CBD5E1;
-    border-radius: 12px;
     padding: 8px 32px;
 }
 
-.create__resale-textarea::placeholder {
-    font-weight: 400;
-    color: #CBD5E1;
-}
 
 .create__resale-btns {
     display: flex;
@@ -105,12 +86,7 @@
 
 .create__resale-btn--submit,
 .create__resale-btn--cancel {
-    color: #fff;
     padding: 8px 56px;
-    border: none;
-    border-radius: 9px;
-    background-color: #4482B9;
-    cursor: pointer;
 }
 
 .create__resale-btn--cancel {
@@ -118,9 +94,6 @@
     opacity: 0.5;
 }
 
-.create__resale-btn--submit:hover {
-    opacity: .8;
-}
 
 .create__resale-btn--cancel:hover {
     opacity: 1;
