@@ -54,7 +54,7 @@ const Registration = () => {
 
     return (
         <>
-            <Header isReg={true} />
+            <Header textColor='#fff' isReg={true} />
             <section className="reg">
                 <div className="container">
                     <div className='reg__inner'>
@@ -116,7 +116,7 @@ const Registration = () => {
                             </NavLink>
                         </form>
                     </div>
-                    <RegAuthFooter isReg={true} />
+                    <RegAuthFooter textColor='#fff' isReg={true} />
                 </div>
             </section>
             <ErrorPopup target='bad-data' text='Не все поля заполнены' />

@@ -16,6 +16,8 @@
 
 .comment__info-name{
     margin-right: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .comment__text{
@@ -26,4 +28,10 @@
 
 .comment__info{
     display: flex;
+}
+
+.comment__info-name img{
+    border-radius: 50%;
+    width: 35px;
+    margin-right: 10px;
 }

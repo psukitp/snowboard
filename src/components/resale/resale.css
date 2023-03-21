@@ -1,7 +1,13 @@
+.resale__main {
+    background-color: #F8FAFC;
+    margin: 0 0;
+    max-width: none;
+}
+
 .resale {
     padding-top: 80px;
-    background-color: #F8FAFC;
     padding-bottom: 50px;
+    width: 100%;
 }
 
 .resale__inner {
@@ -18,7 +24,7 @@
     cursor: pointer;
 }
 
-.switch__btn img{
+.switch__btn img {
     max-width: 40px;
 }
 
@@ -31,13 +37,13 @@
 }
 
 
-.resale__products{
+.resale__products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
     justify-content: space-between;
 }
 
-.resale__list-item{
+.resale__list-item {
     grid-column-start: 1;
     grid-column-end: 4;
 }

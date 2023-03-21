@@ -40,13 +40,13 @@ const Comments = ({ event_id }) => {
                     Комментарии
                 </div>
                 <div className="comments__list">
-                    {comments.length > 0 ?
-                        comments.map((el) => <Comment
+                    {comments?.length > 0 ?
+                        comments?.sort((a, b) => parseFloat(a.comment_id) - parseFloat(b.comment_id)).map((el) => <Comment
                             key={el.comment_id}
-                            name={el.name}
-                            sname={el.s_name}
+                            login={el.login}
                             date={el.comment_date}
-                            text={el.comment_text} />)
+                            text={el.comment_text}
+                            user_image_path={el.user_image_path} />)
                         : <div className="comments__list-plug">Кажется, комментариев нет. Ты можешь оставить первый!</div>}
                 </div>
                 <div className="comment__add">

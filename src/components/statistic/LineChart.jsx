@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from 'chart.js/auto'
-import { useSelector } from "react-redux";
 
 const LineChart = ({ data }) => {
 

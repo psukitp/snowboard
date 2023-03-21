@@ -13,9 +13,9 @@ const Header = ({ textColor, bgColor, isReg}) => {
 
     let photoURL = ''
     if (user_image_path === null) {
-        photoURL = `http://localhost:3001/user_image/standard.png`
+        photoURL = `http://snowboard.na4u.ru/user_image/standard.png`
     } else {
-        photoURL = `http://localhost:3001/${user_image_path}`;
+        photoURL = `http://snowboard.na4u.ru/${user_image_path}`;
     }
 
 
@@ -52,7 +52,7 @@ const Header = ({ textColor, bgColor, isReg}) => {
                         </nav>
                     </div>
                     {isLog ? <Toolbar name={userStatus.login} sname={userStatus.s_name} photoUrl={photoURL} /> :
-                        <a href="/auth"><button className='snowboard__btn auth__btn'>Войти</button></a>}
+                        <NavLink to="/auth"><button className='snowboard__btn auth__btn'>Войти</button></NavLink>}
                 </div>
             </div>
         </header >

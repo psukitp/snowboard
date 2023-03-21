@@ -56,75 +56,78 @@ const Resale = () => {
     }
 
     return (
-        <>
+        <><div className='wrapper'>
             <Header bgColor='#F8FAFC' />
-            <section className="resale">
-                <div className="container">
-                    <div className="resale__inner">
-                        <div className="resale__switch">
-                            <button className='switch__btn' onClick={setCard}>
-                                {/* <img src={require("./img/cards_icon.png")} alt='Карточками' />
+            <div className='main resale__main'>
+                <section className="resale">
+                    <div className="container">
+                        <div className="resale__inner">
+                            <div className="resale__switch">
+                                <button className='switch__btn' onClick={setCard}>
+                                    {/* <img src={require("./img/cards_icon.png")} alt='Карточками' />
                                  */}
-                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={cardsColor} />
-                                    <rect x="8" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
-                                    <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
-                                    <rect x="8" y="21.8334" width="10.6667" height="10.6667" fill={cardsColor} />
-                                    <rect x="21.3334" y="21.8334" width="10.6667" height="10.6667" fill={cardsColor} />
-                                </svg>
+                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={cardsColor} />
+                                        <rect x="8" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
+                                        <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
+                                        <rect x="8" y="21.8334" width="10.6667" height="10.6667" fill={cardsColor} />
+                                        <rect x="21.3334" y="21.8334" width="10.6667" height="10.6667" fill={cardsColor} />
+                                    </svg>
 
-                            </button>
-                            <button className='switch__btn' onClick={setList}>
-                                {/* <img src={require("./img/list_icon.png")} alt='Строками'/> */}
-                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                    <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={listColor} />
-                                    <rect x="8" y="9.83337" width="5.33333" height="5.33333" fill={listColor} />
-                                    <rect x="14.6666" y="11.1666" width="16" height="2.66667" fill={listColor} />
-                                    <rect x="8" y="17.8334" width="5.33333" height="5.33333" fill={listColor} />
-                                    <rect x="14.6666" y="19.1666" width="16" height="2.66667" fill={listColor} />
-                                    <rect x="8" y="25.8334" width="5.33333" height="5.33333" fill={listColor} />
-                                    <rect x="14.6666" y="27.1666" width="16" height="2.66667" fill={listColor} />
-                                </svg>
-
-                            </button>
-                        </div>
-                        <div>
-                            <NavLink to="create-new">
-                                <button className="snowboard__btn resale__create-new">
-                                    Создать объявление
                                 </button>
-                            </NavLink>
+                                <button className='switch__btn' onClick={setList}>
+                                    {/* <img src={require("./img/list_icon.png")} alt='Строками'/> */}
+                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                        <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={listColor} />
+                                        <rect x="8" y="9.83337" width="5.33333" height="5.33333" fill={listColor} />
+                                        <rect x="14.6666" y="11.1666" width="16" height="2.66667" fill={listColor} />
+                                        <rect x="8" y="17.8334" width="5.33333" height="5.33333" fill={listColor} />
+                                        <rect x="14.6666" y="19.1666" width="16" height="2.66667" fill={listColor} />
+                                        <rect x="8" y="25.8334" width="5.33333" height="5.33333" fill={listColor} />
+                                        <rect x="14.6666" y="27.1666" width="16" height="2.66667" fill={listColor} />
+                                    </svg>
+
+                                </button>
+                            </div>
+                            <div>
+                                <NavLink to="create-new">
+                                    <button className="snowboard__btn resale__create-new">
+                                        Создать объявление
+                                    </button>
+                                </NavLink>
+                            </div>
                         </div>
+                        <div className="resale__products">
+                            {isCard ?
+                                currentCardCount.map(el => <NavLink to={String(el.ad_post_id)}>
+                                    <ResaleCardItem
+                                        key={el.ad_post_id}
+                                        ad_image_path={el.ad_image_path}
+                                        product_type={el.product_type_name}
+                                        ad_post_name={el.post_name}
+                                        ad_post_text={el.post_text}
+                                        ad_price={el.price?.split(/(?=(?:...)*$)/).join(' ')}
+                                        other_props={el} />
+                                </NavLink>) :
+                                currentItemCount.map(el => <NavLink to={String(el.ad_post_id)} className='resale__list-item'>
+                                    <ResaleListItem
+                                        id={el.ad_post_id}
+                                        key={el.ad_post_id}
+                                        ad_image_path={el.ad_image_path}
+                                        product_type={el.product_type_name}
+                                        ad_post_name={el.post_name}
+                                        ad_post_text={el.post_text}
+                                        ad_price={el.price?.split(/(?=(?:...)*$)/).join(' ')}
+                                        other_props={el} />
+                                </NavLink>)
+                            }
+                        </div>
+                        <Pagination countPerPage={isCard ? countCardPerPage : countItemsPerPage} totalCount={resales.length} paginate={paginate} currentPagePicked={currentPage} />
                     </div>
-                    <div className="resale__products">
-                        {isCard ?
-                            currentCardCount.map(el => <NavLink to={String(el.ad_post_id)}>
-                                <ResaleCardItem
-                                    key={el.ad_post_id}
-                                    ad_image_path={el.ad_image_path}
-                                    product_type={el.product_type_name}
-                                    ad_post_name={el.post_name}
-                                    ad_post_text={el.post_text}
-                                    ad_price={el.price?.split( /(?=(?:...)*$)/ ).join(' ')}
-                                    other_props={el} />
-                            </NavLink>) :
-                            currentItemCount.map(el => <NavLink to={String(el.ad_post_id)} className='resale__list-item'>
-                                <ResaleListItem
-                                    id={el.ad_post_id}
-                                    key={el.ad_post_id}
-                                    ad_image_path={el.ad_image_path}
-                                    product_type={el.product_type_name}
-                                    ad_post_name={el.post_name}
-                                    ad_post_text={el.post_text}
-                                    ad_price={el.price?.split( /(?=(?:...)*$)/ ).join(' ')}
-                                    other_props={el} />
-                                    </NavLink>)
-                        }
-                    </div>
-                    <Pagination countPerPage={isCard ? countCardPerPage : countItemsPerPage} totalCount={resales.length} paginate={paginate} currentPagePicked={currentPage} />
-                </div>
-            </section>
+                </section>
+            </div>
             <RegAuthFooter textColor='#52525B' bgColor='#F8FAFC' />
+        </div>
         </>
     )
 }

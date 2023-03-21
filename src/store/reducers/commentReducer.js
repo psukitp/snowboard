@@ -7,6 +7,7 @@ const initialState = [{}];
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_COMMENTS:
+            console.log(action.payload)
             return action.payload;
         case ADD_COMMENT:
             const newComment = action.payload;

@@ -16,12 +16,28 @@ const Comment = (props) => {
     if (!props.date) {
         newCommentDate = getDateNow();
     }
+
+    let photoURL = ''
+    if (props.user_image_path === null) {
+        photoURL = `http://snowboard.na4u.ru/user_image/standard.png`
+    } else {
+        if (props.user_image_path) {
+            photoURL = `http://snowboard.na4u.ru/${props.user_image_path}`;
+        } else {
+            photoURL = `http://snowboard.na4u.ru/${userState.user_image_path}`;
+        }
+
+    }
+
+    console.log(photoURL)
+
     return (
         <>
             <div className="comment">
                 <div className="comment__info">
                     <div className="comment__info-name">
-                        {!props.name ? userState.name : props.name} {!props.sname ? userState.s_name : props.sname}
+                        <img src={photoURL} />
+                        {props.login ? props.login : userState.login}
                     </div>
                     <div className="comment__info-date">
                         {props.date ? props.date : newCommentDate}

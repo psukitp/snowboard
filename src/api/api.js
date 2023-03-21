@@ -1,7 +1,9 @@
 
 
+// const serverUrl = 'http://snowboard.na4u.ru';
 const serverUrl = 'http://localhost:3001';
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'http://localhost:3002';
+// const baseUrl = 'http://snowboarding-portal.na4u.ru';
 
 const registration = (req) => (dispatch, getState) => {
     var myHeaders = new Headers();
@@ -46,6 +48,7 @@ const login = (email, password) => (dispatch, getState) => {
     window.fetch(serverUrl + "/login", requestOptions)
         .then((response) => response.json())
         .then((json) => {
+            console.log(json);
             if (json.status === 400) {
                 dispatch({ type: 'WRONG_DATA' })
             } else {
@@ -53,14 +56,23 @@ const login = (email, password) => (dispatch, getState) => {
                 dispatch({ type: 'LOGIN', payload: json.user })
             }
             if (json.user) {
-                window.location.replace(baseUrl + '/events');
+                // window.location.replace(baseUrl + '/events');
             }
         })
 
 }
 
 const checkAuth = () => (dispatch, getState) => {
-    window.fetch(serverUrl + '/refresh', { credentials: 'include' })
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow',
+        mode: 'cors',
+        credentials: 'include'
+    };
+    window.fetch(serverUrl + '/refresh', requestOptions)
         .then(response => response.json())
         .then(json => {
             dispatch({ type: 'LOGIN', payload: json.user })
@@ -163,7 +175,7 @@ const createNewEvent = async (body) => {
         redirect: 'follow',
         mode: 'no-cors'
     };
-    await fetch("http://localhost:3001/new-event", requestOptions)
+    await fetch(serverUrl + "/new-event", requestOptions)
 }
 
 const getOneEvent = (id) => async (dispatch, getState) => {
@@ -284,11 +296,11 @@ const createNewResale = async (form, properties) => {
         redirect: 'follow',
         mode: 'no-cors'
     };
-    await fetch("http://localhost:3001/new-resale", requestOptions)
+    await fetch(serverUrl + "/new-resale", requestOptions)
 }
 
 const getProductTypes = () => async (dispatch, getState) => {
-    await fetch("http://localhost:3001/products")
+    await fetch(serverUrl + "/products")
         .then(response => response.json())
         .then((json) => dispatch({ type: 'GET_TYPES', payload: json }))
 }
@@ -317,7 +329,7 @@ const getEventsStatistic = () => (dispatch, getState) => {
     window.fetch(serverUrl + '/events-statistic')
         .then((response) => response.json())
         .then((json) => {
-             dispatch({ type: 'GET_EVENTS_STATISTIC', payload: json })
+            dispatch({ type: 'GET_EVENTS_STATISTIC', payload: json })
         })
 }
 
@@ -326,7 +338,7 @@ const getCommentsStatistic = () => (dispatch, getState) => {
         .then((response) => response.json())
         .then((json) => {
             console.log(json);
-             dispatch({ type: 'GET_COMMENTS_STATISTIC', payload: json })
+            dispatch({ type: 'GET_COMMENTS_STATISTIC', payload: json })
         })
 }
 
