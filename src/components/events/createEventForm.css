@@ -1,0 +1,125 @@
+.event__create {
+    padding-top: 80px;
+    background-color: #F8FAFC;
+    padding-bottom: 50px;
+}
+
+.event__create__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.06), 0px 10px 15px rgba(0, 0, 0, 0.03);
+    border-radius: 20px;
+    padding: 35px 30px;
+    margin-top: 55px;
+}
+
+.event__create__label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #090914;
+    margin-bottom: 8px;
+}
+
+.event__create__input,
+.event__create__textarea {
+    height: 45px;
+    margin-bottom: 25px;
+}
+
+.event__create__input[name="title"] {
+    padding: 0 15px;
+    width: 500px;
+}
+
+.event__create__input[name="date"] {
+    width: 150px;
+    padding: 0 30px;
+}
+
+.event__create_block {
+    display: flex;
+    justify-content: start;
+}
+
+.event__create-photo {
+    margin-right: 100px;
+}
+
+.event__create__textarea {
+    width: 980px;
+    height: 300px;
+}
+
+.event__create__textarea::placeholder,
+.event__create__input::placeholder {
+    color: #AAAAAA;
+}
+
+.event__create__btn-send-photo {
+    padding: 13.5px 27px;
+    display: flex;
+    align-items: center;
+    max-width: 210px;
+    color: #fff;
+    margin-bottom: 35px;
+}
+
+.input__file-text {
+    margin-right: 6px;
+}
+
+.event__create-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.event__create__btn-submit,
+.event__create__btn-cancel {
+    padding: 8px 56px;
+}
+
+.event__create__btn-submit {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.event__create__btn-submit--loader{
+    display: none;
+    position: absolute;
+    left: 20px;
+}
+
+.event__create__btn-submit--loader.active {
+    display: block;
+}
+
+.event__create__btn-cancel {
+    padding: 8px 73px;
+    opacity: 0.5;
+}
+
+.event__create__textarea {
+    margin-bottom: 30px;
+}
+
+.event__create__btn-cancel:hover{
+    opacity: 1;
+}
+
+.input__file {
+    display: none;
+}
+
+.event__create-photo .event__create__label {
+    margin-bottom: 18px;
+}
+
+.event__cancel-link {
+    max-width: 205px;
+    width: 100%;
+}

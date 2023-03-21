@@ -1,0 +1,130 @@
+.resale__ad {
+    padding-top: 80px;
+    padding-bottom: 100px;
+    background-color: #F8FAFC;
+}
+
+.resale__ad-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.resale__ad-edit--block{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 45px;
+}
+
+.resale__ad-back--btn {
+    padding: 13.5px 79px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.resale__ad-edit--btn {
+    padding: 10px 10px;
+    border: none;
+    background-color: transparent;
+    color: #CBD5E1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.resale__ad-edit--btn:hover{
+    color: #4482B9
+}
+
+.resale__ad-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resale__ad-image img{
+  width: 550px;
+}
+
+.resale__ad-info {
+    max-width: 550px;
+    width: 100%;
+}
+
+.resale__ad-title {
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 66px;
+    color: #4482B9;
+    margin-bottom: 25px;
+}
+
+.resale__ad-property,
+.resale__ad-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #52525B;
+}
+
+
+.extra__text {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    color: #52525B;
+    margin-right: 10px;
+}
+
+.resale__ad-price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #4482B9;
+    margin-top: 10px;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.resale__ad-creator {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    text-decoration-line: underline;
+    color: #4482B9;
+    align-items: center;
+}
+
+.resale__ad-creator--name {
+    margin-right: 20px;
+}
+
+.resale__ad-creator--tel{
+    display: flex;
+    align-items: center;
+}
+
+.resale__text-edit--input{
+    width: 550px;
+    height: 45px;
+    padding: 0 32px;
+}
+
+.resale__text-edit--input[name='price']{
+    width: 130px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.resale__text-edit--input[name='tel']{
+    width: 230px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.resale__text-edit--textarea{
+    margin: 25px 0;
+    width: 550px;
+    height: 200px;
+}

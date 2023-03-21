@@ -1,0 +1,37 @@
+.comment {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E7;
+    border-radius: 9px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+}
+
+.comment__info{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-weight: 400;  
+}
+
+.comment__info-name{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.comment__text{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.comment__info{
+    display: flex;
+}
+
+.comment__info-name img{
+    border-radius: 50%;
+    width: 35px;
+    margin-right: 10px;
+}

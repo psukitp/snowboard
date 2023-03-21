@@ -1,0 +1,141 @@
+html {
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul[class] {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 1190px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  max-width: 1190px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.header {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+}
+
+.snowboard__input {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 0 15px;
+  border-radius: 9px;
+  width: 470px;
+  height: 45px;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+}
+
+.snowboard__input::placeholder {
+  font-weight: 400;
+  color: #52525B;
+  font-size: 16px;
+}
+
+.snowboard__btn {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: #FFFFFF;
+  background: #4482B9;
+  border-radius: 10px;
+  border: none;
+  padding: 18px 210px;
+}
+
+.snowboard__btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.snowboard__textarea {
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  height: 45px;
+  margin-bottom: 25px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%;
+  height: 150px;
+  resize: none;
+  padding: 15px;
+}
+
+.snowboard__title-form {
+  font-size: 52px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #090914;
+  margin-top: 60px;
+}
