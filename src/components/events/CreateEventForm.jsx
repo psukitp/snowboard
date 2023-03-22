@@ -36,7 +36,7 @@ const CreateEventForm = () => {
             const loader = document.querySelector('.event__create__btn-submit--loader');
             loader.classList.add('active');
             await api.createNewEvent(form);
-            window.location.replace("http://localhost:3000/events");
+            window.location.replace("https://snowboarding-portal.na4u.ru/events");
         } else if (!userState.isAuth) {
             showPopup('auth');
         } else if (checkEmpty(form)) {

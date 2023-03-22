@@ -5,10 +5,14 @@ const EventCard = ({ id, name, event_image_path, date }) => {
 
     let photoURL = ''
     if (event_image_path === null) {
-        photoURL = `http://snowboard.na4u.ru/event_image/standard.jpeg`
+        photoURL = `https://snowboard.na4u.ru/event_image/standard.png`
     } else {
-        photoURL = `http://snowboard.na4u.ru/${event_image_path}`;
+        photoURL = `https://snowboard.na4u.ru/${event_image_path}`;
     }
+
+    console.log(photoURL)
+    console.log(event_image_path)
+
     return (
         <>
         <NavLink to={String(id)}>

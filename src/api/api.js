@@ -1,9 +1,9 @@
 
 
-// const serverUrl = 'http://158.160.0.176:8082';
-const serverUrl = 'http://snowboard.na4u.ru';
-// const baseUrl = 'http://localhost:3000';
-const baseUrl = 'http://snowboarding-portal.na4u.ru';
+const serverUrl = 'http://localhost:3001';
+// const serverUrl = 'https://snowboard.na4u.ru';
+const baseUrl = 'http://localhost:3000';
+// const baseUrl = 'https://snowboarding-portal.na4u.ru';
 
 const registration = (req) => (dispatch, getState) => {
     var myHeaders = new Headers();
@@ -208,6 +208,15 @@ const updateEvent = (id, title, description) => (dispatch, getState) => {
 
 }
 
+const deleteEvent = (id) => (dispatch, getState) => {
+    window.fetch(serverUrl + `/events/delete/${id}`)
+        .then((response) => response.json())
+        .then((json) => {
+            dispatch({ type: 'GET_EVENT', payload: json })
+        })
+
+}
+
 
 
 const addCommentToEvent = (comment_text, creator_id, event_id) => (dispatch, getState) => {
@@ -343,4 +352,4 @@ const getCommentsStatistic = () => (dispatch, getState) => {
         })
 }
 
-export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, updateUserPhoto, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes, getOneResale, updateResale, getEventsStatistic, getCommentsStatistic }
+export const api = { getEvents, createNewEvent, login, checkAuth, logout, updateUser, updateUserPhoto, registration, getOneEvent, addCommentToEvent, getComments, updateEvent, getResales, createNewResale, getProductTypes, getOneResale, updateResale, getEventsStatistic, getCommentsStatistic, deleteEvent }

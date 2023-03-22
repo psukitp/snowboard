@@ -31,7 +31,7 @@ const Pagination = ({ countPerPage, totalCount, paginate, currentPagePicked }) =
                         window.scrollTo(0, 0)
                     }
                 }}>
-                    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="https://www.w3.org/2000/svg">
                         <path d="M12 1L2 5.28571L12 11" stroke="#4482B9" strokeLinecap="round" />
                     </svg>
 
@@ -54,7 +54,7 @@ const Pagination = ({ countPerPage, totalCount, paginate, currentPagePicked }) =
                         window.scrollTo(0, 0)
                     }
                 }}>
-                    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="https://www.w3.org/2000/svg">
                         <path d="M1 11L11 6.71429L1 1" stroke="#4482B9" strokeLinecap="round" />
                     </svg>
 

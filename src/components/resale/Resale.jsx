@@ -65,7 +65,7 @@ const Resale = () => {
                             <button className='switch__btn' onClick={setCard}>
                                 {/* <img src={require("./img/cards_icon.png")} alt='Карточками' />
                                  */}
-                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="https://www.w3.org/2000/svg">
                                     <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={cardsColor} />
                                     <rect x="8" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
                                     <rect x="21.3334" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />
@@ -76,7 +76,7 @@ const Resale = () => {
                             </button>
                             <button className='switch__btn' onClick={setList}>
                                 {/* <img src={require("./img/list_icon.png")} alt='Строками'/> */}
-                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="https://www.w3.org/2000/svg" >
                                     <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={listColor} />
                                     <rect x="8" y="9.83337" width="5.33333" height="5.33333" fill={listColor} />
                                     <rect x="14.6666" y="11.1666" width="16" height="2.66667" fill={listColor} />

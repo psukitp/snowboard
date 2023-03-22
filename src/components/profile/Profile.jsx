@@ -17,9 +17,9 @@ const Profile = () => {
 
     let photoURL = ''
     if (user_image_path === null) {
-        photoURL = `http://snowboard.na4u.ru/user_image/standard.png`
+        photoURL = `https://snowboard.na4u.ru/user_image/standard.png`
     } else {
-        photoURL = `http://snowboard.na4u.ru/${user_image_path}`;
+        photoURL = `https://snowboard.na4u.ru/${user_image_path}`;
     }
 
     const handleChangeInput = ({ target }) => {

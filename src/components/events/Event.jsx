@@ -41,13 +41,10 @@ const Event = () => {
 
     let photoURL = ''
     if (event.event_image_path === null) {
-        photoURL = `http://snowboard.na4u.ru/event_image/standard.jpeg`
+        photoURL = `https://snowboard.na4u.ru/event_image/standard.png`
     } else {
-        photoURL = `http://snowboard.na4u.ru/${event.event_image_path}`;
+        photoURL = `https://snowboard.na4u.ru/${event.event_image_path}`;
     }
-
-    const descr_edit_block = document.querySelector('.descr__edit-block');
-    const title_edit_block = document.querySelector('.title__edit-block');
 
     const handleEditButton = (e) => {
         e.preventDefault();
@@ -72,6 +69,10 @@ const Event = () => {
         setIsEdit(false);
     }
 
+    const handleDeleteButton = () => {
+        dispatch(api.deleteEvent(id))
+    }
+
     return (
         <>
             <Header bgColor='#fff' />
@@ -90,7 +91,12 @@ const Event = () => {
                         </div>
                         <div className='event__inner-info'>
                             <div className='event__edit'>
-                                {myEvent ? <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button> :
+                                {myEvent ? <>
+
+                                    <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button>
+                                    {isEdit ? null : <NavLink to='/events'>
+                                        <button className='snowboard__btn delete-btn' onClick={handleDeleteButton}>Удалить</button></NavLink>}
+                                </> :
                                     null
                                 }
                                 {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}

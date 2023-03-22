@@ -98,3 +98,8 @@
 .edit-btn:hover{
     color: #4482B9;
 }
+
+.delete-btn{
+    padding: 10px 10px;
+    background-color: #f05d5d;
+}

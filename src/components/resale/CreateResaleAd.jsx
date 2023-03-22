@@ -100,7 +100,7 @@ const CreateResaleAd = () => {
             const loader = document.querySelector('.create__resale-btn--submit--loader');
             loader.classList.add('active');
             await api.createNewResale(form, properties)
-            window.location.replace('http://localhost:3000/resale')
+            window.location.replace('https://snowboarding-portal.na4u.ru/resale')
         } else if (!userState.isAuth) {
             showPopup('auth')
         } else {
