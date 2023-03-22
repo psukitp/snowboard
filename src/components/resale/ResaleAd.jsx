@@ -19,9 +19,9 @@ const ResaleAd = () => {
 
     let photoURL = ''
     if (resale.ad_image_path === null) {
-        photoURL = `http://localhost:3001/ad_image/standard.jpeg`
+        photoURL = `http://snowboard.na4u.ru/ad_image/standard.jpeg`
     } else {
-        photoURL = `http://localhost:3001/${resale.ad_image_path}`;
+        photoURL = `http://snowboard.na4u.ru/${resale.ad_image_path}`;
     }
 
     useEffect(() => {

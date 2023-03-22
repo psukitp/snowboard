@@ -41,9 +41,9 @@ const Event = () => {
 
     let photoURL = ''
     if (event.event_image_path === null) {
-        photoURL = `http://localhost:3001/event_image/standard.jpeg`
+        photoURL = `http://snowboard.na4u.ru/event_image/standard.jpeg`
     } else {
-        photoURL = `http://localhost:3001/${event.event_image_path}`;
+        photoURL = `http://snowboard.na4u.ru/${event.event_image_path}`;
     }
 
     const descr_edit_block = document.querySelector('.descr__edit-block');

@@ -4,9 +4,9 @@ const ResaleCardItem = ({ ad_image_path, product_type, ad_post_name, ad_post_tex
 
     let photoURL = ''
     if (ad_image_path === null) {
-        photoURL = `http://localhost:3001/event_image/standard.jpeg`
+        photoURL = `http://snowboard.na4u.ru/event_image/standard.jpeg`
     } else {
-        photoURL = `http://localhost:3001${ad_image_path}`;
+        photoURL = `http://snowboard.na4u.ru/${ad_image_path}`;
     }
 
 

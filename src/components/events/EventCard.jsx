@@ -5,9 +5,9 @@ const EventCard = ({ id, name, event_image_path, date }) => {
 
     let photoURL = ''
     if (event_image_path === null) {
-        photoURL = `http://localhost:3001/event_image/standard.jpeg`
+        photoURL = `http://snowboard.na4u.ru/event_image/standard.jpeg`
     } else {
-        photoURL = `http://localhost:3001/${event_image_path}`;
+        photoURL = `http://snowboard.na4u.ru/${event_image_path}`;
     }
     return (
         <>
