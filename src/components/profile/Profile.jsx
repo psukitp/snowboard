@@ -17,9 +17,9 @@ const Profile = () => {
 
     let photoURL = ''
     if (user_image_path === null) {
-        photoURL = `https://snowboard.na4u.ru/user_image/standard.png`
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/user_image/standard.png`
     } else {
-        photoURL = `https://snowboard.na4u.ru/${user_image_path}`;
+        photoURL = `${process.env.REACT_SERVER_URL}/${user_image_path}`;
     }
 
     const handleChangeInput = ({ target }) => {
@@ -102,7 +102,7 @@ const Profile = () => {
                         </div>
                     </section>
                 </div>
-                <RegAuthFooter />
+                <RegAuthFooter bgColor='#F8FAFC'/>
             </div>
             {userStatus.isWrong ? <ErrorPopup target="wrong_data active" text='Пользователь с таким логином уже существует' /> : null}
             <ErrorPopup target="bad_symbol_login" text='Разрешены только латинские символы' />

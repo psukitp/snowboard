@@ -100,7 +100,7 @@ const CreateResaleAd = () => {
             const loader = document.querySelector('.create__resale-btn--submit--loader');
             loader.classList.add('active');
             await resaleApi.createNewResale(form, properties)
-            window.location.replace('https://snowboarding-portal.na4u.ru/resale')
+            window.location.replace(process.env.REACT_APP_BASE_URL + '/resale')
         } else if (!userState.isAuth) {
             showPopup('auth')
         } else {
@@ -155,10 +155,10 @@ const CreateResaleAd = () => {
                                     <IMaskInput mask='+{7}(000)000-00-00' className="snowboard__input create__resale-input" name="tel" onChange={handleChangeInput} placeholder="+7" value={form.resale_tel} />
                                 </div>
                                 <div className="create__resale-btns">
-                                    <button className="snowboard__btn create__resale-btn--submit" type='submit'>
-                                        <ReactLoading type='spin' color='#fff' height={20} width={20} className='create__resale-btn--submit--loader' />
-                                        Разместить
-                                    </button>
+                                        <button className="snowboard__btn create__resale-btn--submit" type='submit'>
+                                            <ReactLoading type='spin' color='#fff' height={20} width={20} className='create__resale-btn--submit--loader' />
+                                            Разместить
+                                        </button>
                                     <NavLink to="/resale">
                                         <button className="snowboard__btn create__resale-btn--cancel">
                                             Отмена

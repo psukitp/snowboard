@@ -46,7 +46,7 @@ const Events = () => {
 
     return (
         <>
-            <Header bgColor='#fff' />
+            <Header bgColor='#F8FAFC' />
             <section className="events">
                 <div className="container">
                     <div className="events__search">
@@ -80,7 +80,7 @@ const Events = () => {
                         : <div className='events__not-exist'>Мероприятий не найдено {':('}</div>}
                 </div>
             </section>
-            <RegAuthFooter />
+            <RegAuthFooter bgColor='#F8FAFC'/>
         </>
     )
 }

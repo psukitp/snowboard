@@ -1,6 +1,5 @@
 .auth__footer {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 .auth__footer-inner {
@@ -24,7 +23,7 @@
 }
 
 .auth__footer-menu a {
-    color: #FFFFFF;
+    color: #52525B;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;

@@ -5,9 +5,9 @@ const EventCard = ({ id, name, event_image_path, date }) => {
 
     let photoURL = ''
     if (event_image_path === null) {
-        photoURL = `https://snowboard.na4u.ru/event_image/standard.png`
+        photoURL = `${process.env.REACT_SERVER_URL}event_image/standard.png`
     } else {
-        photoURL = `https://snowboard.na4u.ru/${event_image_path}`;
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/${event_image_path}`;
     }
 
     return (

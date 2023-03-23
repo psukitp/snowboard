@@ -1,7 +1,13 @@
+.resale__main{
+    align-items: start;
+}
+
 .resale__ad {
     padding-top: 80px;
     padding-bottom: 100px;
     background-color: #F8FAFC;
+    max-width: 1190px;
+    width: 100%;
 }
 
 .resale__ad-btn {

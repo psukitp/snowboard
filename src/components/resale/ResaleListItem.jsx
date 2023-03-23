@@ -3,9 +3,9 @@ import './resaleListItem.css'
 const ResaleListItem = ({ ad_image_path, product_type, ad_post_name, ad_post_text, ad_price, other_props }) => {
     let photoURL = ''
     if (ad_image_path === null) {
-        photoURL = `https://snowboard.na4u.ru/event_image/standard.png`
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/event_image/standard.png`
     } else {
-        photoURL = `https://snowboard.na4u.ru/${ad_image_path}`;
+        photoURL = `${process.env.REACT_SERVER_URL}/${ad_image_path}`;
     }
 
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router';
 import Header from '../header/Header'
-import Footer from '../footer/Footer'
+import RegAuthFooter from '../footer/RegAuthFooter'
 import Comments from '../comment/Comments';
 import { NavLink } from 'react-router-dom';
 import { eventApi } from '../../api/eventApi';
@@ -41,9 +41,9 @@ const Event = () => {
 
     let photoURL = ''
     if (event.event_image_path === null) {
-        photoURL = `https://snowboard.na4u.ru/event_image/standard.png`
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/event_image/standard.png`
     } else {
-        photoURL = `https://snowboard.na4u.ru/${event.event_image_path}`;
+        photoURL = `${process.env.REACT_SERVER_URL}/${event.event_image_path}`;
     }
 
     const handleEditButton = (e) => {
@@ -75,57 +75,61 @@ const Event = () => {
 
     return (
         <>
-            <Header bgColor='#fff' />
-            <div className="event">
-                <div className="container">
-                    <div className='event__btn'>
-                        <NavLink to='/events'>
-                            <button className='snowboard__btn event__back-btn'>
-                                Назад
-                            </button>
-                        </NavLink>
-                    </div>
-                    <div className="event__inner">
-                        <div className="event__inner-image" style={style}>
-                            <img src={photoURL} alt="Фото" />
-                        </div>
-                        <div className='event__inner-info'>
-                            <div className='event__edit'>
-                                {myEvent ? <>
+            <div className="wrapper">
+                <Header bgColor='#F8FAFC' />
+                <div className="main event_main">
+                    <div className="event">
+                        <div className="container">
+                            <div className='event__btn'>
+                                <NavLink to='/events'>
+                                    <button className='snowboard__btn event__back-btn'>
+                                        Назад
+                                    </button>
+                                </NavLink>
+                            </div>
+                            <div className="event__inner">
+                                <div className="event__inner-image" style={style}>
+                                    <img src={photoURL} alt="Фото" />
+                                </div>
+                                <div className='event__inner-info'>
+                                    <div className='event__edit'>
+                                        {myEvent ? <>
 
-                                    <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button>
-                                    {isEdit ? null : <NavLink to='/events'>
-                                        <button className='snowboard__btn delete-btn' onClick={handleDeleteButton}>Удалить</button></NavLink>}
-                                </> :
-                                    null
-                                }
-                                {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}
-                            </div>
-                            <div className="event__inner-title">
-                                {event.event_title}
-                                {isEdit ? <div className='event__edit-block'>
-                                    <input className='snowboard__input title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
+                                            <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button>
+                                            {isEdit ? null : <NavLink to='/events'>
+                                                <button className='snowboard__btn delete-btn' onClick={handleDeleteButton}>Удалить</button></NavLink>}
+                                        </> :
+                                            null
+                                        }
+                                        {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={editEventBtn}>ОК</button> : null}
+                                    </div>
+                                    <div className="event__inner-title">
+                                        {event.event_title}
+                                        {isEdit ? <div className='event__edit-block'>
+                                            <input className='snowboard__input title__edit-input' value={editEvent.title} onChange={handleEditTitle} />
+                                        </div>
+                                            : null}
+                                    </div>
+                                    <div className="event__inner-text">
+                                        {event.event_description}
+                                        {isEdit ? <div className='event__edit-block'>
+                                            <textarea className='snowboard__textarea descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
+                                        </div>
+                                            : null}
+                                    </div>
+                                    <div className="event__inner-date">
+                                        {event.event_date === null ? '01.03.23' : event.event_date}
+                                    </div>
                                 </div>
-                                    : null}
                             </div>
-                            <div className="event__inner-text">
-                                {event.event_description}
-                                {isEdit ? <div className='event__edit-block'>
-                                    <textarea className='snowboard__textarea descr__edit-textarea' value={editEvent.description} onChange={handleEditDescr} />
-                                </div>
-                                    : null}
-                            </div>
-                            <div className="event__inner-date">
-                                {event.event_date === null ? '01.03.23' : event.event_date}
+                            <div className="event__comment">
+                                <Comments event_id={id} />
                             </div>
                         </div>
-                    </div>
-                    <div className="event__comment">
-                        <Comments event_id={id} />
                     </div>
                 </div>
+                <RegAuthFooter bgColor='#F8FAFC' />
             </div>
-            <Footer />
         </>
     )
 }

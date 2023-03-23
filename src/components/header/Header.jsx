@@ -13,9 +13,9 @@ const Header = ({ textColor, bgColor, isReg}) => {
 
     let photoURL = ''
     if (user_image_path === null) {
-        photoURL = `https://snowboard.na4u.ru/user_image/standard.png`
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/user_image/standard.png`
     } else {
-        photoURL = `https://snowboard.na4u.ru/${user_image_path}`;
+        photoURL = `${process.env.REACT_SERVER_URL}/${user_image_path}`;
     }
 
 

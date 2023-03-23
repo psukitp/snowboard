@@ -1,5 +1,11 @@
+.event_main{
+    align-items: start;
+}
+
 .event {
     padding-top: 125px;
+    max-width: 1190px;
+    width: 100%;
 }
 
 .event__inner-author {

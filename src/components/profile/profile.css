@@ -1,5 +1,6 @@
-.profile__main{
-    justify-content: start;
+.profile{
+    max-width: 1190px;
+    width: 100%;
 }
 
 .profile__photo {

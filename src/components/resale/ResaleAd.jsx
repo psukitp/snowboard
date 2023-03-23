@@ -19,9 +19,9 @@ const ResaleAd = () => {
 
     let photoURL = ''
     if (resale.ad_image_path === null) {
-        photoURL = `https://snowboard.na4u.ru/ad_image/standard.png`
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/ad_image/standard.png`
     } else {
-        photoURL = `https://snowboard.na4u.ru/${resale.ad_image_path}`;
+        photoURL = `${process.env.REACT_SERVER_URL}/${resale.ad_image_path}`;
     }
 
     useEffect(() => {
@@ -84,74 +84,78 @@ const ResaleAd = () => {
 
     return (
         <>
-            <Header bgColor='#F8FAFC' />
-            <section className="resale__ad">
-                <div className="container">
-                    <div className='resale__ad-btn'>
-                        <NavLink to='/resale'>
-                            <button className='snowboard__btn resale__ad-back--btn'>
-                                Назад
-                            </button>
-                        </NavLink>
-                    </div>
-                    <div className="resale__ad-inner">
-                        <div className="resale__ad-image" style={style}>
-                            <img src={photoURL} />
+            <div className="wrapper">
+                <Header bgColor='#F8FAFC' />
+                <div className="main resale__main">
+                    <section className="resale__ad">
+                        <div className="container">
+                            <div className='resale__ad-btn'>
+                                <NavLink to='/resale'>
+                                    <button className='snowboard__btn resale__ad-back--btn'>
+                                        Назад
+                                    </button>
+                                </NavLink>
+                            </div>
+                            <div className="resale__ad-inner">
+                                <div className="resale__ad-image" style={style}>
+                                    <img src={photoURL} />
+                                </div>
+                                <div className="resale__ad-info">
+                                    <div className="resale__ad-edit--block">
+                                        {myResale ?
+                                            <div className='resale__ad-btn'>
+                                                <button className="snowboard__btn resale__ad-edit--btn" onClick={editResaleBtn}> {isEdit ? 'Отмена' : 'Редактировать'}</button>
+                                            </div> :
+                                            null
+                                        }
+                                        {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={handleEditResale}>ОК</button> : null}
+                                    </div>
+                                    <div className="resale__ad-title">
+                                        {resale.post_name}
+                                        {isEdit ? <div className='resal__edit--block'>
+                                            <input className='snowboard__input resale__text-edit--input' value={editResale.title} onChange={handleEditInput} name='title' />
+                                        </div> : null}
+
+                                    </div>
+                                    <div className="resale__ad-text">
+                                        <span className="extra__text">Описание:</span>
+                                        {resale.post_text}
+                                        {isEdit ? <div className='resal__edit--block'>
+                                            <textarea className='snowboard__textarea resale__text-edit--textarea' value={editResale.text} onChange={handleEditInput} name='text' />
+                                        </div> : null}
+
+                                    </div>
+                                    {properties.map(el => (
+                                        <div className="resale__ad-property">
+                                            <span className="extra__text">{el.name + ':'}</span>
+                                            {el.value}
+                                        </div>
+                                    ))}
+                                    <div className="resale__ad-price">
+                                        {resale.price?.split(/(?=(?:...)*$)/).join(' ') + ' ₽'}
+                                        {isEdit ? <div className='resal__edit--block'>
+                                            <IMaskInput mask='0000000' className='snowboard__input resale__text-edit--input' value={editResale.price} onChange={handleEditInput} name='price' />
+                                        </div> : null}
+
+                                    </div>
+                                    <div className="resale__ad-creator">
+                                        <div className="resale__ad-creator--name">
+                                            {resale.login}
+                                        </div>
+                                        <div className="resale__ad-creator--tel">
+                                            {resale.ad_telephone}
+                                            {isEdit ? <div className='resal__edit--block'>
+                                                <IMaskInput mask='+{7}(000)000-00-00' className='snowboard__input resale__text-edit--input' value={editResale.tel} onChange={handleEditInput} name='tel' />
+                                            </div> : null}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="resale__ad-info">
-                            <div className="resale__ad-edit--block">
-                                {myResale ?
-                                    <div className='resale__ad-btn'>
-                                        <button className="snowboard__btn resale__ad-edit--btn" onClick={editResaleBtn}> {isEdit ? 'Отмена': 'Редактировать'}</button>
-                                    </div> :
-                                    null
-                                }
-                                {isEdit ? <button className='snowboard__btn edit__ok-btn' onClick={handleEditResale}>ОК</button> : null}
-                            </div>
-                            <div className="resale__ad-title">
-                                {resale.post_name}
-                                {isEdit ? <div className='resal__edit--block'>
-                                    <input className='snowboard__input resale__text-edit--input' value={editResale.title} onChange={handleEditInput} name='title' />
-                                </div> : null}
-
-                            </div>
-                            <div className="resale__ad-text">
-                                <span className="extra__text">Описание:</span>
-                                {resale.post_text}
-                                {isEdit ? <div className='resal__edit--block'>
-                                    <textarea className='snowboard__textarea resale__text-edit--textarea' value={editResale.text} onChange={handleEditInput} name='text' />
-                                </div> : null}
-
-                            </div>
-                            {properties.map(el => (
-                                <div className="resale__ad-property">
-                                    <span className="extra__text">{el.name + ':'}</span>
-                                    {el.value}
-                                </div>
-                            ))}
-                            <div className="resale__ad-price">
-                                {resale.price?.split( /(?=(?:...)*$)/ ).join(' ') + ' ₽'}
-                                {isEdit ? <div className='resal__edit--block'>
-                                    <IMaskInput mask='0000000' className='snowboard__input resale__text-edit--input' value={editResale.price} onChange={handleEditInput} name='price' />
-                                </div> : null}
-
-                            </div>
-                            <div className="resale__ad-creator">
-                                <div className="resale__ad-creator--name">
-                                    {resale.login}
-                                </div>
-                                <div className="resale__ad-creator--tel">
-                                    {resale.ad_telephone}
-                                    {isEdit ? <div className='resal__edit--block'>
-                                        <IMaskInput mask='+{7}(000)000-00-00' className='snowboard__input resale__text-edit--input' value={editResale.tel} onChange={handleEditInput} name='tel' />
-                                    </div> : null}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-            </section>
-            <RegAuthFooter bgColor='#F8FAFC' />
+                <RegAuthFooter bgColor='#F8FAFC' />
+            </div>
         </>
     )
 }
