@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { api } from "../../api/api";
+import { commentApi } from "../../api/commentApi";
 import ErrorPopup from "../popup/ErrorPopup";
 import Comment from "./Comment";
 import './comments.css'
@@ -14,7 +14,7 @@ const Comments = ({ event_id }) => {
 
 
     useEffect(() => {
-        dispatch(api.getComments(event_id))
+        dispatch(commentApi.getComments(event_id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -24,7 +24,7 @@ const Comments = ({ event_id }) => {
 
     const handleCommentSubmit = () => {
         if (comment !== '' && userState.isAuth) {
-            dispatch(api.addCommentToEvent(comment, userState.id, event_id));
+            dispatch(commentApi.addCommentToEvent(comment, userState.id, event_id));
             setComment('');
         }
         if (!userState.isAuth) {

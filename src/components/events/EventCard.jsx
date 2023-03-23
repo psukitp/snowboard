@@ -10,9 +10,6 @@ const EventCard = ({ id, name, event_image_path, date }) => {
         photoURL = `https://snowboard.na4u.ru/${event_image_path}`;
     }
 
-    console.log(photoURL)
-    console.log(event_image_path)
-
     return (
         <>
         <NavLink to={String(id)}>

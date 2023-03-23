@@ -1,12 +1,12 @@
 import './event.css'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { api } from "../../api/api";
 import { useParams } from 'react-router';
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import Comments from '../comment/Comments';
 import { NavLink } from 'react-router-dom';
+import { eventApi } from '../../api/eventApi';
 
 
 
@@ -22,7 +22,7 @@ const Event = () => {
 
     useEffect(() => {
         if (id !== undefined) {
-            dispatch(api.getOneEvent(id));
+            dispatch(eventApi.getOneEvent(id));
         }
         window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,12 +65,12 @@ const Event = () => {
 
 
     const editEventBtn = () => {
-        dispatch(api.updateEvent(id, editEvent.title, editEvent.description))
+        dispatch(eventApi.updateEvent(id, editEvent.title, editEvent.description))
         setIsEdit(false);
     }
 
     const handleDeleteButton = () => {
-        dispatch(api.deleteEvent(id))
+        dispatch(eventApi.deleteEvent(id))
     }
 
     return (

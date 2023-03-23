@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { api } from '../../api/api';
 import Header from '../header/Header'
 import './resale.css'
 import ResaleCardItem from './ResaleCardItem';
@@ -9,6 +8,7 @@ import RegAuthFooter from '../footer/RegAuthFooter';
 import { NavLink } from 'react-router-dom';
 import Pagination from '../pagination/Pagination';
 import PendingPage from '../pendingPage/PendingPage';
+import { resaleApi } from '../../api/resaleApi';
 
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
@@ -29,7 +29,7 @@ const Resale = () => {
     const currentItemCount = resales.sort((a, b) => parseFloat(b.ad_post_id) - parseFloat(a.ad_post_id)).slice(firstItemIndex, lastItemIndex);
 
     useEffect(() => {
-        dispatch(api.getResales())
+        dispatch(resaleApi.getResales())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { api } from "../../api/api"
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
 import { IMaskInput } from "react-imask"
 import ReactLoading from 'react-loading'
 import './createEventForm.css'
+import { eventApi } from "../../api/eventApi"
 
 
 const CreateEventForm = () => {
@@ -35,7 +35,7 @@ const CreateEventForm = () => {
         if (userState.isAuth && dateCorrect && !checkEmpty(form)) {
             const loader = document.querySelector('.event__create__btn-submit--loader');
             loader.classList.add('active');
-            await api.createNewEvent(form);
+            await eventApi.createNewEvent(form);
             window.location.replace("https://snowboarding-portal.na4u.ru/events");
         } else if (!userState.isAuth) {
             showPopup('auth');

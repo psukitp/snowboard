@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { api } from "../../api/api";
+import { resaleApi } from "../../api/resaleApi";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import './resaleAd.css'
@@ -26,7 +26,7 @@ const ResaleAd = () => {
 
     useEffect(() => {
         if (id !== undefined) {
-            dispatch(api.getOneResale(id));
+            dispatch(resaleApi.getOneResale(id));
         }
         window.scrollTo(0, 0);
     }, [userState])
@@ -75,7 +75,7 @@ const ResaleAd = () => {
     }
 
     const handleEditResale = () => {
-        dispatch(api.updateResale(id, editResale))
+        dispatch(resaleApi.updateResale(id, editResale))
         setIsEdit(false);
     }
 

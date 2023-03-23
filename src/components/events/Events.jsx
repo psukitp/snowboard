@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { api } from '../../api/api';
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import EventCard from './EventCard'
@@ -9,6 +8,7 @@ import PendingPage from '../pendingPage/PendingPage'
 import Pagination from '../pagination/Pagination';
 import RegAuthFooter from '../footer/RegAuthFooter'
 import './events.css'
+import { eventApi } from '../../api/eventApi';
 
 const Events = () => {
     const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Events = () => {
 
 
     useEffect(() => {
-        dispatch(api.getEvents())
+        dispatch(eventApi.getEvents())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

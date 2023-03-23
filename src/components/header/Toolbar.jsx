@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { api } from '../../api/api'
+import { userApi } from '../../api/userApi'
 import './toolbar.css'
 
 const Toolbar = (props) => {
@@ -15,7 +15,7 @@ const Toolbar = (props) => {
     }
 
     const handleLogout = () => {
-        dispatch(api.logout())
+        dispatch(userApi.logout())
     }
 
     return (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { api } from "../../api/api";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import './profile.css'
 import ErrorPopup from "../popup/ErrorPopup";
+import { userApi } from "../../api/userApi";
 
 const Profile = () => {
     const userStatus = useSelector((store) => store.user)
@@ -43,14 +43,14 @@ const Profile = () => {
             showPopup('files')
         }
         else {
-           await dispatch(api.updateUserPhoto(userStatus.id, currentFile));
+           await dispatch(userApi.updateUserPhoto(userStatus.id, currentFile));
            window.location.reload();
         }
     }
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(api.updateUser(userStatus.id, form))
+        await dispatch(userApi.updateUser(userStatus.id, form))
         setForm({ name: '', login: '', status: '' })
     }
 

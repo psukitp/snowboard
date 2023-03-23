@@ -4,7 +4,6 @@ import Registration from './components/registration/Registration';
 import Events from './components/events/Events';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CreateEventForm from './components/events/CreateEventForm';
-import { api } from './api/api';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Error from './components/error/Error';
@@ -14,6 +13,7 @@ import CreateResaleAd from './components/resale/CreateResaleAd';
 import Profile from './components/profile/Profile';
 import ResaleAd from './components/resale/ResaleAd';
 import Statistic from './components/statistic/Statistic'
+import { userApi } from './api/userApi';
 
 const router = createBrowserRouter([
   {
@@ -68,7 +68,7 @@ function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      dispatch(api.checkAuth());
+      dispatch(userApi.checkAuth());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

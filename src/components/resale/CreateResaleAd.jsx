@@ -6,12 +6,12 @@ import Header from "../header/Header";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorPopup from "../popup/ErrorPopup";
-import { api } from "../../api/api";
 import { IMaskInput } from "react-imask";
 import SnowboardProperty from "./adTypeComponents/SnowboardProperty";
 import ShoeProperty from "./adTypeComponents/ShoeProperty";
 import BindingProperty from "./adTypeComponents/BindingProperty";
 import ClothesProperty from "./adTypeComponents/ClothesProperty";
+import { resaleApi } from "../../api/resaleApi";
 
 
 const CreateResaleAd = () => {
@@ -32,7 +32,7 @@ const CreateResaleAd = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(api.getProductTypes())
+        dispatch(resaleApi.getProductTypes())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -99,7 +99,7 @@ const CreateResaleAd = () => {
         if (userState.isAuth && form.resale_title.length < 20 && !checkEmpty(form) && ((form.resale_type === 1 && checkObject(3, properties)) || (form.resale_type !== 1 && checkObject(2, properties)))) {
             const loader = document.querySelector('.create__resale-btn--submit--loader');
             loader.classList.add('active');
-            await api.createNewResale(form, properties)
+            await resaleApi.createNewResale(form, properties)
             window.location.replace('https://snowboarding-portal.na4u.ru/resale')
         } else if (!userState.isAuth) {
             showPopup('auth')

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { api } from '../../api/api';
+import { userApi } from '../../api/userApi';
 import FooterLine from '../footer/FooterLine';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header'
@@ -14,7 +14,7 @@ const Auth = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        dispatch(api.login(form.login, form.password));
+        dispatch(userApi.login(form.login, form.password));
     }
 
     const handleChangeInput = (e) => {

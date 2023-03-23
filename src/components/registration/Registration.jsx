@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { api } from '../../api/api';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header';
 import './registration.css'
 import ErrorPopup from '../popup/ErrorPopup'
+import { userApi } from '../../api/userApi';
 
 const Registration = () => {
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ const Registration = () => {
             popup.classList.add('active')
             setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         } else {
-            dispatch(api.registration(form))
+            dispatch(userApi.registration(form))
         }
     }
 

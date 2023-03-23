@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { api } from "../../api/api";
+import { commentApi } from "../../api/commentApi";
+import { eventApi } from "../../api/eventApi";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import BarChart from "./BarChart";
@@ -11,8 +12,8 @@ const Statistic = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(api.getEventsStatistic())
-        dispatch(api.getCommentsStatistic())
+        dispatch(eventApi.getEventsStatistic())
+        dispatch(commentApi.getCommentsStatistic())
     }, [])
 
     const event_data = useSelector((store) => store.statistic.events)
