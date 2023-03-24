@@ -21,7 +21,7 @@ const ResaleAd = () => {
     if (resale.ad_image_path === null) {
         photoURL = `${process.env.REACT_APP_SERVER_URL}/ad_image/standard.png`
     } else {
-        photoURL = `${process.env.REACT_SERVER_URL}/${resale.ad_image_path}`;
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/${resale.ad_image_path}`;
     }
 
     useEffect(() => {

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
@@ -15,6 +15,7 @@ const CreateEventForm = () => {
     const userState = useSelector((store) => store.user);
     const user_id = userState.id;
     const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: '', event_description: '', event_image: '' })
+    const navigate = useNavigate()
 
     const checkEmpty = ({ resale_title, event_date, event_description }) => {
         return !(resale_title !== '' && event_date !== '' && event_description !== '')
@@ -37,7 +38,7 @@ const CreateEventForm = () => {
             const loader = document.querySelector('.event__create__btn-submit--loader');
             loader.classList.add('active');
             await eventApi.createNewEvent(form);
-            window.location.replace(process.env.REACT_APP_BASE_URL + '/events')
+            navigate('/events')
         } else if (!userState.isAuth) {
             showPopup('auth');
         } else if (checkEmpty(form)) {

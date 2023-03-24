@@ -47,7 +47,8 @@ const login = (email, password) => (dispatch, getState) => {
             if (json.status === 400) {
                 dispatch({ type: 'WRONG_DATA' })
             } else {
-                localStorage.setItem('token', json.accessToken)
+                localStorage.setItem('accessToken', json.accessToken)
+                localStorage.setItem('refreshToken', json.refreshToken)
                 dispatch({ type: 'LOGIN', payload: json.user })
             }
             if (json.user) {
@@ -63,7 +64,7 @@ const checkAuth = () => (dispatch, getState) => {
     const requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: JSON.stringify({ token: localStorage.getItem('token') }),
+        body: JSON.stringify({ token: localStorage.getItem('accessToken') }),
         redirect: 'follow',
         mode: 'cors'
     };
@@ -71,7 +72,8 @@ const checkAuth = () => (dispatch, getState) => {
         .then(response => response.json())
         .then(json => {
             console.log(json);
-            localStorage.setItem('token', json.accessToken)
+            localStorage.setItem('accessToken', json.accessToken)
+            localStorage.setItem('refreshToken', json.refreshToken)
             dispatch({ type: 'LOGIN', payload: json.user })
         })
 }

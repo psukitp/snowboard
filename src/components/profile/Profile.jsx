@@ -19,7 +19,7 @@ const Profile = () => {
     if (user_image_path === null) {
         photoURL = `${process.env.REACT_APP_SERVER_URL}/user_image/standard.png`
     } else {
-        photoURL = `${process.env.REACT_SERVER_URL}/${user_image_path}`;
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/${user_image_path}`;
     }
 
     const handleChangeInput = ({ target }) => {

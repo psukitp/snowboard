@@ -43,7 +43,7 @@ const Event = () => {
     if (event.event_image_path === null) {
         photoURL = `${process.env.REACT_APP_SERVER_URL}/event_image/standard.png`
     } else {
-        photoURL = `${process.env.REACT_SERVER_URL}/${event.event_image_path}`;
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/${event.event_image_path}`;
     }
 
     const handleEditButton = (e) => {

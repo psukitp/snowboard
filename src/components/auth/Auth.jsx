@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { userApi } from '../../api/userApi';
 import FooterLine from '../footer/FooterLine';
 import RegAuthFooter from '../footer/RegAuthFooter';
@@ -11,6 +11,13 @@ const Auth = () => {
     const dispatch = useDispatch();
     const userStatus = useSelector((store) => store.user)
     const [form, setForm] = useState({ login: '', password: '' })
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (userStatus.isAuth){
+            return navigate('/events')
+        }
+    }, [userStatus.isAuth])
 
     const handleSubmitForm = (e) => {
         e.preventDefault();

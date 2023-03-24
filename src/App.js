@@ -18,7 +18,7 @@ import { userApi } from './api/userApi';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Events />,
+    element: <Auth />,
     errorElement: <Error />
   },
   {

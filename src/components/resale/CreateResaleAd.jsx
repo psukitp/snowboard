@@ -3,7 +3,7 @@ import ReactLoading from 'react-loading'
 import './createResaleAd.css'
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorPopup from "../popup/ErrorPopup";
 import { IMaskInput } from "react-imask";
@@ -19,6 +19,7 @@ const CreateResaleAd = () => {
     const productTypes = useSelector((store) => store.productTypes)
     const [form, setForm] = useState({ creator_id: userState.id, resale_title: '', resale_description: '', resale_price: '', resale_type: 1, resale_tel: '+7', resale_image: '' })
     const [properties, setPropirties] = useState({});
+    const navigate = useNavigate();
 
     const checkEmpty = ({ resale_title, resale_description, resale_price, resale_tel }) => {
         return !(resale_title !== '' && resale_description !== '' && resale_price !== '' && resale_tel !== '')
@@ -100,7 +101,7 @@ const CreateResaleAd = () => {
             const loader = document.querySelector('.create__resale-btn--submit--loader');
             loader.classList.add('active');
             await resaleApi.createNewResale(form, properties)
-            window.location.replace(process.env.REACT_APP_BASE_URL + '/resale')
+            navigate('/resale')
         } else if (!userState.isAuth) {
             showPopup('auth')
         } else {
