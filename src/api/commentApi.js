@@ -29,7 +29,6 @@ const getCommentsStatistic = () => (dispatch, getState) => {
     window.fetch(serverUrl + '/comment-statistic')
         .then((response) => response.json())
         .then((json) => {
-            console.log(json);
             dispatch({ type: 'GET_COMMENTS_STATISTIC', payload: json })
         })
 }

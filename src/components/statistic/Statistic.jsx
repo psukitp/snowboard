@@ -20,22 +20,22 @@ const Statistic = () => {
     const comment_data = useSelector((store) => store.statistic.comments)
     return (
         <>
-            <Header bgColor='#F8FAFC'/>
+            <Header bgColor='#F8FAFC' />
             <section className="statistic">
                 <div className="container">
                     <div className="statistic__inner">
                         <div className="statistic__charts">
                             <div className="statistic__charts-bar">
-                                <BarChart data={event_data} />
+                                <BarChart data={event_data?.sort((a,b) => a.event_date.localeCompare(b.event_date)).sort((a, b) => a.event_date.slice(3, 5).localeCompare(b.event_date.slice(3, 5)))} />
                             </div>
                             <div className="statistic__charts-line">
-                                <LineChart data={comment_data} />
+                                <LineChart data={comment_data.sort((a,b) => a.comment_date.localeCompare(b.comment_date)).sort((a, b) => a.comment_date.slice(3, 5).localeCompare(b.comment_date.slice(3, 5)))} />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <RegAuthFooter bgColor='#F8FAFC'/>
+            <RegAuthFooter bgColor='#F8FAFC' />
         </>
     )
 }

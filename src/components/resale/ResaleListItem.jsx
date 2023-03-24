@@ -5,7 +5,7 @@ const ResaleListItem = ({ ad_image_path, product_type, ad_post_name, ad_post_tex
     if (ad_image_path === null) {
         photoURL = `${process.env.REACT_APP_SERVER_URL}/event_image/standard.png`
     } else {
-        photoURL = `${process.env.REACT_SERVER_URL}/${ad_image_path}`;
+        photoURL = `${process.env.REACT_APP_SERVER_URL}/${ad_image_path}`;
     }
 
 

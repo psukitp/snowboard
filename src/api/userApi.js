@@ -71,7 +71,6 @@ const checkAuth = () => (dispatch, getState) => {
     window.fetch(serverUrl + '/refresh', requestOptions)
         .then(response => response.json())
         .then(json => {
-            console.log(json);
             localStorage.setItem('accessToken', json.accessToken)
             localStorage.setItem('refreshToken', json.refreshToken)
             dispatch({ type: 'LOGIN', payload: json.user })
