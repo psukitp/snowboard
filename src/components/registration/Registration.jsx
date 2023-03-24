@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header';
 import './registration.css'
@@ -16,12 +16,28 @@ const Registration = () => {
         password: '',
         passwordRepeat: ''
     })
+    const navigate = useNavigate();
+    const userState = useSelector((store) => store.user)
+
+    useEffect(() => {
+        if (!userState.isWrong && userState.isWrong !== null) {
+            navigate('/events')
+        } else if (userState.isWrong  !== null) {
+            showPopup('bad-logem')
+        }
+    }, [userState])
 
     const checkEmpty = ({ login, email, name }) => {
         return !(login !== '' && email !== '' && name !== '')
     }
 
-    const handleSubmitForm = (e) => {
+    const showPopup = (name) => {
+        const popup = document.querySelector(`.popup__${name}`);
+        popup.classList.add('active')
+        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+    }
+
+    const handleSubmitForm = async (e) => {
         e.preventDefault();
         if (checkEmpty(form)) {
             const popup = document.querySelector('.popup__bad-data');
@@ -32,7 +48,7 @@ const Registration = () => {
             popup.classList.add('active')
             setTimeout(() => popup.classList.remove('active'), 3 * 1000);
         } else {
-            dispatch(userApi.registration(form))
+            await dispatch(userApi.registration(form));
         }
     }
 
@@ -121,6 +137,7 @@ const Registration = () => {
             </section>
             <ErrorPopup target='bad-data' text='Не все поля заполнены' />
             <ErrorPopup target='bad-password' text='Слишком короткий пароль' />
+            <ErrorPopup target='bad-logem' text={userState.message} />
         </>
     )
 }

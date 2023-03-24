@@ -5,6 +5,7 @@ import { userApi } from '../../api/userApi';
 import FooterLine from '../footer/FooterLine';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header'
+import ErrorPopup from '../popup/ErrorPopup';
 import './auth.css'
 
 const Auth = () => {
@@ -14,10 +15,25 @@ const Auth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userStatus.isAuth){
+        if (userStatus.isAuth) {
             return navigate('/events')
         }
     }, [userStatus.isAuth])
+
+    useEffect(() => {
+        if (!userStatus.isWrong && userStatus.isWrong !== null) {
+            navigate('/events')
+        } else if (userStatus.isWrong !== null) {
+            console.log(userStatus);
+            showPopup('bad-mail')
+        }
+    }, [userStatus])
+
+    const showPopup = (name) => {
+        const popup = document.querySelector(`.popup__${name}`);
+        popup.classList.add('active')
+        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+    }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
@@ -54,6 +70,7 @@ const Auth = () => {
                 </div>
                 <RegAuthFooter />
                 <FooterLine />
+                <ErrorPopup target='bad-mail' text={userStatus.message} />
             </section>
         </>
     )

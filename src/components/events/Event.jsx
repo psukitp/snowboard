@@ -1,7 +1,7 @@
 import './event.css'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Header from '../header/Header'
 import RegAuthFooter from '../footer/RegAuthFooter'
 import Comments from '../comment/Comments';
@@ -19,6 +19,7 @@ const Event = () => {
     const [style, setStyle] = useState({ paddingTop: 0 })
     const dispatch = useDispatch();
     const event = useSelector((store) => store.currentEvent);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (id !== undefined) {
@@ -69,8 +70,9 @@ const Event = () => {
         setIsEdit(false);
     }
 
-    const handleDeleteButton = () => {
-        dispatch(eventApi.deleteEvent(id))
+    const handleDeleteButton = async () => {
+        dispatch(eventApi.deleteEvent(id));
+        navigate('/events')
     }
 
     return (
@@ -96,8 +98,8 @@ const Event = () => {
                                         {myEvent ? <>
 
                                             <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button>
-                                            {isEdit ? null : <NavLink to='/events'>
-                                                <button className='snowboard__btn delete-btn' onClick={handleDeleteButton}>Удалить</button></NavLink>}
+                                            {isEdit ? null :
+                                                <button className='snowboard__btn delete-btn' onClick={handleDeleteButton}>Удалить</button>}
                                         </> :
                                             null
                                         }

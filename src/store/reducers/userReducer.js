@@ -15,7 +15,7 @@ const initialState = {
     email: '',
     isActivated: false,
     isAuth: false,
-    isWrong: false
+    isWrong: null
 };
 
 
@@ -42,6 +42,7 @@ const userReducer = (state = initialState, action) => {
                 id: user.id,
                 email: user.email,
                 isActivated: user.isActivated,
+                user_image_path: user.user_image_path,
                 isAuth: true,
                 isWrong: false
             }
@@ -65,8 +66,10 @@ const userReducer = (state = initialState, action) => {
                 isWrong: false
             }
         case WRONG_DATA:
+            console.log(action.payload)
             return {
                 ...state,
+                message: action.payload.message,
                 isWrong: true
             }
         default:

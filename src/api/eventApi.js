@@ -62,8 +62,8 @@ const updateEvent = (id, title, description) => (dispatch, getState) => {
 
 }
 
-const deleteEvent = (id) => (dispatch, getState) => {
-    window.fetch(serverUrl + `/events/delete/${id}`)
+const deleteEvent = (id) => async (dispatch, getState) => {
+    await window.fetch(serverUrl + `/events/delete/${id}`)
         .then((response) => response.json())
         .then((json) => {
             dispatch({ type: 'GET_EVENT', payload: json })
@@ -79,4 +79,4 @@ const getEventsStatistic = () => (dispatch, getState) => {
         })
 }
 
-export const eventApi = {getEvents, getOneEvent, updateEvent, deleteEvent, getEventsStatistic, createNewEvent}
+export const eventApi = { getEvents, getOneEvent, updateEvent, deleteEvent, getEventsStatistic, createNewEvent }

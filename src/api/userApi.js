@@ -1,7 +1,7 @@
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-const registration = (req) => (dispatch, getState) => {
+const registration = (req) => async (dispatch, getState) => {
     var myHeaders = new Headers();
     var raw = JSON.stringify({
         login: req.login,
@@ -18,13 +18,16 @@ const registration = (req) => (dispatch, getState) => {
         mode: 'cors',
         credentials: 'include'
     };
-    window.fetch(serverUrl + "/registration", requestOptions)
+    await window.fetch(serverUrl + "/registration", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            localStorage.setItem('token', json.accessToken)
-            dispatch({ type: 'REGISTRATION', payload: json.user })
-            if (json.user) {
-                window.location.replace(baseUrl + '/events');
+            console.log(json)
+            if (json.code === 406) {
+                dispatch({type: 'WRONG_DATA', payload: json})
+            } else {
+                localStorage.setItem('accessToken', json.accessToken)
+                localStorage.setItem('refreshToken', json.refreshToken)
+                dispatch({ type: 'REGISTRATION', payload: json.user })
             }
         })
 
@@ -44,8 +47,8 @@ const login = (email, password) => (dispatch, getState) => {
     window.fetch(serverUrl + "/login", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            if (json.status === 400) {
-                dispatch({ type: 'WRONG_DATA' })
+            if (json.code === 400) {
+                dispatch({ type: 'WRONG_DATA', payload: json})
             } else {
                 localStorage.setItem('accessToken', json.accessToken)
                 localStorage.setItem('refreshToken', json.refreshToken)
@@ -91,7 +94,8 @@ const logout = () => (dispatch, getState) => {
     window.fetch(serverUrl + "/logout", requestOptions)
         .then((response) => response.json())
         .then((json) => {
-            localStorage.removeItem('token')
+            localStorage.removeItem('accessToken')
+            localStorage.removeItem('refreshToken')
             dispatch({ type: 'LOGOUT' })
         })
 
@@ -140,4 +144,4 @@ const updateUserPhoto = (id, photo) => (dispatch, getState) => {
     window.fetch(serverUrl + `/users/new-photo/${id}`, requestOptions)
 }
 
-export const userApi = {registration, login, checkAuth, updateUser, updateUserPhoto, logout}
+export const userApi = { registration, login, checkAuth, updateUser, updateUserPhoto, logout }
