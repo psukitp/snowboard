@@ -1,4 +1,4 @@
-import './event.css'
+import './event.scss'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router';
@@ -78,7 +78,7 @@ const Event = () => {
     return (
         <>
             <div className="wrapper">
-                <Header bgColor='#F8FAFC' />
+                <Header />
                 <div className="main event_main">
                     <div className="event">
                         <div className="container">
@@ -97,9 +97,9 @@ const Event = () => {
                                     <div className='event__edit'>
                                         {myEvent ? <>
 
-                                            <button className='snowboard__btn edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button>
+                                            <button className='edit-btn' onClick={handleEditButton}>{isEdit ? 'Отмена' : 'Редактировать'}</button>
                                             {isEdit ? null :
-                                                <button className='snowboard__btn delete-btn' onClick={handleDeleteButton}>Удалить</button>}
+                                                <button className='delete-btn' onClick={handleDeleteButton}>Удалить</button>}
                                         </> :
                                             null
                                         }
@@ -130,7 +130,7 @@ const Event = () => {
                         </div>
                     </div>
                 </div>
-                <RegAuthFooter bgColor='#F8FAFC' />
+                <RegAuthFooter />
             </div>
         </>
     )

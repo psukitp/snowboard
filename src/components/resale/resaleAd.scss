@@ -1,0 +1,140 @@
+@import '../../scss/_var.scss';
+
+.resale__main {
+    align-items: start;
+}
+
+.resale__ad {
+    padding-top: 80px;
+    padding-bottom: 100px;
+    background-color: $base_bgc;
+    max-width: 1190px;
+    width: 100%;
+
+    &-btn {
+        display: flex;
+        justify-content: end;
+    }
+
+    &-edit--block {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        height: 45px;
+    }
+
+    &-back--btn {
+        padding: 13.5px 79px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+
+    &-edit--btn {
+        padding: 10px 10px;
+        border: none;
+        background-color: transparent;
+        color: #CBD5E1;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+            color: $accent_color
+        }
+    }
+
+    &-inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-image img {
+        width: 550px;
+    }
+
+    &-info {
+        max-width: 550px;
+        width: 100%;
+    }
+
+    &-title {
+        font-weight: 600;
+        font-size: 60px;
+        line-height: 66px;
+        color: $accent_color;
+        margin-bottom: 25px;
+    }
+
+    &-property,
+    &-text {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        color: $base_textcolor;
+    }
+
+    &-price {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 36px;
+        color: $accent_color;
+        margin-top: 10px;
+        margin-bottom: 45px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    &-creator {
+        display: flex;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 30px;
+        text-decoration-line: underline;
+        color: $accent_color;
+        align-items: center;
+    }
+
+    &-creator- {
+        &-name {
+            margin-right: 20px;
+        }
+
+        &-tel {
+            display: flex;
+            align-items: center;
+        }
+
+        &-input {
+            width: 550px;
+            height: 45px;
+            padding: 0 32px;
+
+            &[name='price'] {
+                width: 130px;
+                text-align: center;
+                margin-left: 10px;
+            }
+
+            &[name='tel'] {
+                width: 230px;
+                height: 40px;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &-edit--textarea {
+        margin: 25px 0;
+        width: 550px;
+        height: 200px;
+    }
+
+}
+
+.extra__text {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    color: $base_textcolor;
+    margin-right: 10px;
+}

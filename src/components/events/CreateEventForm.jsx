@@ -6,7 +6,7 @@ import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
 import { IMaskInput } from "react-imask"
 import ReactLoading from 'react-loading'
-import './createEventForm.css'
+import './createEventForm.scss'
 import { eventApi } from "../../api/eventApi"
 import RegAuthFooter from "../footer/RegAuthFooter"
 
@@ -80,7 +80,7 @@ const CreateEventForm = () => {
     return (
         <>
             <div className="wrapper">
-                <Header bgColor='#F8FAFC' />
+                <Header />
                 <div className="main">
                     <section className="event__create">
                         <div className="container">
@@ -119,7 +119,7 @@ const CreateEventForm = () => {
                         <ErrorPopup target="data" text='Кажется, ты ввел не все данные :(' />
                     </section>
                 </div>
-                <RegAuthFooter bgColor='#F8FAFC' />
+                <RegAuthFooter />
             </div>
         </>
     )

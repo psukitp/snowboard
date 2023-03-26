@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { userApi } from '../../api/userApi'
-import './toolbar.css'
+import './toolbar.scss'
 
 const Toolbar = (props) => {
 
@@ -35,7 +35,9 @@ const Toolbar = (props) => {
                             <img src={require('./img/toolbar_settings.png')} alt="" />
                         </li>
                     </NavLink>
-                    <li onClick={handleLogout}>Выйти <img src={require('./img/toolbar_quit.png')} alt="" /></li>
+                    <NavLink to='/events'>
+                        <li onClick={handleLogout}>Выйти <img src={require('./img/toolbar_quit.png')} alt="" /></li>
+                    </NavLink>
                 </ul>
             </div>
         </>

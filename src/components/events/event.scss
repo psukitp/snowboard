@@ -1,0 +1,123 @@
+@import '../../scss/_var.scss';
+
+.event{
+    padding-top: 125px;
+    max-width: 1190px;
+    width: 100%;
+
+    &_main {
+        align-items: start;
+    }
+
+    &__inner {
+        margin-bottom: 80px;
+        display: flex;
+        justify-content: space-between;
+
+
+        &-author {
+            margin-right: 30px;
+        }
+
+        &-title {
+            font-weight: 600;
+            letter-spacing: -2px;
+            font-size: 52px;
+            line-height: 58px;
+            color: $accent_color;
+            margin-bottom: 25px;
+        }
+
+        &-text,
+        &-date {
+            font-size: 18px;
+            line-height: 30px;
+            color: $base_textcolor;
+        }
+
+        &-text {
+            margin-bottom: 40px;
+        }
+
+        &-date {
+            font-weight: 600;
+            color: $accent_color;
+        }
+
+        &-image img {
+            width: 550px;
+        }
+
+        &-info {
+            max-width: 550px;
+            width: 100%;
+            margin-left: 20px;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: end;
+        margin-bottom: 45px;
+    }
+
+    &__back-btn {
+        padding: 13px 79px;
+    }
+
+    &__edit {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+}
+
+.edit {
+    &__ok-btn {
+        line-height: 16px;
+        margin-left: 10px;
+    }
+
+    &__ok-btn {
+        padding: 10px 20px;
+    }
+
+    &-btn {
+        background-color: transparent;
+        text-decoration-line: underline;
+        border: none;
+        color: #CBD5E1;
+        padding: 10px 10px;
+        margin-right: 8px;
+        cursor: pointer;
+
+        &:hover {
+            color: $accent_color;
+        }
+    }
+
+}
+
+.title__edit-input,
+.descr__edit-textarea {
+    height: 45px;
+    width: 700px;
+    margin-right: 30px;
+}
+
+.descr__edit-textarea {
+    height: 200px;
+}
+
+.delete-btn {
+    padding: 10px 10px;
+    background-color: #f05d5d;
+    border: none;
+    border-radius: 9px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.delete-btn:hover{
+    opacity: .8;
+}

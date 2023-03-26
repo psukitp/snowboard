@@ -1,0 +1,52 @@
+@import '../../scss/_var.scss';
+
+
+.resale {
+    padding-top: 80px;
+    background-color: $base_bgc;
+    padding-bottom: 50px;
+    max-width: 1190px;
+    width: 100%;
+
+    &__main {
+        align-items: start;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 55px;
+        margin-bottom: 35px;
+    }
+
+    &__create-new {
+        padding: 13px 19px;
+    }
+
+    &__products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+        justify-content: space-between;
+    }
+
+    &__list-item {
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
+}
+
+.switch__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .8;
+    }
+
+    & img {
+        max-width: 40px;
+    }
+}

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import './eventCard.css'
+import './eventCard.scss'
 
 const EventCard = ({ id, name, event_image_path, date }) => {
 

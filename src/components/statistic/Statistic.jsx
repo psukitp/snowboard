@@ -6,7 +6,7 @@ import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
-import './statistic.css'
+import './statistic.scss'
 
 const Statistic = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Statistic = () => {
     const comment_data = useSelector((store) => store.statistic.comments)
     return (
         <>
-            <Header bgColor='#F8FAFC' />
+            <Header  />
             <section className="statistic">
                 <div className="container">
                     <div className="statistic__inner">
@@ -35,7 +35,7 @@ const Statistic = () => {
                     </div>
                 </div>
             </section>
-            <RegAuthFooter bgColor='#F8FAFC' />
+            <RegAuthFooter />
         </>
     )
 }

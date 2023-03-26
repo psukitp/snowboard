@@ -1,0 +1,42 @@
+@import '../../scss/_var.scss';
+
+.auth__footer {
+    padding-bottom: 40px;
+    background-color: $base_bgc;
+
+    &-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-navigation {
+        display: flex;
+        align-items: center;
+    }
+
+    &-menu {
+        display: flex;
+        margin-left: 40px;
+
+        & li+li {
+            margin-left: 30px;
+        }
+
+        & a {
+            color: $base_textcolor;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+    &-links {
+        display: flex;
+
+        & a+a {
+            margin-left: 15px;
+        }
+    }
+
+}

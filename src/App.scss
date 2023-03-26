@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap);
+
 html {
   box-sizing: border-box;
   overflow-y: scroll;
@@ -55,6 +57,7 @@ body,
 html {
   height: 100%;
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .container {
@@ -110,7 +113,6 @@ html {
   background: #4482B9;
   border-radius: 10px;
   border: none;
-  padding: 18px 210px;
 }
 
 .snowboard__btn:hover {

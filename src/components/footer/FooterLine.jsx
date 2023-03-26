@@ -1,4 +1,4 @@
-import './footerLine.css'
+import './footerLine.scss'
 
 
 

@@ -1,24 +1,25 @@
+@import '../../scss/_var.scss';
+
 ul {
     margin: 0 0;
 }
 
 .pagination {
     display: flex;
-    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: #4482B9;
+    color: $accent_color;
     align-items: center;
-}
-
-.page-item+.page-item {
-    margin-left: 12px;
 }
 
 .page-item {
     cursor: pointer;
+
+    &+& {
+        margin-left: 12px;
+    }
 }
 
 .prev-page,

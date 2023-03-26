@@ -1,0 +1,45 @@
+@import '../../scss/_var.scss';
+
+.header {
+    height: 80px;
+    background-color: $base_bgc;
+    color: #1A1A1A;
+    font-size: 16px;
+    position: fixed;
+
+    &__inner {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-navigation {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    margin-left: 40px;
+
+    & li+li {
+        margin-left: 30px;
+    }
+
+    & li:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    & a {
+        color: $base_textcolor;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.auth__btn {
+    padding: 10px 24px;
+}

@@ -1,0 +1,47 @@
+@import '../../scss/_var.scss';
+
+.card {
+    max-width: 350px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(103%);
+    }
+
+    &-name {
+        color: $accent_color;
+    }
+
+    &__photo {
+        margin-bottom: 22px;
+        position: relative;
+        overflow: hidden;
+        width: 350px;
+        height: 500px;
+        border-radius: 9px;
+
+        & img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 500px;
+            object-fit: cover;
+        }
+    }
+
+    &-date {
+        font-size: 18px;
+        line-height: 30px;
+        color: $base_textcolor;
+        padding-bottom: 22px;
+        border-bottom: 1px $accent_color solid;
+        margin-bottom: 22px;
+    }
+}

@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header';
-import './registration.css'
+import './registration.scss'
 import ErrorPopup from '../popup/ErrorPopup'
 import { userApi } from '../../api/userApi';
 
@@ -70,7 +70,7 @@ const Registration = () => {
 
     return (
         <>
-            <Header isReg={true} textColor='#fff' />
+            <Header isReg={true} textColor='#fff' bgColor='transparent' />
             <section className="reg">
                 <div className="container">
                     <div className='reg__inner'>
@@ -107,7 +107,7 @@ const Registration = () => {
                             </div>
                             <div className="reg__form-email">
                                 <div className="reg__label">Почта</div>
-                                <input className="snowboard__input reg__input" name="email" onChange={handleChangeInput} value={form.mail} />
+                                <input className="snowboard__input reg__input" name="email" type="email" onChange={handleChangeInput} value={form.mail} />
                             </div>
                             <div className="reg__form-login">
                                 <div className="reg__label">Логин</div>
@@ -132,7 +132,7 @@ const Registration = () => {
                             </NavLink>
                         </form>
                     </div>
-                    <RegAuthFooter isReg={true} textColor='#fff' />
+                    <RegAuthFooter isReg={true} bgColor='transparent' />
                 </div>
             </section>
             <ErrorPopup target='bad-data' text='Не все поля заполнены' />

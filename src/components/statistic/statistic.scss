@@ -1,0 +1,19 @@
+@import '../../scss/_var.scss';
+
+.statistic {
+    padding-top: 100px;
+    padding-bottom: 45px;
+    background-color: $base_bgc;
+
+    &__charts-bar,
+    &__charts-line {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__charts-bar {
+        margin-bottom: 25px;
+    }
+
+}

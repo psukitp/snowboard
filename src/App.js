@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Auth from './components/auth/Auth'
 import Registration from './components/registration/Registration';
 import Events from './components/events/Events';

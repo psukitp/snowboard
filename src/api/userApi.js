@@ -22,7 +22,7 @@ const registration = (req) => async (dispatch, getState) => {
         .then((response) => response.json())
         .then((json) => {
             console.log(json)
-            if (json.code === 406) {
+            if (json.code === 406 || json.code === 400) {
                 dispatch({type: 'WRONG_DATA', payload: json})
             } else {
                 localStorage.setItem('accessToken', json.accessToken)
@@ -118,7 +118,7 @@ const updateUser = (id, body) => (dispatch, getState) => {
         .then((response) => response.json())
         .then((json) => {
             if (json.code === 406) {
-                dispatch({ type: 'WRONG_DATA' })
+                dispatch({ type: 'WRONG_DATA', payload: json })
             } else {
                 dispatch({ type: 'UPDATE_USER', payload: json })
             }

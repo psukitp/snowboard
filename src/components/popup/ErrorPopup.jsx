@@ -1,4 +1,4 @@
-import './errorPopup.css'
+import './errorPopup.scss'
 
 
 const ErrorPopup = (props) => {

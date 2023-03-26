@@ -1,0 +1,126 @@
+@import  '../../scss/_var.scss';
+
+.event__create {
+    padding-top: 80px;
+    background-color: $base_bgc;
+    padding-bottom: 50px;
+
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF;
+        box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.06), 0px 10px 15px rgba(0, 0, 0, 0.03);
+        border-radius: 20px;
+        padding: 35px 30px;
+        margin-top: 55px;
+    }
+
+    &__label {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #090914;
+        margin-bottom: 8px;
+    }
+
+    &__input,
+    &__textarea {
+        height: 45px;
+        margin-bottom: 25px;
+    }
+
+
+    &__input[name="title"] {
+        padding: 0 15px;
+        width: 500px;
+    }
+
+    &__input[name="date"] {
+        width: 150px;
+        padding: 0 30px;
+    }
+
+    &_block {
+        display: flex;
+        justify-content: start;
+    }
+
+    &-photo {
+        margin-right: 100px;
+    }
+
+    &__textarea {
+        width: 980px;
+        height: 300px;
+        margin-bottom: 30px;
+    }
+
+    &__textarea::placeholder,
+    &__input::placeholder {
+        color: #AAAAAA;
+    }
+
+    &__btn-send-photo {
+        padding: 13.5px 27px;
+        display: flex;
+        align-items: center;
+        max-width: 210px;
+        color: #fff;
+        margin-bottom: 35px;
+    }
+
+    &-btns {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__btn-submit,
+    &__btn-cancel {
+        padding: 8px 56px;
+    }
+
+    &__btn-submit {
+        display: flex;
+        position: relative;
+        align-items: center;
+    }
+
+    &__btn-submit--loader {
+        display: none;
+        position: absolute;
+        left: 20px;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    &__btn-cancel {
+        padding: 8px 73px;
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+
+    &-photo &__label {
+        margin-bottom: 18px;
+    }
+}
+
+.input__file-text {
+    margin-right: 6px;
+}
+
+.input__file {
+    display: none;
+}
+
+.event__cancel-link {
+    max-width: 205px;
+    width: 100%;
+}

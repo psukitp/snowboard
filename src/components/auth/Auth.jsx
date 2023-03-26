@@ -6,7 +6,7 @@ import FooterLine from '../footer/FooterLine';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header'
 import ErrorPopup from '../popup/ErrorPopup';
-import './auth.css'
+import './auth.scss'
 
 const Auth = () => {
     const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Auth = () => {
 
     return (
         <>
-            <Header bgColor='#F8FAFC' />
+            <Header />
             <section className="auth">
                 <div className="container">
                     <div className="auth__title">Вход</div>
@@ -68,7 +68,7 @@ const Auth = () => {
                         {userStatus.isWrong ? <div className='auth__wrong-data'> Неверные данные</div> : null}
                     </div>
                 </div>
-                <RegAuthFooter />
+                <RegAuthFooter bgColor='transparent'/>
                 <FooterLine />
                 <ErrorPopup target='bad-mail' text={userStatus.message} />
             </section>

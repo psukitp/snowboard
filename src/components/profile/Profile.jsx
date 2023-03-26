@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
-import './profile.css'
+import './profile.scss'
 import ErrorPopup from "../popup/ErrorPopup";
 import { userApi } from "../../api/userApi";
 
@@ -10,8 +10,13 @@ const Profile = () => {
     const userStatus = useSelector((store) => store.user)
     const { user_image_path } = userStatus;
     const [form, setForm] = useState({ name: '', login: '', status: '' })
-    const [file, setFile] = useState({});
     const dispatch = useDispatch();
+    useEffect(() => {
+        if (userStatus.isWrong && userStatus !== null) {
+            console.log('ес')
+            showPopup('login_exist', 3)
+        }
+    }, [userStatus])
 
 
 
@@ -40,18 +45,22 @@ const Profile = () => {
         const currentFile = target.files[0];
         console.log(currentFile);
         if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
-            showPopup('files')
+            showPopup('files', 3)
         }
         else {
-           await dispatch(userApi.updateUserPhoto(userStatus.id, currentFile));
-           window.location.reload();
+            await dispatch(userApi.updateUserPhoto(userStatus.id, currentFile));
+            window.location.reload();
         }
     }
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(userApi.updateUser(userStatus.id, form))
-        setForm({ name: '', login: '', status: '' })
+        if (form.login.length < 5 && form.login.length !== 0) {
+            showPopup('short_login', 2)
+        } else {
+            await dispatch(userApi.updateUser(userStatus.id, form))
+            setForm({ name: '', login: '', status: '' })
+        }
     }
 
     const showPopup = (name, duration) => {
@@ -102,11 +111,12 @@ const Profile = () => {
                         </div>
                     </section>
                 </div>
-                <RegAuthFooter bgColor='#F8FAFC'/>
+                <RegAuthFooter />
             </div>
-            {userStatus.isWrong ? <ErrorPopup target="wrong_data active" text='Пользователь с таким логином уже существует' /> : null}
+            <ErrorPopup target="login_exist" text={userStatus.message} />
             <ErrorPopup target="bad_symbol_login" text='Разрешены только латинские символы' />
             <ErrorPopup target="files" text='Разрешены только изображения' />
+            <ErrorPopup target="short_login" text='Логин не может быть меньше 5 символов' />
         </>
     )
 }

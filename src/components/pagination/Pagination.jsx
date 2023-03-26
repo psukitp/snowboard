@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './pagination.css'
+import './pagination.scss'
 
 
 const Pagination = ({ countPerPage, totalCount, paginate, currentPagePicked }) => {

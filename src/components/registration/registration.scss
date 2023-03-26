@@ -1,0 +1,131 @@
+@import '../../scss/_var.scss';
+
+.reg {
+    padding-top: 80px;
+    /* background-color: $accent_color; */
+    background: rgb(68, 130, 185);
+    background: linear-gradient(90deg, rgba(68, 130, 185, 1) 0%, rgba(68, 130, 185, 1) 47%, rgba(255, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 100%);
+    padding-bottom: 20px;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 120px;
+    }
+
+    &__label {
+        font-size: 16px;
+        line-height: 24px;
+        color: #090914;
+    }
+
+    &__input {
+        background: $base_bgc;
+        height: 60px;
+        width: 530px;
+        margin-bottom: 20px;
+        padding: 0 20px;
+    }
+
+    &__btn-submit {
+        padding: 13.5px 21px;
+        margin-bottom: 30px;
+        margin-top: 35px;
+    }
+
+    &__wrong-password {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: red;
+    }
+
+}
+
+
+.reg__content {
+    max-width: 550px;
+    padding-right: 78px;
+    font-weight: 400;
+    color: #fff;
+
+    &-title {
+        font-weight: 600;
+        font-size: 60px;
+        line-height: 66px;
+        letter-spacing: -2px;
+        margin-top: 60px;
+        margin-bottom: 16px;
+    }
+
+    &-subtitle {
+        font-size: 18px;
+        line-height: 30px;
+        color: $base_bgc;
+        margin-bottom: 300px;
+    }
+
+    &-quote {
+        font-size: 21px;
+        line-height: 34px;
+        margin-bottom: 25px;
+    }
+
+    &-creator--name {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    &-creator--job {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+}
+
+
+.reg__form {
+    max-width: 550px;
+    width: 100%;
+    padding-left: 62px;
+    font-weight: 400;
+
+    &-title {
+        font-weight: 600;
+        font-size: 52px;
+        line-height: 62px;
+        letter-spacing: -2px;
+        margin-top: 54px;
+        margin-bottom: 20px;
+        color: #090914;
+    }
+
+    &-subtitle {
+        font-size: 16px;
+        line-height: 30px;
+        color: $base_textcolor;
+        margin-bottom: 24px;
+    }
+
+    &-password--repeat {
+        position: relative;
+    }
+}
+
+
+.auth__link {
+    display: block;
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 600;
+
+    & span {
+        font-weight: 400;
+    }
+
+    &:hover {
+        color: #6D6D6D;
+        text-decoration: underline;
+    }
+}

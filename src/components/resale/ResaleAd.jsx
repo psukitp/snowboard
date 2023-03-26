@@ -5,7 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { resaleApi } from "../../api/resaleApi";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
-import './resaleAd.css'
+import './resaleAd.scss'
 
 const ResaleAd = () => {
     const { id } = useParams();
@@ -85,7 +85,7 @@ const ResaleAd = () => {
     return (
         <>
             <div className="wrapper">
-                <Header bgColor='#F8FAFC' />
+                <Header />
                 <div className="main resale__main">
                     <section className="resale__ad">
                         <div className="container">
@@ -154,7 +154,7 @@ const ResaleAd = () => {
                         </div>
                     </section>
                 </div>
-                <RegAuthFooter bgColor='#F8FAFC' />
+                <RegAuthFooter  />
             </div>
         </>
     )

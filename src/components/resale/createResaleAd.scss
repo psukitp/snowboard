@@ -1,0 +1,120 @@
+@import '../../scss/_var.scss';
+
+.create__resale {
+    padding-top: 80px;
+    padding-bottom: 55px;
+    color: $base_textcolor;
+    background-color: $base_bgc;
+    background-image: url('./img/create_bg.png');
+    background-repeat: no-repeat;
+    background-position: 100px 315px;
+
+    &-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-inner {
+        margin-top: 55px;
+        background: #FFFFFF;
+        box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.06), 0px 10px 15px rgba(0, 0, 0, 0.03);
+        border-radius: 20px;
+        padding: 35px 35px;
+        max-width: 1040px;
+        width: 100%;
+    }
+
+    &-label {
+        margin-bottom: 8px;
+    }
+
+    &-input {
+        padding: 0 32px;
+        margin-bottom: 16px;
+    }
+
+    &-input {
+
+        &[name="title"],
+        &[name="tel"] {
+            width: 700px;
+        }
+
+        &[name="type"],
+        &[name="price"] {
+            width: 210px;
+        }
+    }
+
+    &-price--photo {
+        display: flex;
+        align-items: end;
+    }
+
+    &-photo {
+        margin-left: 30px;
+        max-height: 55px;
+        margin-bottom: 16px;
+    }
+
+    &-textarea {
+        width: 970px;
+        height: 280px;
+        padding: 8px 32px;
+    }
+
+    &-btns {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    &-btn--submit {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    &-btn--submit--loader {
+        position: absolute;
+        left: 20px;
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    &-btn--submit,
+    &-btn--cancel {
+        padding: 8px 56px;
+    }
+
+    &-btn--cancel {
+        padding: 8px 73px;
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &-form {
+        position: relative;
+    }
+}
+
+.title__attention {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}

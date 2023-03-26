@@ -1,4 +1,4 @@
-import './error.css'
+import './error.scss'
 import Header from '../header/Header'
 const Error = () => {
 

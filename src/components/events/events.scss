@@ -1,0 +1,68 @@
+@import  '../../scss/_var.scss';
+
+.events {
+    padding-top: 80px;
+    padding-bottom: 45px;
+    background-color: $base_bgc;
+
+    &__search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 50px;
+        margin-bottom: 50px;
+
+        &-input.snowboard__input {
+            width: 760px;
+
+            &::placeholder {
+                color: #AAAAAA;
+            }
+        }
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+        grid-gap: 70px;
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+
+    &__hello {
+        font-weight: 600;
+        font-size: 52px;
+        line-height: 62px;
+        text-align: center;
+
+        &-title {
+            color: $accent_color;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        &-subtitle {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 24px;
+            color: $base_textcolor;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__not-exist {
+        text-align: center;
+        color: $accent_color;
+        font-weight: 600;
+        font-size: 42px;
+        padding-top: 180px;
+        padding-bottom: 320px;
+    }
+}
+
+.create__event-btn {
+    padding: 8.5px 19px;
+}

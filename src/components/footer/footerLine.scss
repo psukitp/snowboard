@@ -1,11 +1,12 @@
+@import  '../../scss/_var.scss';
+
 .hr__line{
     max-width: 1300px;
-    border: 0.5px solid #4482B9;
+    border: 0.5px solid $accent_color;
     margin-bottom: 20px;
 }
 
 .auth__copyright{
-    font-family: 'Poppins', sans-serif;
     text-align: center;
     color: #FFFFFF;
     font-weight: 400;

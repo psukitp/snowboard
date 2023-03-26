@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import './header.css';
+import './header.scss';
 import Toolbar from './Toolbar';
 
 

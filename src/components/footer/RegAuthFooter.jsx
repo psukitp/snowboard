@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import './regAuthFooter.css'
+import './regAuthFooter.scss'
 
 
 const RegAuthFooter = ({ textColor, bgColor, isReg}) => {

@@ -7,7 +7,7 @@ import EventCard from './EventCard'
 import PendingPage from '../pendingPage/PendingPage'
 import Pagination from '../pagination/Pagination';
 import RegAuthFooter from '../footer/RegAuthFooter'
-import './events.css'
+import './events.scss'
 import { eventApi } from '../../api/eventApi';
 
 const Events = () => {
@@ -46,7 +46,7 @@ const Events = () => {
 
     return (
         <>
-            <Header bgColor='#F8FAFC' />
+            <Header />
             <section className="events">
                 <div className="container">
                     <div className="events__search">
@@ -80,7 +80,7 @@ const Events = () => {
                         : <div className='events__not-exist'>Мероприятий не найдено {':('}</div>}
                 </div>
             </section>
-            <RegAuthFooter bgColor='#F8FAFC'/>
+            <RegAuthFooter />
         </>
     )
 }

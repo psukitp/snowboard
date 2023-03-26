@@ -1,4 +1,4 @@
-import './resaleListItem.css'
+import './resaleListItem.scss'
 
 const ResaleListItem = ({ ad_image_path, product_type, ad_post_name, ad_post_text, ad_price, other_props }) => {
     let photoURL = ''

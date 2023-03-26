@@ -1,4 +1,6 @@
-.popup{
+@import '../../scss/_var.scss';
+
+.popup {
     position: fixed;
     top: 100px;
     right: 10px;
@@ -10,16 +12,16 @@
     align-items: center;
     opacity: 0;
     transition: 2s all;
-}
 
-.popup__text{
-    margin-left: 15px;
-    max-width: 250px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-}
+    &__text {
+        margin-left: 15px;
+        max-width: 250px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+    }
 
-.popup.active{
-    opacity: 1;
+    &.active {
+        opacity: 1;
+    }
 }

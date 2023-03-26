@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { commentApi } from "../../api/commentApi";
 import ErrorPopup from "../popup/ErrorPopup";
 import Comment from "./Comment";
-import './comments.css'
+import './comments.scss'
 
 
 const Comments = ({ event_id }) => {
@@ -43,10 +43,11 @@ const Comments = ({ event_id }) => {
                     {comments.length > 0 ?
                         comments.map((el) => <Comment
                             key={el.comment_id}
-                            name={el.name}
-                            sname={el.s_name}
+                            login={el.login}
+                            user_image_path={el.user_image_path}
                             date={el.comment_date}
-                            text={el.comment_text} />)
+                            text={el.comment_text}
+                            status={el.status} />)
                         : <div className="comments__list-plug">Кажется, комментариев нет. Ты можешь оставить первый!</div>}
                 </div>
                 <div className="comment__add">

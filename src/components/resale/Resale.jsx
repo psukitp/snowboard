@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../header/Header'
-import './resale.css'
+import './resale.scss'
 import ResaleCardItem from './ResaleCardItem';
 import ResaleListItem from './ResaleListItem';
 import RegAuthFooter from '../footer/RegAuthFooter';
@@ -58,7 +58,7 @@ const Resale = () => {
     return (
         <>
             <div className="wrapper">
-                <Header bgColor='#F8FAFC' />
+                <Header  />
                 <div className="main resale__main">
                     <section className="resale">
                         <div className="container">
@@ -127,7 +127,7 @@ const Resale = () => {
                         </div>
                     </section>
                 </div>
-                <RegAuthFooter textColor='#52525B' bgColor='#F8FAFC' />
+                <RegAuthFooter textColor='#52525B'  />
             </div>
         </>
     )

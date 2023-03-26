@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactLoading from 'react-loading'
-import './createResaleAd.css'
+import './createResaleAd.scss'
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -112,7 +112,7 @@ const CreateResaleAd = () => {
 
     return (
         <>
-            <Header bgColor='#F8FAFC' />
+            <Header />
             <div className="create__resale">
                 <div className="container">
                     <div className="create__resale-container">
@@ -174,7 +174,7 @@ const CreateResaleAd = () => {
             <ErrorPopup target="auth" text='Для размещения объявлений нужно войти в аккаунт' />
             <ErrorPopup target="files" text='Разрешены только изображения' />
             <ErrorPopup target="data" text='Кажется, ты ввел не все данные :(' />
-            <RegAuthFooter textColor='#52525B' bgColor='#F8FAFC' />
+            <RegAuthFooter textColor='#52525B' />
         </>
     )
 }
