@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import EventCard from './EventCard'
@@ -9,11 +9,14 @@ import Pagination from '../pagination/Pagination';
 import RegAuthFooter from '../footer/RegAuthFooter'
 import './events.scss'
 import { eventApi } from '../../api/eventApi';
+import ErrorPopup from '../popup/ErrorPopup';
 
 const Events = () => {
     const dispatch = useDispatch();
     const events = useSelector((store) => store.events)
     const loadStatus = useSelector((store) => store.loadStatus)
+    const userStatus = useSelector((store) => store.user)
+    const navigate = useNavigate();
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const countEventsPerPage = 3;
@@ -21,6 +24,13 @@ const Events = () => {
     const firstEventIndex = lastEventIndex - countEventsPerPage;
     const filteredEvent = events.filter(el => el.event_title?.toLowerCase().includes(search.toLowerCase()));
     const currentEvents = filteredEvent.sort((a, b) => parseFloat(b.event_id) - parseFloat(a.event_id)).slice(firstEventIndex, lastEventIndex);
+
+    const showPopup = (name) => {
+        const popup = document.querySelector(`.popup__${name}`);
+        popup.classList.add('active')
+        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+    }
+
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -40,8 +50,16 @@ const Events = () => {
         setSearch(target.value);
     }
 
+    const navigateToCreateEvent = () => {
+        if (userStatus.isAuth){
+            navigate('create-new')
+        } else{
+            showPopup('auth')
+        }
+    }
+
     if (loadStatus.status === 'pending') {
-        return <PendingPage text='Ищем самые крутые мероприятия специально для тебя'/>
+        return <PendingPage />
     }
 
     return (
@@ -51,11 +69,9 @@ const Events = () => {
                 <div className="container">
                     <div className="events__search">
                         <input className="snowboard__input events__search-input" placeholder='Найти мероприятие по названию' value={search} onChange={handleSearchChange} />
-                        <NavLink to="create-new">
-                            <button className="snowboard__btn create__event-btn">
-                                Создать мероприятие
-                            </button>
-                        </NavLink>
+                        <button className="snowboard__btn create__event-btn" onClick={navigateToCreateEvent}>
+                            Создать мероприятие
+                        </button>
                     </div>
                     {currentPage === 1 && currentEvents.length > 0 ?
                         (<div className='events__hello'>
@@ -81,6 +97,7 @@ const Events = () => {
                 </div>
             </section>
             <RegAuthFooter />
+            <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
         </>
     )
 }

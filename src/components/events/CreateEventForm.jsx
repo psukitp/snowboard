@@ -17,8 +17,8 @@ const CreateEventForm = () => {
     const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: '', event_description: '', event_image: '' })
     const navigate = useNavigate()
 
-    const checkEmpty = ({ resale_title, event_date, event_description }) => {
-        return !(resale_title !== '' && event_date !== '' && event_description !== '')
+    const checkEmpty = ({ resale_title, event_date, event_description, event_image}) => {
+        return !(resale_title !== '' && event_date !== '' && event_description !== '' && event_image !== '')
     }
 
     const showPopup = (name) => {

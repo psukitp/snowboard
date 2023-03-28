@@ -95,7 +95,7 @@ const Profile = () => {
                             <div className="profile__edit-photo">
                                 <input type="file" name="file" id="file" className="snowboard__input input__file" onChange={handleFileUpload} />
                                 <label htmlFor="file" className="snowboard__btn profile__edit__btn-send-photo">
-                                    <span className="input__file-text">Обновить фото</span>
+                                    <span className="input__file-text">Изменить фото</span>
                                     <img src={require('./img/download_icon.png')} alt='Загрузить' />
                                 </label>
                             </div>

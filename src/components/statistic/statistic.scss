@@ -15,5 +15,14 @@
     &__charts-bar {
         margin-bottom: 25px;
     }
+}
 
+.export__btn{
+    padding: 10px 55px;
+    margin-bottom: 40px;
+}
+
+.export__btn-block{
+    display: flex;
+    justify-content: end;
 }

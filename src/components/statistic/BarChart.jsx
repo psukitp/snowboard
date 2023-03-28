@@ -10,7 +10,7 @@ const BarChart = ({ data }) => {
         datasets: [{
             label: "Количетство мероприятий по дням",
             data: data.map(el => el.event_count),
-            backgroundColor: '#4482B9'
+            backgroundColor: ['#4482B9', '#5651C3', '#3DBF8E', '#FFB751']
         }]
     }
 

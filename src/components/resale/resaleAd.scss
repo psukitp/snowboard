@@ -1,5 +1,25 @@
 @import '../../scss/_var.scss';
 
+.resale {
+    &__text-edit--input {
+        &[name='price'] {
+            width: 130px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        &[name='tel'] {
+            width: 230px;
+            height: 40px;
+            margin-left: 25px;
+        }
+
+        &[name='title'] {
+            width: 550px;
+        }
+    }
+}
+
 .resale__main {
     align-items: start;
 }
@@ -13,7 +33,7 @@
 
     &-btn {
         display: flex;
-        justify-content: end;
+        justify-content: start;
     }
 
     &-edit--block {
@@ -24,9 +44,20 @@
     }
 
     &-back--btn {
-        padding: 13.5px 79px;
+        padding: 12px 20px;
+        font-size: 20px;
         margin-top: 45px;
         margin-bottom: 45px;
+        background-color: transparent;
+        border: 1px #CBD5E1 solid;
+        border-radius: 9px;
+        color: grey;
+        cursor: pointer;
+
+        &:hover {
+            border: 1px #898f97 solid;
+            color: #000;
+        }
     }
 
     &-edit--btn {
@@ -108,18 +139,6 @@
             width: 550px;
             height: 45px;
             padding: 0 32px;
-
-            &[name='price'] {
-                width: 130px;
-                text-align: center;
-                margin-left: 10px;
-            }
-
-            &[name='tel'] {
-                width: 230px;
-                height: 40px;
-                margin-left: 10px;
-            }
         }
     }
 

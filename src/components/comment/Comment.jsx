@@ -21,10 +21,11 @@ const Comment = (props) => {
     }
 
     let status = '';
-    if (props.status) {
-        props.status !== 'null' ? status = props.status : status = 'Райдер без статуса, все время катается'
+    console.log(props.status)
+    if (props.status === null) {
+        props.status === 'null' ? status = props.status : status = 'Райдер без статуса, все время катается'
     } else {
-        status = userState.status;
+        userState.status !== null && userState.status !== 'null' ? status = userState.status : status = 'Райдер без статуса, все время катается'
     }
 
     if (!props.date) {

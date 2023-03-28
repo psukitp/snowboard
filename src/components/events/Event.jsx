@@ -84,8 +84,8 @@ const Event = () => {
                         <div className="container">
                             <div className='event__btn'>
                                 <NavLink to='/events'>
-                                    <button className='snowboard__btn event__back-btn'>
-                                        Назад
+                                    <button className='event__back-btn'>
+                                        {'<'}
                                     </button>
                                 </NavLink>
                             </div>

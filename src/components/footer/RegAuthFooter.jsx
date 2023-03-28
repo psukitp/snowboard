@@ -28,6 +28,9 @@ const RegAuthFooter = ({ textColor, bgColor, isReg}) => {
                                 <li>
                                     <NavLink to="/resale" style={{ color: textColor }}>Барахолка</NavLink>
                                 </li>
+                                <li>
+                                    <NavLink to="/statistic" style={{ color: textColor }}>Статистика</NavLink>
+                                </li>
                             </ul>
                         </nav>
                     </div>

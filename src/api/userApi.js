@@ -1,99 +1,61 @@
+import axios from "axios";
+import $api from "./instance";
+
+
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
+
 const registration = (req) => async (dispatch, getState) => {
-    var myHeaders = new Headers();
-    var raw = JSON.stringify({
+    var raw = {
         login: req.login,
         name: req.name,
         email: req.email,
         password: req.password
-    });
-    myHeaders.append("Content-Type", "application/json");
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow',
-        mode: 'cors',
-        credentials: 'include'
     };
-    await window.fetch(serverUrl + "/registration", requestOptions)
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json)
-            if (json.code === 406 || json.code === 400) {
-                dispatch({type: 'WRONG_DATA', payload: json})
+    return $api.post('/registration', raw)
+        .then(response => response.data)
+        .then(data => {
+            if (data.code === 406 || data.code === 400) {
+                dispatch({ type: 'WRONG_DATA', payload: data })
             } else {
-                localStorage.setItem('accessToken', json.accessToken)
-                localStorage.setItem('refreshToken', json.refreshToken)
-                dispatch({ type: 'REGISTRATION', payload: json.user })
+                localStorage.setItem('accessToken', data.accessToken)
+                localStorage.setItem('refreshToken', data.refreshToken)
+                dispatch({ type: 'REGISTRATION', payload: data.user })
             }
         })
-
 }
 
-const login = (email, password) => (dispatch, getState) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify({ email, password }),
-        redirect: 'follow',
-        mode: 'cors',
-        credentials: 'include'
-    };
-    window.fetch(serverUrl + "/login", requestOptions)
-        .then((response) => response.json())
-        .then((json) => {
-            if (json.code === 400) {
-                dispatch({ type: 'WRONG_DATA', payload: json})
+
+
+const login = (email, password) => async (dispatch, getState) => {
+    return $api.post('/login', { email, password })
+        .then(response => response.data)
+        .then(data => {
+            if (data.code === 400) {
+                dispatch({ type: 'WRONG_DATA', payload: data })
             } else {
-                localStorage.setItem('accessToken', json.accessToken)
-                localStorage.setItem('refreshToken', json.refreshToken)
-                dispatch({ type: 'LOGIN', payload: json.user })
-            }
-            if (json.user) {
-                window.location.replace(baseUrl + '/events');
+                localStorage.setItem('accessToken', data.accessToken)
+                localStorage.setItem('refreshToken', data.refreshToken)
+                dispatch({ type: 'LOGIN', payload: data.user })
             }
         })
-
 }
 
-const checkAuth = () => (dispatch, getState) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify({ token: localStorage.getItem('accessToken') }),
-        redirect: 'follow',
-        mode: 'cors'
-    };
-    window.fetch(serverUrl + '/refresh', requestOptions)
-        .then(response => response.json())
-        .then(json => {
-            localStorage.setItem('accessToken', json.accessToken)
-            localStorage.setItem('refreshToken', json.refreshToken)
-            dispatch({ type: 'LOGIN', payload: json.user })
+const checkAuth = () => async (dispatch, getState) => {
+    await axios.post(`${serverUrl}/refresh`, { token: localStorage.getItem('refreshToken') })
+        .then(response => response.data)
+        .then(data => {
+            localStorage.setItem('refreshToken', data.refreshToken)
+            dispatch({ type: 'LOGIN', payload: data.user })
         })
+
 }
 
 const logout = () => (dispatch, getState) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow',
-        mode: 'cors',
-        credentials: 'include'
-    };
-
-    window.fetch(serverUrl + "/logout", requestOptions)
-        .then((response) => response.json())
-        .then((json) => {
+    return $api.post('/logout')
+        .then(response => response.data)
+        .then(data => {
             localStorage.removeItem('accessToken')
             localStorage.removeItem('refreshToken')
             dispatch({ type: 'LOGOUT' })
@@ -103,24 +65,14 @@ const logout = () => (dispatch, getState) => {
 
 const updateUser = (id, body) => (dispatch, getState) => {
     const { name, login, status } = body;
-    const raw = JSON.stringify({ name, login, status })
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow',
-        mode: 'cors',
-        credentials: 'include'
-    };
-    window.fetch(serverUrl + `/users/${id}`, requestOptions)
-        .then((response) => response.json())
-        .then((json) => {
-            if (json.code === 406) {
-                dispatch({ type: 'WRONG_DATA', payload: json })
+   
+    return $api.post(`/users/${id}`, { name, login, status })
+        .then(response => response.data)
+        .then(data => {
+            if (data.code === 406) {
+                dispatch({ type: 'WRONG_DATA', payload: data })
             } else {
-                dispatch({ type: 'UPDATE_USER', payload: json })
+                dispatch({ type: 'UPDATE_USER', payload: data })
             }
         })
 }

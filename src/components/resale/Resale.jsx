@@ -5,16 +5,19 @@ import './resale.scss'
 import ResaleCardItem from './ResaleCardItem';
 import ResaleListItem from './ResaleListItem';
 import RegAuthFooter from '../footer/RegAuthFooter';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Pagination from '../pagination/Pagination';
 import PendingPage from '../pendingPage/PendingPage';
 import { resaleApi } from '../../api/resaleApi';
+import ErrorPopup from '../popup/ErrorPopup';
 
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [listColor, setListColor] = useState('#CBD5E1');
     const [cardsColor, setCardsColor] = useState('#4482B9');
+    const userStatus = useSelector((store) => store.user)
+    const navigate = useNavigate();
     const countCardPerPage = 6;
     const countItemsPerPage = 4;
     const dispatch = useDispatch();
@@ -32,6 +35,12 @@ const Resale = () => {
         dispatch(resaleApi.getResales())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    const showPopup = (name) => {
+        const popup = document.querySelector(`.popup__${name}`);
+        popup.classList.add('active')
+        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
+    }
 
     const setList = () => {
         setIsCard(false);
@@ -55,10 +64,18 @@ const Resale = () => {
         return <PendingPage />
     }
 
+    const navigateToCreateResale = () => {
+        if (userStatus.isAuth){
+            navigate('create-new')
+        } else{
+            showPopup('auth')
+        }
+    }
+
     return (
         <>
             <div className="wrapper">
-                <Header  />
+                <Header />
                 <div className="main resale__main">
                     <section className="resale">
                         <div className="container">
@@ -91,11 +108,9 @@ const Resale = () => {
                                     </button>
                                 </div>
                                 <div>
-                                    <NavLink to="create-new">
-                                        <button className="snowboard__btn resale__create-new">
+                                        <button className="snowboard__btn resale__create-new" onClick={navigateToCreateResale}>
                                             Создать объявление
                                         </button>
-                                    </NavLink>
                                 </div>
                             </div>
                             <div className="resale__products">
@@ -127,8 +142,9 @@ const Resale = () => {
                         </div>
                     </section>
                 </div>
-                <RegAuthFooter textColor='#52525B'  />
+                <RegAuthFooter textColor='#52525B' />
             </div>
+            <ErrorPopup target="auth" text='Для создания мероприятией нужно войти в аккаунт' />
         </>
     )
 }

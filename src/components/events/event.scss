@@ -57,12 +57,23 @@
 
     &__btn {
         display: flex;
-        justify-content: end;
+        justify-content: start;
         margin-bottom: 45px;
     }
 
     &__back-btn {
-        padding: 13px 79px;
+        padding: 12px 20px;
+        font-size: 20px;
+        background-color: transparent;
+        border: 1px #CBD5E1 solid;
+        border-radius: 9px;
+        color: grey;
+        cursor: pointer;
+
+        &:hover{
+            border: 1px #898f97 solid;
+            color: #000;
+        }
     }
 
     &__edit {
@@ -101,7 +112,7 @@
 .title__edit-input,
 .descr__edit-textarea {
     height: 45px;
-    width: 700px;
+    width: 550px;
     margin-right: 30px;
 }
 

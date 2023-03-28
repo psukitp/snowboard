@@ -91,8 +91,8 @@ const ResaleAd = () => {
                         <div className="container">
                             <div className='resale__ad-btn'>
                                 <NavLink to='/resale'>
-                                    <button className='snowboard__btn resale__ad-back--btn'>
-                                        Назад
+                                    <button className='resale__ad-back--btn'>
+                                        {'<'}
                                     </button>
                                 </NavLink>
                             </div>
