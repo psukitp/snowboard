@@ -7,6 +7,7 @@ import RegAuthFooter from '../footer/RegAuthFooter'
 import Comments from '../comment/Comments';
 import { NavLink } from 'react-router-dom';
 import { eventApi } from '../../api/eventApi';
+import { userUtils } from '../../utils/user.utils';
 
 
 
@@ -20,6 +21,7 @@ const Event = () => {
     const dispatch = useDispatch();
     const event = useSelector((store) => store.currentEvent);
     const navigate = useNavigate();
+    const photoURL = userUtils.getPhotoURL(event.event_image_path, 'event_image')
 
     useEffect(() => {
         if (id !== undefined) {
@@ -38,14 +40,6 @@ const Event = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [event])
-
-
-    let photoURL = ''
-    if (event.event_image_path === null) {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/event_image/standard.png`
-    } else {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/${event.event_image_path}`;
-    }
 
     const handleEditButton = (e) => {
         e.preventDefault();

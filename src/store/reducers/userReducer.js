@@ -56,7 +56,6 @@ const userReducer = (state = initialState, action) => {
             }
         case UPDATE_USER:
             const updatedUser = action.payload;
-            console.log(action.payload)
             return {
                 ...state, 
                 name: updatedUser.name,
@@ -66,7 +65,6 @@ const userReducer = (state = initialState, action) => {
                 isWrong: false
             }
         case WRONG_DATA:
-            console.log(action.payload)
             return {
                 ...state,
                 message: action.payload.message,

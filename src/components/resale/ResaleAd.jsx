@@ -5,7 +5,11 @@ import { NavLink, useParams } from "react-router-dom";
 import { resaleApi } from "../../api/resaleApi";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
+import Chat from "../chat/Chat";
 import './resaleAd.scss'
+import MyChat from "../chat/MyChat";
+import { userUtils } from "../../utils/user.utils";
+import { propertiesUtils } from "../../utils/properties.utils";
 
 const ResaleAd = () => {
     const { id } = useParams();
@@ -15,14 +19,10 @@ const ResaleAd = () => {
     const [isEdit, setIsEdit] = useState(false);
     const [editResale, setEditResale] = useState({ title: '', text: '', price: '', tel: '' })
     const [style, setStyle] = useState({ paddingTop: 0 });
+    const [isChatOpen, setIsChatOpen] = useState(false);
     const dispatch = useDispatch();
+    const photoURL = userUtils.getPhotoURL(resale.ad_image_path, 'ad_image')
 
-    let photoURL = ''
-    if (resale.ad_image_path === null) {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/ad_image/standard.png`
-    } else {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/${resale.ad_image_path}`;
-    }
 
     useEffect(() => {
         if (id !== undefined) {
@@ -40,22 +40,7 @@ const ResaleAd = () => {
         }
     }, [resale]);
 
-    let properties = [];
-    if (resale.ad_product_type === 1) {
-        properties.push({ name: 'Длина', value: resale.board_size })
-        properties.push({ name: 'Прогиб', value: resale.board_deflection })
-        properties.push({ name: 'Жесткость', value: resale.board_flex })
-    } else if (resale.ad_product_type === 3) {
-        properties.push({ name: 'Размер', value: resale.shoe_size })
-        properties.push({ name: 'Жесткость', value: resale.shoe_flex })
-    } else if (resale.ad_product_type === 4) {
-        properties.push({ name: 'Размер', value: resale.binding_size })
-        properties.push({ name: 'Жесткость', value: resale.binding_flex })
-    } else if (resale.ad_product_type === 5) {
-        properties.push({ name: 'Тип', value: resale.clothes_name })
-        properties.push({ name: 'Размер', value: resale.clothes_size })
-    }
-
+    let properties = propertiesUtils.getResalePtoperties(resale);
 
     const editResaleBtn = () => {
         setEditResale({ title: resale.post_name, text: resale.post_text, price: resale.price, tel: resale.ad_telephone });
@@ -78,9 +63,6 @@ const ResaleAd = () => {
         dispatch(resaleApi.updateResale(id, editResale))
         setIsEdit(false);
     }
-
-
-
 
     return (
         <>
@@ -153,8 +135,20 @@ const ResaleAd = () => {
                             </div>
                         </div>
                     </section>
+                    {userState.isAuth ?
+                        (isChatOpen ?
+                            myResale ? <MyChat user={userState.id} creator={resale.creator_id} /> : <Chat user={userState.id} creator={resale.creator_id} creator_login={resale.login}/> :
+                            <div className="chat__open-btn" onClick={() => {
+                                setIsChatOpen(true);
+                                dispatch({ type: 'GET_MESSAGE_HISTORY', payload: [] })
+                            }}>
+                                {myResale ? "Открыть чат" : "Написать продавцу"}
+                            </div>
+                        ) :
+                        null
+                    }
                 </div>
-                <RegAuthFooter  />
+                <RegAuthFooter />
             </div>
         </>
     )

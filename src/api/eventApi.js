@@ -1,82 +1,95 @@
-const serverUrl = process.env.REACT_APP_SERVER_URL;
-const baseUrl = process.env.REACT_APP_BASE_URL;
+import $api from './instance';
 
 const getEvents = () => (dispatch, getState) => {
-    dispatch({ type: 'PENDING' })
-    window.fetch(serverUrl + '/events')
-        .then((response) => response.json())
-        .then((json) => {
-            dispatch({ type: 'GET_EVENTS', payload: json });
-            dispatch({ type: 'SUCCESS' })
+    dispatch({ type: 'PENDING' });
+    $api.get(`/events`)
+        .then((response) => {
+            dispatch({ type: 'GET_EVENTS', payload: response.data });
+            dispatch({ type: 'SUCCESS' });
         })
-
-}
+        .catch((error) => {
+            dispatch({ type: 'ERROR', payload: error });
+        });
+};
 
 const createNewEvent = async (body) => {
-    const raw = new FormData();
-    raw.append("creator_id", body.creator_id);
-    raw.append("event_title", body.event_title);
-    raw.append("event_date", body.event_date);
-    raw.append("event_description", body.event_description);
-    raw.append("file", body.event_image);
+    const formData = new FormData();
+    formData.append('creator_id', body.creator_id);
+    formData.append('event_title', body.event_title);
+    formData.append('event_date', body.event_date);
+    formData.append('event_description', body.event_description);
+    formData.append('file', body.event_image);
 
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "x-www-form-urlencoded");
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow',
-        mode: 'no-cors'
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data',
+        },
     };
-    await fetch(serverUrl + "/new-event", requestOptions)
-}
+    await $api.post(`/new-event`, formData, config);
+};
 
 const getOneEvent = (id) => async (dispatch, getState) => {
-    await window.fetch(serverUrl + `/events/${id}`)
-        .then((response) => response.json())
-        .then((json) => {
-            dispatch({ type: 'GET_EVENT', payload: json });
+    await $api.get(`/events/${id}`)
+        .then((response) => {
+            dispatch({ type: 'GET_EVENT', payload: response.data });
         })
-
-}
+        .catch((error) => {
+            dispatch({ type: 'ERROR', payload: error });
+        });
+};
 
 const updateEvent = (id, title, description) => (dispatch, getState) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify({ title, description }),
-        redirect: 'follow',
-        mode: 'cors',
-        credentials: 'include'
+    const config = {
+        headers: {
+            'content-type': 'application/json',
+        },
     };
-
-    window.fetch(serverUrl + `/events/update/${id}`, requestOptions)
-        .then((response) => response.json())
-        .then((json) => {
-            dispatch({ type: 'GET_EVENT', payload: json })
+    const data = JSON.stringify({ title, description });
+    $api.post(`/events/update/${id}`, data, config)
+        .then((response) => {
+            dispatch({ type: 'GET_EVENT', payload: response.data });
         })
-
-}
+        .catch((error) => {
+            dispatch({ type: 'ERROR', payload: error });
+        });
+};
 
 const deleteEvent = (id) => async (dispatch, getState) => {
-    await window.fetch(serverUrl + `/events/delete/${id}`)
-        .then((response) => response.json())
-        .then((json) => {
-            dispatch({ type: 'GET_EVENT', payload: json })
+    await $api.get(`/events/delete/${id}`)
+        .then((response) => {
+            dispatch({ type: 'GET_EVENT', payload: response.data });
         })
-
-}
+        .catch((error) => {
+            dispatch({ type: 'ERROR', payload: error });
+        });
+};
 
 const getEventsStatistic = () => (dispatch, getState) => {
-    window.fetch(serverUrl + '/events-statistic')
-        .then((response) => response.json())
-        .then((json) => {
-            dispatch({ type: 'GET_EVENTS_STATISTIC', payload: json })
+    $api.get(`/events-statistic`)
+        .then((response) => {
+            dispatch({ type: 'GET_EVENTS_STATISTIC', payload: response.data });
         })
-}
+        .catch((error) => {
+            dispatch({ type: 'ERROR', payload: error });
+        });
+};
 
-export const eventApi = { getEvents, getOneEvent, updateEvent, deleteEvent, getEventsStatistic, createNewEvent }
+const getMyEvents = (id) => (dispatch, getState) => {
+    $api.get(`/my-events/${id}`)
+        .then((response) => {
+            dispatch({ type: 'GET_MY_EVENTS', payload: response.data });
+        })
+        .catch((error) => {
+            dispatch({ type: 'ERROR', payload: error });
+        });
+};
+
+export const eventApi = {
+    getEvents,
+    getOneEvent,
+    updateEvent,
+    deleteEvent,
+    getEventsStatistic,
+    createNewEvent,
+    getMyEvents,
+};

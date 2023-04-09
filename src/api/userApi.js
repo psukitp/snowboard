@@ -79,21 +79,20 @@ const updateUser = (id, body) => (dispatch, getState) => {
 
 
 const updateUserPhoto = (id, photo) => (dispatch, getState) => {
-    const raw = new FormData();
-    raw.append("file", photo);
+    const formData = new FormData();
+    formData.append("file", photo);
 
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "x-www-form-urlencoded");
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow',
-        mode: 'no-cors',
+    const config = {
+        headers: { 'Content-Type': 'multipart/form-data' }
     };
 
-    window.fetch(serverUrl + `/users/new-photo/${id}`, requestOptions)
+    $api.post(`/users/new-photo/${id}`, formData, config)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
 
 export const userApi = { registration, login, checkAuth, updateUser, updateUserPhoto, logout }

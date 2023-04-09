@@ -12,6 +12,7 @@ import ShoeProperty from "./adTypeComponents/ShoeProperty";
 import BindingProperty from "./adTypeComponents/BindingProperty";
 import ClothesProperty from "./adTypeComponents/ClothesProperty";
 import { resaleApi } from "../../api/resaleApi";
+import { popupUtils } from "../../utils/popup.utils";
 
 
 const CreateResaleAd = () => {
@@ -23,12 +24,6 @@ const CreateResaleAd = () => {
 
     const checkEmpty = ({ resale_title, resale_description, resale_price, resale_tel }) => {
         return !(resale_title !== '' && resale_description !== '' && resale_price !== '' && resale_tel !== '')
-    }
-
-    const showPopup = (name) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
     }
 
     const dispatch = useDispatch()
@@ -67,7 +62,7 @@ const CreateResaleAd = () => {
         const currentFileName = target.files[0].name;
         const currentFile = target.files[0];
         if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
-            showPopup('files')
+            popupUtils.showPopup('files')
         }
         else {
             let fileName = '';
@@ -103,9 +98,9 @@ const CreateResaleAd = () => {
             await resaleApi.createNewResale(form, properties)
             navigate('/resale')
         } else if (!userState.isAuth) {
-            showPopup('auth')
+            popupUtils.showPopup('auth')
         } else {
-            showPopup('data')
+            popupUtils.showPopup('data')
         }
     }
 
@@ -156,10 +151,10 @@ const CreateResaleAd = () => {
                                     <IMaskInput mask='+{7}(000)000-00-00' className="snowboard__input create__resale-input" name="tel" onChange={handleChangeInput} placeholder="+7" value={form.resale_tel} />
                                 </div>
                                 <div className="create__resale-btns">
-                                        <button className="snowboard__btn create__resale-btn--submit" type='submit'>
-                                            <ReactLoading type='spin' color='#fff' height={20} width={20} className='create__resale-btn--submit--loader' />
-                                            Разместить
-                                        </button>
+                                    <button className="snowboard__btn create__resale-btn--submit" type='submit'>
+                                        <ReactLoading type='spin' color='#fff' height={20} width={20} className='create__resale-btn--submit--loader' />
+                                        Разместить
+                                    </button>
                                     <NavLink to="/resale">
                                         <button className="snowboard__btn create__resale-btn--cancel">
                                             Отмена

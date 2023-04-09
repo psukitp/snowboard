@@ -35,6 +35,12 @@ const Toolbar = (props) => {
                             <img src={require('./img/toolbar_settings.png')} alt="" />
                         </li>
                     </NavLink>
+                    <NavLink to='/my-events'>
+                        <li>Мои мероприятия</li>
+                    </NavLink>
+                    <NavLink to='/my-resales'>
+                        <li>Мои объявления</li>
+                    </NavLink>
                     <NavLink to='/events'>
                         <li onClick={handleLogout}>Выйти <img src={require('./img/toolbar_quit.png')} alt="" /></li>
                     </NavLink>

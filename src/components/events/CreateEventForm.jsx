@@ -9,6 +9,7 @@ import ReactLoading from 'react-loading'
 import './createEventForm.scss'
 import { eventApi } from "../../api/eventApi"
 import RegAuthFooter from "../footer/RegAuthFooter"
+import { popupUtils } from "../../utils/popup.utils"
 
 
 const CreateEventForm = () => {
@@ -17,14 +18,8 @@ const CreateEventForm = () => {
     const [form, setForm] = useState({ creator_id: user_id, event_title: '', event_date: '', event_description: '', event_image: '' })
     const navigate = useNavigate()
 
-    const checkEmpty = ({ resale_title, event_date, event_description, event_image}) => {
+    const checkEmpty = ({ resale_title, event_date, event_description, event_image }) => {
         return !(resale_title !== '' && event_date !== '' && event_description !== '' && event_image !== '')
-    }
-
-    const showPopup = (name) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
     }
 
 
@@ -40,11 +35,11 @@ const CreateEventForm = () => {
             await eventApi.createNewEvent(form);
             navigate('/events')
         } else if (!userState.isAuth) {
-            showPopup('auth');
+            popupUtils.showPopup('auth');
         } else if (checkEmpty(form)) {
-            showPopup('data')
+            popupUtils.showPopup('data')
         } else {
-            showPopup('date')
+            popupUtils.showPopup('date')
         }
     }
 
@@ -62,7 +57,7 @@ const CreateEventForm = () => {
         const currentFileName = target.files[0].name;
         const currentFile = target.files[0];
         if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
-            showPopup('files')
+            popupUtils.showPopup('files')
         }
         else {
             let fileName = '';

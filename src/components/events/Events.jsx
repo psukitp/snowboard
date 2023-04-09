@@ -10,6 +10,7 @@ import RegAuthFooter from '../footer/RegAuthFooter'
 import './events.scss'
 import { eventApi } from '../../api/eventApi';
 import ErrorPopup from '../popup/ErrorPopup';
+import { popupUtils } from '../../utils/popup.utils';
 
 const Events = () => {
     const dispatch = useDispatch();
@@ -24,12 +25,6 @@ const Events = () => {
     const firstEventIndex = lastEventIndex - countEventsPerPage;
     const filteredEvent = events.filter(el => el.event_title?.toLowerCase().includes(search.toLowerCase()));
     const currentEvents = filteredEvent.sort((a, b) => parseFloat(b.event_id) - parseFloat(a.event_id)).slice(firstEventIndex, lastEventIndex);
-
-    const showPopup = (name) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
-    }
 
 
     const paginate = (pageNumber) => {
@@ -51,10 +46,10 @@ const Events = () => {
     }
 
     const navigateToCreateEvent = () => {
-        if (userStatus.isAuth){
+        if (userStatus.isAuth) {
             navigate('create-new')
-        } else{
-            showPopup('auth')
+        } else {
+            popupUtils.showPopup('auth');
         }
     }
 
@@ -83,13 +78,15 @@ const Events = () => {
                             </div>
                         </div>) : null}
                     <div className="events__cards">
-                        {currentEvents.map(el => <EventCard
-                            key={el.event_id}
-                            id={el.event_id}
-                            name={el.event_title}
-                            text={el.event_description === undefined ? 'Не найдено' : el.event_description}
-                            date={el.event_date === null ? '01.04.2023' : el.event_date}
-                            event_image_path={el.event_image_path} />)}
+                        {currentEvents.map(el => <NavLink to={'' + String(el.event_id)}>
+                            <EventCard
+                                key={el.event_id}
+                                id={el.event_id}
+                                name={el.event_title}
+                                text={el.event_description === undefined ? 'Не найдено' : el.event_description}
+                                date={el.event_date === null ? '01.04.2023' : el.event_date}
+                                event_image_path={el.event_image_path} />
+                        </NavLink>)}
                     </div>
                     {filteredEvent.length > 0 ?
                         <Pagination countPerPage={countEventsPerPage} totalCount={filteredEvent.length} paginate={paginate} currentPagePicked={currentPage} />

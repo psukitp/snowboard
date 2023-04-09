@@ -1,13 +1,8 @@
+import { userUtils } from '../../utils/user.utils';
 import './resaleListItem.scss'
 
 const ResaleListItem = ({ ad_image_path, product_type, ad_post_name, ad_post_text, ad_price, other_props }) => {
-    let photoURL = ''
-    if (ad_image_path === null) {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/event_image/standard.png`
-    } else {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/${ad_image_path}`;
-    }
-
+    const photoURL = userUtils.getPhotoURL(ad_image_path, 'event_image')
 
     return (
         <>

@@ -10,6 +10,8 @@ import Pagination from '../pagination/Pagination';
 import PendingPage from '../pendingPage/PendingPage';
 import { resaleApi } from '../../api/resaleApi';
 import ErrorPopup from '../popup/ErrorPopup';
+import Chat from '../chat/Chat';
+import { popupUtils } from '../../utils/popup.utils';
 
 const Resale = () => {
     const [isCard, setIsCard] = useState(true);
@@ -35,12 +37,6 @@ const Resale = () => {
         dispatch(resaleApi.getResales())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const showPopup = (name) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
-    }
 
     const setList = () => {
         setIsCard(false);
@@ -68,7 +64,7 @@ const Resale = () => {
         if (userStatus.isAuth){
             navigate('create-new')
         } else{
-            showPopup('auth')
+            popupUtils.showPopup('auth')
         }
     }
 
@@ -82,8 +78,6 @@ const Resale = () => {
                             <div className="resale__inner">
                                 <div className="resale__switch">
                                     <button className='switch__btn' onClick={setCard}>
-                                        {/* <img src={require("./img/cards_icon.png")} alt='Карточками' />
-                                 */}
                                         <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="https://www.w3.org/2000/svg">
                                             <rect x="0.5" y="1" width="39" height="39" rx="2.5" fill="white" stroke={cardsColor} />
                                             <rect x="8" y="8.5" width="10.6667" height="10.6667" fill={cardsColor} />

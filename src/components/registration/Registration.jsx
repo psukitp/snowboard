@@ -6,6 +6,7 @@ import Header from '../header/Header';
 import './registration.scss'
 import ErrorPopup from '../popup/ErrorPopup'
 import { userApi } from '../../api/userApi';
+import { popupUtils } from '../../utils/popup.utils';
 
 const Registration = () => {
     const dispatch = useDispatch()
@@ -23,18 +24,12 @@ const Registration = () => {
         if (!userState.isWrong && userState.isWrong !== null) {
             navigate('/events')
         } else if (userState.isWrong  !== null) {
-            showPopup('bad-logem')
+            popupUtils.showPopup('bad-logem')
         }
     }, [userState])
 
     const checkEmpty = ({ login, email, name }) => {
         return !(login !== '' && email !== '' && name !== '')
-    }
-
-    const showPopup = (name) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
     }
 
     const handleSubmitForm = async (e) => {

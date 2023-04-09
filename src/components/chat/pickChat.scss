@@ -1,0 +1,26 @@
+@import '../../scss/var';
+
+.pick {
+    padding: 5px 20px;
+    background-color: #fff;
+    margin-right: 8px;
+    border: $base_textcolor solid 1px;
+    border-radius: 5px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &:hover {
+        opacity: .8;
+    }
+
+    &__img {
+        max-width: 25px;
+        margin-right: 5px;
+
+        & img {
+            border-radius: 50%;
+        }
+    }
+}

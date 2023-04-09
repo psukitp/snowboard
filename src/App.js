@@ -14,6 +14,8 @@ import Profile from './components/profile/Profile';
 import ResaleAd from './components/resale/ResaleAd';
 import Statistic from './components/statistic/Statistic'
 import { userApi } from './api/userApi';
+import MyEvents from './components/myEvents/MyEvents';
+import MyResales from './components/myResales/MyResales';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
   {
     path: "/statistic",
     element: <Statistic />
+  },
+  {
+    path: "/my-resales",
+    element: <MyResales />
+  },
+  {
+    path: "/my-events",
+    element: <MyEvents />
   }
 ])
 

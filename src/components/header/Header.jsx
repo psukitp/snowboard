@@ -2,21 +2,14 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './header.scss';
 import Toolbar from './Toolbar';
+import { userUtils } from '../../utils/user.utils';
 
 
 const Header = ({ textColor, bgColor, isReg}) => {
     const userStatus = useSelector((store) => store.user)
     const isLog = userStatus.isAuth;
     const { user_image_path } = userStatus;
-
-
-
-    let photoURL = ''
-    if (user_image_path === null) {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/user_image/standard.png`
-    } else {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/${user_image_path}`;
-    }
+    const photoURL = userUtils.getPhotoURL(user_image_path, 'user_image')
 
 
     return (

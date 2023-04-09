@@ -5,34 +5,28 @@ import Header from "../header/Header";
 import './profile.scss'
 import ErrorPopup from "../popup/ErrorPopup";
 import { userApi } from "../../api/userApi";
+import { popupUtils } from "../../utils/popup.utils";
+import { userUtils } from "../../utils/user.utils";
 
 const Profile = () => {
     const userStatus = useSelector((store) => store.user)
     const { user_image_path } = userStatus;
     const [form, setForm] = useState({ name: '', login: '', status: '' })
     const dispatch = useDispatch();
+    const photoURL = userUtils(user_image_path, 'user_image')
+
     useEffect(() => {
         if (userStatus.isWrong && userStatus !== null) {
-            console.log('ес')
-            showPopup('login_exist', 3)
+            popupUtils.showPopup('login_exist')
         }
     }, [userStatus])
-
-
-
-    let photoURL = ''
-    if (user_image_path === null) {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/user_image/standard.png`
-    } else {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/${user_image_path}`;
-    }
 
     const handleChangeInput = ({ target }) => {
         if (target.name === 'name') {
             setForm({ ...form, name: target.value })
         } else if (target.name === 'login') {
             if (target.value.slice(-1).charCodeAt(0) > 122) {
-                showPopup('bad_symbol_login', 2)
+                popupUtils.showPopup('bad_symbol_login', 2)
             } else {
                 setForm({ ...form, login: target.value })
             }
@@ -43,9 +37,8 @@ const Profile = () => {
 
     const handleFileUpload = async ({ target }) => {
         const currentFile = target.files[0];
-        console.log(currentFile);
         if (!["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(currentFile.type)) {
-            showPopup('files', 3)
+            popupUtils.showPopup('files')
         }
         else {
             await dispatch(userApi.updateUserPhoto(userStatus.id, currentFile));
@@ -56,18 +49,13 @@ const Profile = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (form.login.length < 5 && form.login.length !== 0) {
-            showPopup('short_login', 2)
+            popupUtils.showPopup('short_login', 2)
         } else {
             await dispatch(userApi.updateUser(userStatus.id, form))
             setForm({ name: '', login: '', status: '' })
         }
     }
 
-    const showPopup = (name, duration) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), duration * 1000);
-    }
 
     return (
         <>

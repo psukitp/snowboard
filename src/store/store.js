@@ -9,6 +9,10 @@ import productTypesReducer from "./reducers/productTypesReducer";
 import loadStatusReducer from "./reducers/loadStatusReducer";
 import currentResaleAdReducer from "./reducers/currentResaleAdReducer";
 import statisticReducer from "./reducers/statisticReducer";
+import myEventReducer from "./reducers/myEventReducer.js";
+import myResalesReducer from "./reducers/myResalesReducer";
+import messagesReducer from "./reducers/messageReducer";
+import sendersReducer from "./reducers/sendersReducer";
 
 
 
@@ -21,7 +25,11 @@ const rootReducer = combineReducers({
     productTypes: productTypesReducer,
     loadStatus: loadStatusReducer,
     currentResale: currentResaleAdReducer,
-    statistic: statisticReducer
+    statistic: statisticReducer,
+    myEvents: myEventReducer,
+    myResales: myResalesReducer, 
+    messages: messagesReducer, 
+    senders: sendersReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

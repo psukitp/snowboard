@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
 import './comment.scss'
+import { userUtils } from '../../utils/user.utils';
 
 const Comment = (props) => {
     const userState = useSelector((store) => store.user)
+    const photoURL = userUtils.getPhotoURL(props.user_image_path, 'user_image')
 
     let newCommentDate = '';
     const getDateNow = () => {
@@ -11,21 +13,6 @@ const Comment = (props) => {
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const yyyy = String(today.getFullYear());
         return dd + '.' + mm + '.' + yyyy
-    }
-
-    let photoURL = ''
-    if (props.user_image_path === null) {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/user_image/standard.png`
-    } else {
-        photoURL = `${process.env.REACT_APP_SERVER_URL}/${props.user_image_path}`;
-    }
-
-    let status = '';
-    console.log(props.status)
-    if (props.status === null) {
-        props.status === 'null' ? status = props.status : status = 'Райдер без статуса, все время катается'
-    } else {
-        userState.status !== null && userState.status !== 'null' ? status = userState.status : status = 'Райдер без статуса, все время катается'
     }
 
     if (!props.date) {
@@ -50,7 +37,13 @@ const Comment = (props) => {
                 </div>
                 <hr />
                 <div className='comment__user-status'>
-                    {status}
+                    {!props.status ?
+                        (!userState.status ?
+                            'Райдер без статуса, постоянно катается' :
+                            userState.status) :
+                        (props.status === 'null' ?
+                            'Райдер без статуса, постоянно катается' :
+                            props.status)}
                 </div>
             </div>
         </>

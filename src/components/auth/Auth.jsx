@@ -7,6 +7,7 @@ import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header'
 import ErrorPopup from '../popup/ErrorPopup';
 import './auth.scss'
+import { popupUtils } from '../../utils/popup.utils';
 
 const Auth = () => {
     const dispatch = useDispatch();
@@ -24,16 +25,10 @@ const Auth = () => {
         if (!userStatus.isWrong && userStatus.isWrong !== null) {
             navigate('/events')
         } else if (userStatus.isWrong !== null) {
-            console.log(userStatus);
-            showPopup('bad-mail')
+            popupUtils.showPopup('bad-mail')
         }
     }, [userStatus])
 
-    const showPopup = (name) => {
-        const popup = document.querySelector(`.popup__${name}`);
-        popup.classList.add('active')
-        setTimeout(() => popup.classList.remove('active'), 3 * 1000);
-    }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();

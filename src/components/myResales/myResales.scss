@@ -1,0 +1,33 @@
+@import '../../scss/var';
+
+.my-resales__main {
+    justify-content: start;
+    max-width: 1190px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: start;
+}
+
+.my-resales {
+    padding-top: 100px;
+    padding-bottom: 30px;
+
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    &__products {
+        max-width: 1190px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1190px));
+        grid-gap: 70px;
+        margin-bottom: 20px;
+    }
+
+    &__filler {
+        color: $accent_color;
+    }
+}

@@ -157,3 +157,20 @@
     color: $base_textcolor;
     margin-right: 10px;
 }
+
+.chat__open-btn{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: $accent_color;
+    border-radius: 7px;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover{
+        opacity: .8;
+    }
+}

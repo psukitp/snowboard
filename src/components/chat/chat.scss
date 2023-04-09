@@ -1,0 +1,63 @@
+@import '../../scss/_var.scss';
+
+.chat {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 25px 20px;
+    
+
+    &__input {
+        background: #F8FAFC;
+        border: none;
+        border-radius: 9px;
+        padding: 10px 20px;
+    }
+
+    &__btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover{
+            opacity: .6;
+        }
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+    }
+
+    &_inner{
+        display: flex;
+    }
+
+    &__picker{
+        border-right: 1px solid $accent-color;
+    }
+
+    &__func{
+        margin-left: 8px;
+    }
+}
+
+.messages {
+    height: 250px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+        width: 12px;
+        background-color: #fff;
+        height: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $accent-color;
+        border-radius: 9em;
+        border: 2px solid #fff;
+    }
+
+}
