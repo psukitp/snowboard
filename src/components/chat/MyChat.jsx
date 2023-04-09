@@ -27,7 +27,6 @@ const MyChat = (props) => {
 
     useEffect(() => {
         setMessages([])
-        console.log(chatSelectedNumber)
         const user = chatSelectedNumber;
         if (chatSelectedNumber > 0) {
             socket.emit('join', { user, creator })
