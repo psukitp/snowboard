@@ -6,6 +6,7 @@ import Message from "./Message";
 import { useDispatch, useSelector } from "react-redux";
 import { chatApi } from "../../api/chatApi";
 import PickChat from "./PickChat";
+import $api from "../../api/instance";
 
 
 const socket = io(process.env.REACT_APP_SERVER_URL)
@@ -31,11 +32,17 @@ const MyChat = (props) => {
         if (chatSelectedNumber > 0) {
             socket.emit('join', { user, creator })
             socket.on("message", ({ data }) => {
-                if (!(JSON.stringify(allMessages).includes(JSON.stringify(data)))) {
-                    setMessages((prevState) => [...prevState, data])
-                }
-                allMessages.push(data);
+                setMessages((prevState) => [...prevState, data])
             })
+            let raw = {
+                creator,
+                user
+            }
+            $api.post('/get-history', raw)
+                .then(response => response.data)
+                .then(data => {
+                    setMessages(data)
+                })
         }
 
         return () => {

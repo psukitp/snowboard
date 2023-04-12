@@ -5,9 +5,10 @@ import './chat.scss'
 import EmojiPicker from "emoji-picker-react";
 import Message from "./Message";
 import { useDispatch, useSelector } from "react-redux";
+import $api from "../../api/instance";
 
 
-const socket = io('http://localhost:3001')
+const socket = io(process.env.REACT_APP_SERVER_URL)
 
 const Chat = (props) => {
     const [messages, setMessages] = useState([]);
@@ -20,17 +21,24 @@ const Chat = (props) => {
         setMessages([])
         socket.emit('join', { user, creator })
         socket.on("message", ({ data }) => {
-            if (!(JSON.stringify(allMessages).includes(JSON.stringify(data)))) {
-                setMessages((prevState) => [...prevState, data])
-            }
-            allMessages.push(data);
+            setMessages((prevState) => [...prevState, data])
         })
+        let raw = {
+            creator,
+            user
+        }
+        $api.post('/get-history', raw)
+            .then(response => response.data)
+            .then(data => {
+                setMessages(data)
+            })
 
 
 
         return () => {
             socket.off('message')
         }
+
     }, [])
 
     useEffect(() => {

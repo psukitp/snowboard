@@ -13,7 +13,7 @@ const Profile = () => {
     const { user_image_path } = userStatus;
     const [form, setForm] = useState({ name: '', login: '', status: '' })
     const dispatch = useDispatch();
-    const photoURL = userUtils(user_image_path, 'user_image')
+    const photoURL = userUtils.getPhotoURL(user_image_path, 'user_image')
 
     useEffect(() => {
         if (userStatus.isWrong && userStatus !== null) {
