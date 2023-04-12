@@ -77,7 +77,7 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    if (localStorage.getItem('refreshToken')) {
+    if (localStorage.getItem('token')) {
       dispatch(userApi.checkAuth());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

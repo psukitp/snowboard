@@ -19,8 +19,7 @@ const registration = (req) => async (dispatch, getState) => {
             if (data.code === 406 || data.code === 400) {
                 dispatch({ type: 'WRONG_DATA', payload: data })
             } else {
-                localStorage.setItem('accessToken', data.accessToken)
-                localStorage.setItem('refreshToken', data.refreshToken)
+                localStorage.setItem('token', data.accessToken)
                 dispatch({ type: 'REGISTRATION', payload: data.user })
             }
         })
@@ -35,18 +34,17 @@ const login = (email, password) => async (dispatch, getState) => {
             if (data.code === 400) {
                 dispatch({ type: 'WRONG_DATA', payload: data })
             } else {
-                localStorage.setItem('accessToken', data.accessToken)
-                localStorage.setItem('refreshToken', data.refreshToken)
+                localStorage.setItem('token', data.accessToken)
                 dispatch({ type: 'LOGIN', payload: data.user })
             }
         })
 }
 
 const checkAuth = () => async (dispatch, getState) => {
-    await axios.post(`${serverUrl}/refresh`, { token: localStorage.getItem('refreshToken') })
+    await axios.post(`${serverUrl}/refresh`)
         .then(response => response.data)
         .then(data => {
-            localStorage.setItem('refreshToken', data.refreshToken)
+            localStorage.setItem('token', data.accessToken)
             dispatch({ type: 'LOGIN', payload: data.user })
         })
 
@@ -56,8 +54,7 @@ const logout = () => (dispatch, getState) => {
     return $api.post('/logout')
         .then(response => response.data)
         .then(data => {
-            localStorage.removeItem('accessToken')
-            localStorage.removeItem('refreshToken')
+            localStorage.removeItem('token')
             dispatch({ type: 'LOGOUT' })
         })
 
