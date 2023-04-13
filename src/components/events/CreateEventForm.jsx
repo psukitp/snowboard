@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
 import Header from '../header/Header'
-import Footer from '../footer/Footer'
 import ErrorPopup from "../popup/ErrorPopup"
 import { IMaskInput } from "react-imask"
 import ReactLoading from 'react-loading'

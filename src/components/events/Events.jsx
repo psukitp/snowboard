@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../header/Header'
-import Footer from '../footer/Footer'
 import EventCard from './EventCard'
 import PendingPage from '../pendingPage/PendingPage'
 import Pagination from '../pagination/Pagination';

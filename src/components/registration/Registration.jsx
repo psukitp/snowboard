@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import RegAuthFooter from '../footer/RegAuthFooter';
 import Header from '../header/Header';
@@ -23,9 +23,10 @@ const Registration = () => {
     useEffect(() => {
         if (!userState.isWrong && userState.isWrong !== null) {
             navigate('/events')
-        } else if (userState.isWrong  !== null) {
+        } else if (userState.isWrong !== null) {
             popupUtils.showPopup('bad-logem')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userState])
 
     const checkEmpty = ({ login, email, name }) => {

@@ -16,14 +16,13 @@ const MyChat = (props) => {
     const senders = useSelector((store) => store.senders)
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    const [emojiOpen, setEmojiOpen] = useState(false)
     const { user, creator } = props;
     const [chatSelectedNumber, setChatSelectedNumber] = useState(-1);
     const [chatSelectedLogin, setChatSelectedLogin] = useState(null);
-    const allMessages = []
 
     useEffect(() => {
         dispatch(chatApi.getSenders(creator));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -61,9 +60,6 @@ const MyChat = (props) => {
         setMessage(target.value)
     }
 
-    const onEmojiClick = ({ emoji }) => {
-        setMessage(`${message}${emoji}`)
-    }
 
     const handleMessageSubmit = (e) => {
         e.preventDefault();

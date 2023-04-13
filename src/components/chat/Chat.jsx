@@ -2,9 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { io } from "socket.io-client";
 import './chat.scss'
-import EmojiPicker from "emoji-picker-react";
 import Message from "./Message";
-import { useDispatch, useSelector } from "react-redux";
 import $api from "../../api/instance";
 
 
@@ -13,9 +11,7 @@ const socket = io(process.env.REACT_APP_SERVER_URL)
 const Chat = (props) => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    const [emojiOpen, setEmojiOpen] = useState(false);
     const { user, creator } = props;
-    const allMessages = []
 
     useEffect(() => {
         setMessages([])
@@ -44,15 +40,12 @@ const Chat = (props) => {
     useEffect(() => {
         const chat = document.querySelector('.messages');
         chat.scrollTo(0, chat.scrollHeight)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messages])
 
 
     const handleChangeMessage = ({ target }) => {
         setMessage(target.value)
-    }
-
-    const onEmojiClick = ({ emoji }) => {
-        setMessage(`${message}${emoji}`)
     }
 
     const handleMessageSubmit = (e) => {

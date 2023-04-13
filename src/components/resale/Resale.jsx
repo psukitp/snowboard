@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../header/Header'
 import './resale.scss'
@@ -10,7 +10,6 @@ import Pagination from '../pagination/Pagination';
 import PendingPage from '../pendingPage/PendingPage';
 import { resaleApi } from '../../api/resaleApi';
 import ErrorPopup from '../popup/ErrorPopup';
-import Chat from '../chat/Chat';
 import { popupUtils } from '../../utils/popup.utils';
 
 const Resale = () => {

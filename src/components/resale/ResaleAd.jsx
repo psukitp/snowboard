@@ -29,6 +29,7 @@ const ResaleAd = () => {
             dispatch(resaleApi.getOneResale(id));
         }
         window.scrollTo(0, 0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userState])
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const ResaleAd = () => {
         } else {
             setMyResale(false)
         }
-    }, [resale]);
+    }, [resale, userState]);
 
     let properties = propertiesUtils.getResalePtoperties(resale);
 
@@ -80,7 +81,7 @@ const ResaleAd = () => {
                             </div>
                             <div className="resale__ad-inner">
                                 <div className="resale__ad-image" style={style}>
-                                    <img src={photoURL} />
+                                    <img src={photoURL} alt='Фото'/>
                                 </div>
                                 <div className="resale__ad-info">
                                     <div className="resale__ad-edit--block">

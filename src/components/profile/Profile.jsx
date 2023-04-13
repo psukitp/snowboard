@@ -66,7 +66,7 @@ const Profile = () => {
                         <div className="profile__inner">
                             <div className="profile__info">
                                 <div className="profile__photo">
-                                    <img src={photoURL} />
+                                    <img src={photoURL} alt='Фото профиля'/>
                                 </div>
                                 <div className="profile__name">
                                     <div className="name">

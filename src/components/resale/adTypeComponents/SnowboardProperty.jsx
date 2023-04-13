@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IMaskInput } from "react-imask";
 
 const SnowboardProperty = ({ changeProperties, takeProperties }) => {

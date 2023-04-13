@@ -17,6 +17,7 @@ const Statistic = () => {
     useEffect(() => {
         dispatch(eventApi.getEventsStatistic())
         dispatch(commentApi.getCommentsStatistic())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleOnExportExcel = () => {

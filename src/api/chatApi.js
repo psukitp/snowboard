@@ -1,4 +1,3 @@
-import axios from "axios";
 import $api from "./instance";
 
 const getSenders = (id) => (dispatch, getState) => {

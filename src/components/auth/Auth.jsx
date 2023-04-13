@@ -19,6 +19,7 @@ const Auth = () => {
         if (userStatus.isAuth) {
             return navigate('/events')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStatus.isAuth])
 
     useEffect(() => {
@@ -27,6 +28,7 @@ const Auth = () => {
         } else if (userStatus.isWrong !== null) {
             popupUtils.showPopup('bad-mail')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStatus])
 
 
@@ -63,7 +65,7 @@ const Auth = () => {
                         {userStatus.isWrong ? <div className='auth__wrong-data'> Неверные данные</div> : null}
                     </div>
                 </div>
-                <RegAuthFooter bgColor='transparent'/>
+                <RegAuthFooter bgColor='transparent' />
                 <FooterLine />
                 <ErrorPopup target='bad-mail' text={userStatus.message} />
             </section>

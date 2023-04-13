@@ -20,6 +20,7 @@ const MyEvents = () => {
 
     useEffect(() => {
         dispatch(eventApi.getMyEvents(userId))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const paginate = (pageNumber) => {

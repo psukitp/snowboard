@@ -1,7 +1,4 @@
-import axios from 'axios';
 import $api from "./instance";
-
-const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const getResales = () => async (dispatch, getState) => {
     dispatch({ type: 'PENDING' });
@@ -55,7 +52,7 @@ const createNewResale = async (form, properties) => {
     }
 
     try {
-        const response = await $api.post( "/new-resale", data, {
+        await $api.post( "/new-resale", data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },

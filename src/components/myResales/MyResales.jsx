@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import RegAuthFooter from "../footer/RegAuthFooter";
 import Header from "../header/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { eventApi } from "../../api/eventApi";
 import { NavLink } from "react-router-dom";
 import { resaleApi } from "../../api/resaleApi";
 import ResaleListItem from '../resale/ResaleListItem'
@@ -19,6 +18,7 @@ const MyResales = () => {
 
     useEffect(() => {
         dispatch(resaleApi.getMyResales(userId))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const paginate = (pageNumber) => {
