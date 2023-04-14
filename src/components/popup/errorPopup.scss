@@ -12,6 +12,7 @@
     align-items: center;
     opacity: 0;
     transition: 2s all;
+    transform: translateY(-200px);
 
     &__text {
         margin-left: 15px;
@@ -23,5 +24,6 @@
 
     &.active {
         opacity: 1;
+        transform: translateY(0);
     }
 }

@@ -3,14 +3,25 @@ import { NavLink } from 'react-router-dom';
 import './header.scss';
 import Toolbar from './Toolbar';
 import { userUtils } from '../../utils/user.utils';
+import { useRef, useState } from 'react';
 
 
-const Header = ({ textColor, bgColor, isReg}) => {
+const Header = ({ textColor, bgColor, isReg }) => {
     const userStatus = useSelector((store) => store.user)
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const isLog = userStatus.isAuth;
     const { user_image_path } = userStatus;
     const photoURL = userUtils.getPhotoURL(user_image_path, 'user_image')
+    const menu = useRef()
+    const auth = useRef()
 
+    const handleOpenMenu = () => {
+        menu.current.classList.toggle('active')
+        if (!userStatus.isAuth) {
+            auth.current.classList.toggle('active')
+        }
+        setIsMenuOpen(!isMenuOpen)
+    }
 
     return (
         <header className='header' style={{ backgroundColor: bgColor }}>
@@ -28,10 +39,9 @@ const Header = ({ textColor, bgColor, isReg}) => {
                                     </clipPath>
                                 </defs>
                             </svg>
-
                         </NavLink>
                         <nav>
-                            <ul className='menu'>
+                            <ul className='menu' ref={menu} style={{ backgroundColor: bgColor }}>
                                 <li>
                                     <NavLink to="/events" style={{ color: textColor }}> Мероприятия</NavLink>
                                 </li>
@@ -45,7 +55,19 @@ const Header = ({ textColor, bgColor, isReg}) => {
                         </nav>
                     </div>
                     {isLog ? <Toolbar name={userStatus.login} sname={userStatus.s_name} photoUrl={photoURL} /> :
-                        <a href="/auth"><button className='snowboard__btn auth__btn'>Войти</button></a>}
+                        <a href="/auth" className='auth__btn-link' ref={auth}>
+                            <button className='snowboard__btn auth__btn'>
+                                Войти
+                            </button>
+                        </a>}
+                    <div className="menu__open">
+                        <button onClick={handleOpenMenu}>
+                            {isMenuOpen ?
+                                <img src={require("./img/close_icon.png")} alt="Закрыть" style={{ marginRight: 11, marginLeft: 10 }} /> :
+                                <img src={require("./img/open_icon.png")} alt="Открыть" />
+                            }
+                        </button>
+                    </div>
                 </div>
             </div>
         </header >

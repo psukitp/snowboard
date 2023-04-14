@@ -1,4 +1,4 @@
-@import  '../../scss/_var.scss';
+@import '../../scss/_var.scss';
 
 .events {
     padding-top: 80px;
@@ -65,4 +65,50 @@
 
 .create__event-btn {
     padding: 8.5px 19px;
+}
+
+@media (max-width:976px) {
+    .events {
+        &__search {
+            display: block;
+
+            &-input.snowboard__input {
+                margin-left: auto;
+                margin-right: auto;
+                width: 800px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    .events {
+        &__search {
+            display: block;
+
+            &-input.snowboard__input {
+                margin-left: auto;
+                margin-right: auto;
+                width: 600px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .events {
+        &__search {
+            display: block;
+
+            &-input.snowboard__input {
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+                margin-bottom: 20px;
+            }
+        }
+    }
 }

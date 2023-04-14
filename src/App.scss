@@ -141,3 +141,10 @@ html {
   color: #090914;
   margin-top: 60px;
 }
+
+@media (max-width: 1200px){
+  .container,
+  .main {
+    padding: 0 10px;
+  }
+}
