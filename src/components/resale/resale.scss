@@ -27,7 +27,7 @@
     &__products {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
-        justify-content: space-between;
+        justify-content: center;
     }
 
     &__list-item {

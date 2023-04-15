@@ -1,4 +1,4 @@
-@import  '../../scss/_var.scss';
+@import '../../scss/_var.scss';
 
 .event__create {
     padding-top: 80px;
@@ -123,4 +123,37 @@
 .event__cancel-link {
     max-width: 205px;
     width: 100%;
+}
+
+@media (max-width: 1190px) {
+    .event__create {
+        &__textarea {
+            width: 700px;
+        }
+    }
+}
+
+@media (max-width: 776px) {
+    .event__create {
+        &__textarea {
+            width: 500px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .event__create {
+        &__textarea,
+        &__input[name=title] {
+            width: 300px;
+        }
+
+        &-btns{
+            display: block;
+        }
+
+        &__btn-submit{
+            margin-bottom: 20px;
+        }
+    }
 }

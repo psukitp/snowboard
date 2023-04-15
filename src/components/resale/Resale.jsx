@@ -106,7 +106,7 @@ const Resale = () => {
                                         </button>
                                 </div>
                             </div>
-                            <div className="resale__products">
+                            <div className="resale__products" style={isCard ? {gridColumnGap:60+'px'} : null}>
                                 {isCard ?
                                     currentCardCount.map(el => <NavLink to={String(el.ad_post_id)} className='resale__card-item'>
                                         <ResaleCardItem
